@@ -1,0 +1,24 @@
+<div
+  class="warning"
+  fxLayout="column"
+>
+  <div
+    class="warning-header"
+    fxLayoutAlign="start center"
+    fxLayoutGap="0.5rem"
+  >
+    <mat-icon
+      class="war-white"
+      svgIcon="no-color-war"
+    ></mat-icon>
+    <span>{{'error' | translate}}</span>
+  </div>
+
+  <div class="warning-text">
+    <span>
+      {{text | translate}}
+
+      <ng-content></ng-content>
+    </span>
+  </div>
+</div>

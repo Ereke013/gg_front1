@@ -1,0 +1,16 @@
+<ng-container *ngIf="c; else defaultTemplate">
+  <ng-template [ngComponentOutlet]="c"></ng-template>
+</ng-container>
+
+<ng-template #defaultTemplate>
+  <span [title]="text">
+    {{text}}
+    <ng-content></ng-content>
+  </span>
+
+  <mat-icon
+    *ngIf="hasCloseButton"
+    svgIcon="ui:chip-close"
+    (click)="$event.stopPropagation();closeClicked.emit($event)"
+  ></mat-icon>
+</ng-template>

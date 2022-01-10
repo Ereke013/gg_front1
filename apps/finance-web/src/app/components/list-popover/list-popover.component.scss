@@ -1,0 +1,19 @@
+@import "variables";
+
+.example-card {
+  max-width: 300px;
+}
+
+button {
+  margin-right: 20px;
+}
+
+.add-btn {
+  background-color: #4285f4;
+  color: $main-white;
+}
+
+.example-section {
+  overflow-y: scroll;
+  max-height: 60vh;
+}

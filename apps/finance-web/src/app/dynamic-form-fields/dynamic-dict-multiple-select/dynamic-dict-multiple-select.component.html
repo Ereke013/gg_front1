@@ -1,0 +1,14 @@
+<mat-form-field appearance='outline' class='multi-select-field'>
+  <mat-label>{{label}}</mat-label>
+  <mat-select multiple
+              (selectionChange)='selectChanged()'
+              [formControl]='dicts'
+              [placeholder]='placeholder'>
+    <mat-option *ngFor='let d of dictList'
+                [value]='d.dict'
+                matTooltip="{{d.displayTitle}}"
+                matTooltipClass="tooltip">
+      {{d.displayTitle}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

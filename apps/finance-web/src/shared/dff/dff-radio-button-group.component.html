@@ -1,0 +1,28 @@
+<app-dff-label
+  [field]="f"
+  [value]="val"
+  [errors]="errors"
+  [oneLineMode]="oneLineMode"
+  [touched]="touched"
+></app-dff-label>
+
+<div
+  *ngFor="let option of f.options"
+  fxLayout="row"
+  fxLayoutGap=".5rem"
+  fxLayoutAlign="start start"
+>
+
+  <ui-radio
+    [ngModel]="val.optionId === option.id"
+    (ngModelChange)="changed(option.id)"
+    [name]="f.fieldId"
+    [disabled]="f.isReadonly"
+  ></ui-radio>
+
+  <div
+    class="label"
+    [class.readonly]="f.isReadonly"
+  >{{option.label}}</div>
+
+</div>

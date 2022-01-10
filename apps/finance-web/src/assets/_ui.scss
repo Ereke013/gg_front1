@@ -1,0 +1,116 @@
+@import "variables";
+@import "helper-placeholders";
+
+ui-chip {
+  cursor: pointer;
+  border: 1px $main-blue solid;
+  border-radius: 35px;
+  font-size: 13px;
+  place-content: center flex-start;
+  align-items: center;
+  display: flex;
+
+  span {
+    margin: .25rem .5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: $main-blue;
+  }
+
+  mat-icon.mat-icon {
+    @extend %icon-12;
+    flex-shrink: 0;
+    font-size: 0;
+    margin-right: 5px;
+    color: $secondary-gray;
+  }
+
+  &.active {
+    background: $main-blue;
+    color: $main-white;
+  }
+
+  &.disabled {
+    border-color: $new-silver-stage;
+    color: $new-silver-stage;
+  }
+
+  &.is-link {
+    transition: background-color 150ms, color 150ms;
+
+    span {
+      border-bottom: 1px solid transparent;
+      transition: border-bottom-color 150ms;
+    }
+
+    &:hover {
+      background-color: $main-blue;
+      color: $main-white;
+
+      span {
+        border-bottom-color: $main-white;
+      }
+    }
+  }
+}
+
+ui-radio {
+  display: flex;
+  $color1: $readonly-bg;
+  $color2: $main-blue;
+
+  input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+
+    + label {
+      display: flex;
+      align-items: center;
+
+      &:before {
+        content: '';
+        background: $color1;
+        border-radius: 100%;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        position: relative;
+        cursor: pointer;
+        transition: all 250ms ease;
+        margin-right: 5px;
+      }
+    }
+
+    &:checked {
+      + label {
+        &:before {
+          background-color: $color2;
+          border: 1px $color2 solid;
+          box-shadow: inset 0 0 0 3px $color1;
+        }
+      }
+    }
+
+    &:focus {
+      + label {
+        &:before {
+          outline: none;
+          border-color: $color2;
+        }
+      }
+    }
+
+    &:disabled {
+      + label {
+        cursor: not-allowed;
+        color: rgba(35, 35, 35, 0.4);
+
+        &:before {
+          box-shadow: inset 0 0 0 3px $color1;
+          border-color: darken($color1, 25%);
+        }
+      }
+    }
+  }
+}

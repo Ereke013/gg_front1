@@ -1,0 +1,150 @@
+@import 'variables';
+
+* {
+  margin: 0;
+}
+
+.footer {
+  background-color: $client-footer;
+  width: 100%;
+  height: 100%;
+
+  h1 {
+    color: $main-white;
+    font-family: Ubuntu-Bold, serif;
+  }
+
+  &_wrapper {
+    display: inline-block;
+    margin: 1vh 15vw 1vh 15vw;
+
+    &_main {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-column-gap: 12vw;
+    }
+  }
+
+  &_left {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_left > p {
+    margin-top: 2vh;
+    color: $main-white;
+  }
+
+  &_center {
+    display: flex;
+    flex-direction: column;
+
+    p {
+      cursor: pointer;
+    }
+  }
+
+  &_center > label {
+    font-size: 14px;
+    color: $main-white;
+  }
+
+  &_center > p {
+    margin-top: 1.5vh;
+    font-size: 16px;
+    color: $main-white;
+    font-weight: bolder;
+  }
+
+  &_right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_right > label {
+    font-size: 14px;
+    color: $main-white;
+  }
+
+  &_right-links {
+    margin-top: 1.5vh;
+    display: flex;
+    color: $main-white;
+  }
+
+  &_right-links > .link-icon {
+    margin-right: 1vw;
+    border-radius: 4px;
+    padding: 0.2vw 0.2vh;
+    color: $main-white;
+    border: 1px solid white;
+  }
+
+  &_right > a {
+    margin-top: 1.5vh;
+    font-size: 16px;
+    color: $main-white;
+    cursor: pointer;
+  }
+
+  hr {
+    margin-top: 1.5vh;
+  }
+
+  &_corporation {
+    padding: 1.5vh 0;
+    display: grid;
+    place-items: center;
+    color: $main-white;
+  }
+
+  &_corporation > p {
+    color: $main-white;
+  }
+}
+
+
+@media screen and (max-width: $phone-screen-width) {
+  .footer {
+    &_wrapper {
+      margin: $main-block-margin-mobile-top $main-block-margin-mobile-left 0;
+
+      &_main {
+        grid-template-columns: initial;
+        grid-column-gap: initial;
+        grid-row-gap: 5vh;
+      }
+    }
+
+    &_corporation {
+      text-align: center;
+
+      p {
+        font-size: 10px;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: $phone-screen-width) {
+  .footer {
+    &_wrapper {
+      margin: $main-block-margin-mobile-top $main-block-margin-mobile-left 0;
+
+      &_main {
+        grid-template-columns: initial;
+        grid-column-gap: initial;
+        grid-row-gap: 5vh;
+      }
+    }
+
+    &_corporation {
+      text-align: center;
+
+      p {
+        font-size: 10px;
+      }
+    }
+  }
+}

@@ -1,0 +1,86 @@
+@import "variables";
+
+.pkb {
+  &_container {
+    button {
+      float: right;
+      padding: 16px;
+    }
+
+    mat-label {
+      color: $grey-text-color;
+      font-size: 12px;
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    h2 {
+      margin: 0 0 1.6vh 0;
+      font-family: Ubuntu-Bold, Ubuntu, serif;
+    }
+
+    mat-icon {
+      cursor: pointer;
+      float: right;
+    }
+  }
+
+  &_term {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3.8vh;
+
+    ::ng-deep.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+      background-color: #039BE5 !important;
+    }
+
+    p {
+      span {
+        color: $primary-btn-color;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &_wrapper {
+    margin-bottom: 1.6vh;
+  }
+
+  &_input-wrapper {
+    display: flex;
+
+    input {
+      width: 100%;
+      outline: none;
+      border: none;
+    }
+  }
+
+  &_inactive-button {
+    background: $border-switch-color;
+  }
+
+}
+
+
+::ng-deep.pkb-dialog {
+  mat-dialog-container {
+    border-radius: 12px;
+  }
+}
+
+
+.close-wrapper {
+  margin-top: 2vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hide {
+  visibility: hidden;
+}

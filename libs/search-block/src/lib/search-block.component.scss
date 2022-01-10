@@ -1,0 +1,29 @@
+@import "libs/mybpm-styles/variables";
+@import "libs/mybpm-styles/helper-placeholders";
+
+.search-block {
+  width: 100%;
+
+  mat-icon {
+    @extend %middle-icon;
+  }
+
+  input {
+    @extend %input-no-style;
+    width: 100%;
+    outline: none;
+  }
+}
+
+.reset-icon {
+  cursor: pointer;
+
+  mat-icon {
+    color: $secondary-gray;
+    transition: color 150ms;
+
+    &:hover {
+      color: $main-red;
+    }
+  }
+}

@@ -1,0 +1,185 @@
+<div class='card-container' *ngIf='productCard'>
+  <div class="scroll-dialog-header">
+    <mat-icon svgIcon='close' (click)='close()'></mat-icon>
+    <div class='card_header'>
+      <img class='card_header_logo' appImageCache [appSetImage]='{id: productCard?.logo}' alt=''>
+      <p class='card_header_title'>{{productCard?.title}}</p>
+    </div>
+  </div>
+  <div [class.card_header]='!isMobile' [class.card_header-mobile]='isMobile'>
+    <div class='monthly-wrapper'>
+      <p class='card_header_monthly-payment'>{{'monthly_payment' | translate}}
+        <span *ngIf='isCreditInfoFilled() && monthlyPayment'>{{monthlyPayment}}</span>
+        <span *ngIf='!( isCreditInfoFilled() && monthlyPayment)'>-</span>
+      </p>
+      <span class='monthly-wrapper_span'>{{'description_monthly_payment' | translate}}</span>
+    </div>
+    <button [class.button-white-primary]=isCreditInfoFilled()
+            [class.button-undisable]=isCreditInfoFilled()
+            [class.button-disable]=!isCreditInfoFilled()
+            (click)='openRepaymentSchedule(productCard?.logo, productCard?.title)'>График погашения
+    </button>
+  </div>
+
+  <div class='card'>
+    <p class='product-header'>{{'by_product' | translate}}</p>
+    <div class='static-filter-wrapper'>
+
+      <div class='credit-amount'
+           [class.credit-initial]="request.pageTab === 'mortgage' || request.pageTab === 'сarCredit'"
+      >
+        <div class='credit-amount_wrapper'>
+          <label *ngIf='request.pageTab === "mortgage"'>{{'cost_of_property' | translate}}</label>
+          <label *ngIf='request.pageTab === "сarCredit"'>{{'cost_of_auto' | translate}}</label>
+          <label *ngIf='request.pageTab !== "сarCredit" && request.pageTab !== "mortgage"'>{{'sum_of_credit' | translate}}</label>
+          <div class='form'
+               [class.error-input]='isSumBool'
+               [class.disable-input] = isProfileQuery
+          >
+            <input mask='separator'
+                   class='input-form'
+                   suffix=' ₸'
+                   thousandSeparator=' '
+                   separatorLimit='100000000'
+                   id='sumCredit'
+                   placeholder="{{'select_sum' | translate }}"
+                   [min]='minSumInput'
+                   [max]='maxSumInput'
+                   [(ngModel)]='request.sumOfCredit'
+                   (ngModelChange)='changeSum()'
+                    [disabled]="isProfileQuery"
+            >
+            <button mat-icon-button (click)='onClearSumOfCredit()' [class.hidden]='isProfileQuery || isDeleteIconSumOfCredit'>
+              <mat-icon svgIcon='close'></mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class='credit-amount'
+           [class.credit-initial]="request.pageTab === 'mortgage' || request.pageTab === 'сarCredit'"
+           [class.credit-initial_position]="request.pageTab === 'mortgage' || request.pageTab === 'сarCredit'"
+           *ngIf="request.pageTab === 'mortgage' || request.pageTab === 'сarCredit'">
+        <div class='credit-amount_wrapper'>
+          <label>{{'initial_fee' | translate}} ,%</label>
+          <div class='form'
+               [class.disable-input] = isProfileQuery
+               [class.error-input]='isInitialFeeBool'
+          >
+            <input mask='separator.2'
+                   separatorLimit='100'
+                   class='input-form'
+                   placeholder="{{'initial_fee' | translate }}"
+                   [(ngModel)]='request.initialFee'
+                   (ngModelChange)='changeFee()'
+                   [disabled]="isProfileQuery"
+            >
+            <button mat-icon-button (click)='onClearInitialFee()' [class.hidden]='isProfileQuery || isDeleteIconInitialFee'>
+              <mat-icon svgIcon='close'></mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class='wrap-term'>
+        <div class='wrap-term_term'>
+          <label>{{'term_of_credit' | translate}}</label>
+          <div class='period-of-credit'
+               [class.term-initial]="request.pageTab === 'mortgage' || request.pageTab === 'сarCredit'"
+               [class.error-input]='isTermBool'
+               [class.disable-input] = isProfileQuery
+          >
+            <input mask="0000"
+                   class='input-form'
+                   placeholder="{{'select_term' | translate}}"
+                   [(ngModel)]='request.termOfCredit'
+                   (ngModelChange)='changeTerm()'
+                   [min]='minTermInput'
+                   [max]='maxTermInput'
+                   [disabled]="isProfileQuery"
+            >
+            <button mat-icon-button (click)='onClearTermOfCredit()' [class.hidden]='isProfileQuery || isDeleteIconTermOfCredit'>
+              <mat-icon svgIcon='close'></mat-icon>
+            </button>
+
+            <mat-select placeholder="{{'select'|translate}}"
+                        class='credit-term-select'
+                        [class.disable-input] = isProfileQuery
+                        [(ngModel)]='termType'
+                        (ngModelChange)='rewriteCalculations()'
+                        [disabled]="isProfileQuery"
+                        disableOptionCentering panelClass='mat-select-dropdown'>
+              <mat-option *ngFor='let value of termSelectList' [value]='value'>
+                {{value | translate}}
+              </mat-option>
+            </mat-select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='filters'>
+      <div class='filters_container' *ngFor='let param of productCard?.displayableParamsList'>
+        <label>{{param.title}}</label>
+        <p *ngIf='param.value && param.value.trim().length > 0'>{{param.value}}</p>
+        <p *ngIf='!param.value || !param.value.trim().length > 0'>{{'not_indicated' | translate}}</p>
+      </div>
+    </div>
+    <div *ngIf='descrFilterProd'>
+      <label>{{descrFilterProd.title}}</label>
+      <p *ngIf='descrFilterProd.value'>{{descrFilterProd.value}}</p>
+      <p *ngIf='!descrFilterProd.value'>{{'not_indicated' | translate}}</p>
+    </div>
+  </div>
+  <div class='card'>
+    <p class='product-header'>{{'by_client' | translate}}</p>
+    <div class='filters'>
+      <div class='filters_container' *ngFor='let filter of productCard?.clientInfoList'>
+        <label>{{filter.title}}</label>
+        <p *ngIf='filter.value && filter.value.trim().length>0'>{{filter.value}}</p>
+        <p *ngIf='!filter.value || !filter.value.trim().length>0'>{{'not_indicated' | translate}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class='card'>
+    <p class='product-header'>{{'by_pledge' | translate}}</p>
+    <div class='filters'>
+      <div class='filters_container' *ngFor='let filter of productCard?.pledgeInfoList'>
+        <label>{{filter.title}}</label>
+        <p *ngIf='filter.value && filter.value.trim().length>0'>{{filter.value}}</p>
+        <p *ngIf='!filter.value || !filter.value.trim().length>0'>{{'not_indicated' | translate}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class='card calc_wrapper'>
+    <p class='product-header'>{{'total_cost' | translate}}</p>
+    <div class='calc_container'>
+      <div *ngFor='let calc of productCard?.calculationList'>
+        <p *ngIf='calc.value' class='calc_chip'>{{calc.title | translate}}:
+          <span>{{isCreditInfoFilled() ? numDivide(calc.value) : "-"}}</span></p>
+      </div>
+    </div>
+    <p class='total'>{{'totalCost' | translate}}:
+      <span *ngIf='isCreditInfoFilled() && totalCost'>{{totalCost}}</span>
+      <span *ngIf='!(isCreditInfoFilled() && totalCost)'>-</span>
+    </p>
+  </div>
+  <p [class.error-msg]="!isBankCooperation" *ngIf="!isBankCooperation">К сожалению, данная Финансовая Организация не принимает заявки онлайн</p>
+  <div class='buttons_container'>
+    <button class='buttons_height'
+            *ngIf="!isProfileQuery"
+            [class.button-white-primary]='!btnSentDisable() && isBankCooperation'
+            [class.button-disable]='!isBankCooperation || btnSentDisable()'
+            [disabled]='!isBankCooperation || btnSentDisable()'
+            (click)='saveApplication()'>
+      Отправить заявку
+    </button>
+    <button class='button-primary buttons_height' *ngIf="!isProfileQuery" (click)='showBankContact()'>Контакты банка</button>
+
+    <button class='button-primary buttons_height' *ngIf="isProfileQuery" (click)='close()'>{{'close' | translate}}</button>
+  </div>
+</div>
+<div class="spinner-container" *ngIf="isLoad">
+  <mat-spinner></mat-spinner>
+</div>

@@ -1,0 +1,14 @@
+<mat-form-field appearance='outline'
+                class='param-block-input'
+                (click)='dictFieldClicked()'
+>
+  <mat-label>{{label}}</mat-label>
+  <mat-select [formControl]='formControl'>
+    <mat-option *ngFor='let d of dictList'
+                [value]='getOptionValue(d.dict)'
+                (onSelectionChange)='dictOptionSelected($event, d.dict)'
+                matTooltip='{{d.displayTitle}}'
+                matTooltipClass='tooltip'
+    >{{d.displayTitle}}</mat-option>
+  </mat-select>
+</mat-form-field>

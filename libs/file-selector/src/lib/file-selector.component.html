@@ -1,0 +1,80 @@
+<ng-container *ngIf="selectorTypeIsList; else tileTemplate">
+  <div
+    class="file-element"
+    *ngFor="let fileInfo of fileList"
+  >
+    <div>
+      <mat-icon
+        class="file-element-icon"
+        [svgIcon]="fileInfo.mimeType | mimeToSvgName"
+      ></mat-icon>
+    </div>
+
+    <div
+      class="file-element-name"
+      [appViewOrDownload]="fileInfo.fileId"
+      [appViewOrDownloadMime]="fileInfo.mimeType"
+    >{{fileInfo.fileName}}</div>
+    <div class="file-element-date">{{fileInfo.createdAt | date:'d.MM.yyyy HH:mm'}}</div>
+
+    <div>
+      <mat-icon
+        *ngIf="hasDelete"
+        class="file-delete-icon"
+        svgIcon="no-color-delete"
+        (click)="deleteClicked.emit(fileInfo.fileId)"
+      ></mat-icon>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #tileTemplate>
+
+  <div class="tile-container">
+    <div
+      class="tile-box tile-element"
+      *ngFor="let record of fileList"
+      [appViewOrDownload]="record.fileId"
+      [appViewOrDownloadMime]="record.mimeType"
+    >
+
+      <img
+        *ngIf="(record.mimeType | isMime : 'image'); else notImage"
+        [src]="record.fileId | imageUrl"
+        alt="file"
+      >
+
+      <ng-template #notImage>
+        <mat-icon
+          class="tile-element-icon"
+          [svgIcon]="record.mimeType | mimeToSvgName"
+        ></mat-icon>
+      </ng-template>
+
+      <div class="tile-element-buttons">
+
+        <mat-icon
+          svgIcon="no-color-download"
+          clickStopPropagation
+          [appDownloadOnClick]="record.fileId"
+        ></mat-icon>
+
+        <mat-icon
+          *ngIf="hasDelete"
+          svgIcon="no-color-delete"
+          clickStopPropagation
+          (click)="deleteClicked.emit(record.fileId)"
+        ></mat-icon>
+      </div>
+
+    </div>
+    <div class="tile-box tile-add-icon-container">
+      <mat-icon
+        class="tile-add-icon"
+        svgIcon="no-color-add"
+        (click)="addClicked.emit()"
+      ></mat-icon>
+    </div>
+  </div>
+
+</ng-template>

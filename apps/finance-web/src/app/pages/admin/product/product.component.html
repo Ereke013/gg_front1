@@ -1,0 +1,24 @@
+<app-admin-item-page
+  [boiTable]='boiTable'
+  [boiFilter]='boiFilter'
+  [pageItemName]="'products'"
+  [isPopOverNeeded]='true'
+  [popOverCheckBoxElements]='parameterCheckBoxes'
+  [popoverFilter]="filterParameterList"
+  [isSettingsButtonNeeded]='true'
+  (bulkUpButtonClicked)='onBulkOpButtonClick($event)'
+  (checkedElements)='addNewParameterColumns($event)'
+  (searchTextResult)='handleSearchText($event)'
+  (deleteItemId)='deleteProduct($event)'
+  (editItemId)='openEditDialog($event)'
+  (settingsItemId)='setProductParamSettings($event)'
+  (loadMoreItems)='loadNextBoInstanceRecords($event)'
+  (tableOrdering)='setProductOrdering($event)'
+  (copyItem)='copyProduct($event)'
+  [isCopyButtonNeeded]='true'
+  (filterParam)="searchByFilterParam($event)"
+  [isFilterColumn]="true"
+  [isAccess]="isAccess"
+>
+
+</app-admin-item-page>

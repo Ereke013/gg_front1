@@ -1,0 +1,65 @@
+@import "variables";
+@import "helper-placeholders";
+@import "filter-field/ff_variables";
+
+.container {
+  margin: 1rem;
+  font-size: 13px;
+  max-height: 45px;
+
+  input {
+    height: $filter-field-input-height;
+    text-indent: 10px;
+    margin-right: 1rem;
+  }
+}
+
+.add-button {
+  mat-icon {
+    @extend %middle-icon;
+    color: $main-blue;
+  }
+}
+
+.overlay-container {
+  height: 6rem;
+}
+
+.container > * {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+.filter-prod {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 3vh;
+}
+
+.filter-search {
+  display: flex;
+}
+
+.filter-button {
+  cursor: pointer;
+}
+
+.filter-section {
+  max-height: 60vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-card {
+  max-width: 300px;
+}
+
+.apply-btn {
+  background-color: #4285f4;
+  color: $main-white;
+}
+
+.filter-input {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

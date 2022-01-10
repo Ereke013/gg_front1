@@ -1,0 +1,76 @@
+@import "variables";
+
+input {
+  border-radius: 5px;
+}
+
+mat-label {
+  margin: 15px 0 5px 5px;
+}
+
+.show-input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+}
+
+.docs {
+  margin-top: 15px;
+}
+
+.show-input-wrapper {
+  overflow-y: hidden;
+}
+
+.pag-buttons {
+  display: flex;
+  justify-content: center;
+  margin: 10px auto;
+}
+
+.pag-buttons > button {
+  margin-right: 5px;
+}
+
+.input {
+  background: $readonly-bg;
+  overflow-wrap: break-word;
+}
+
+.mat-dialog-content {
+  width: 100%;
+}
+
+.hide {
+  display: none;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-column-gap: 5vw;
+  grid-row-gap: 1vw;
+}
+
+.addition-application {
+  grid-template-columns: 1fr 1fr !important;
+}
+
+.credit-history {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+  width: max-content;
+}
+
+.mat-dialog-content {
+  overflow-y: hidden;
+}
+
+.download-doc {
+  cursor: pointer;
+}
+
+.files-img {
+  margin-top: 1vh;
+}

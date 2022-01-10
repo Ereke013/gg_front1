@@ -1,0 +1,18 @@
+@import 'variables';
+
+.credit-select-field {
+  width: 100%;
+
+  ::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 0;
+  }
+}
+
+.wrapper-dict-credit {
+  margin-bottom: 1vh;
+}
+
+.add-history-label{
+  cursor: pointer;
+  color: $primary-color;
+}

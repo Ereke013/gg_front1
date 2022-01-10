@@ -1,0 +1,62 @@
+<ng-content class="splitter-content"></ng-content>
+<div
+  class="chat-message"
+  [ngClass]="getMessageType(message)"
+  [class.fadeInFadeOut]="fadeInFadeOut"
+>
+
+  <div class="message-header">
+    <span
+      class="sender"
+      contenteditable="false"
+    >
+         {{message.userId === userId ? 'Я' : message.userFio  }}
+    </span>
+
+    <mat-icon
+      svgIcon="no-color-reply"
+      (click)="openMessageExpand()"
+    >
+    </mat-icon>
+  </div>
+
+  <app-tab-chat-replied-message
+    (click)="focusOnMessageByMessageId.emit(message.replyMessageId)"
+    [replyMessageId]="message.replyMessageId"
+  ></app-tab-chat-replied-message>
+
+  <div
+    class="img-wrapper"
+    *ngIf="message.imageFileId && fileInfo"
+  >
+    <img
+      *ngIf="fileInfo.mimeType | isMime : 'image'"
+      [src]="message.imageFileId | imageUrl"
+      [appViewImageOnClick]="message.imageFileId"
+      alt="message image"
+    >
+
+    <div
+      *ngIf="fileInfo.mimeType | isMime : 'file'"
+      class="file-attachment-wrapper"
+      [appDownloadOnClick]="message.imageFileId"
+    >
+      <mat-icon [svgIcon]="fileInfo?.mimeType | mimeToSvgName"></mat-icon>
+      <span>File: {{fileInfo.fileName}}</span>
+    </div>
+  </div>
+
+  <span
+    class="message"
+    selenide="0HLoL657GR"
+    [class.image-comment]="message.imageFileId"
+    [innerHTML]="urlify(message.text)"
+  ></span>
+
+  <span class="message-time">
+    {{message.createdAt | date:'HH:mm'}}
+  </span>
+
+</div>
+
+

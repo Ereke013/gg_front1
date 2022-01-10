@@ -1,0 +1,16 @@
+<app-news-header></app-news-header>
+<div class='news_container'>
+  <div class='news_wrapper'>
+    <div *ngFor='let n of news.newsList; let index = index'>
+      <app-news-abstract-card class='news_card'
+                              [news]='n'
+                              (click)='openCurrentNews(index)'>
+      </app-news-abstract-card>
+    </div>
+  </div>
+  <div class="more-button-container">
+    <button class='button-white-primary load-more' *ngIf='news.loadMore' (click)='loadMoreNews()'>
+      {{'load_more' | translate}}
+    </button>
+  </div>
+</div>

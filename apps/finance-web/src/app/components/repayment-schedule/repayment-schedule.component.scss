@@ -1,0 +1,177 @@
+@import "variables";
+
+$margin-bottom: 1.6vh;
+$circle-size: 14px;
+
+.repayment-card-container {
+  display: flex;
+  flex-direction: column;
+  mat-icon {
+    margin-left: auto;
+    cursor: pointer;
+  }
+}
+
+.repayment-card {
+  &_header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.2vh;
+
+    &_logo {
+      max-height: 5vh;
+      margin-right: 12px;
+      align-self: center;
+    }
+
+    &_title {
+      background: $background-light-blue;
+      color: $primary-btn-color;
+      padding: 4px 8px;
+      border-radius: 8px;
+      word-break: break-all;
+    }
+  }
+}
+
+.repayment-card {
+  position: relative;
+  border: 1px solid $border-switch-color;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 2.4vh;
+}
+
+label {
+  color: $grey-text-color;
+  font-size: 12px;
+
+  margin-bottom: 8px;
+}
+
+::ng-deep.repayment-schedule {
+  mat-dialog-container {
+    border-radius: 12px;
+    //margin: -2vh 22.5vh 0vh 22.5vh;
+    padding: 0 24px 24px 24px;
+  }
+}
+
+.repayment-buttons {
+
+  &_container {
+    float: right;
+    margin-left: auto;
+  }
+
+  &_height {
+    min-height: 50px;
+    margin-right: 1vw;
+    margin-bottom: 1vh;
+  }
+
+  &_download {
+    border: none;
+    background: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+}
+
+.repayment-wrapper-table {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    text-align: center;
+    font-size: 16px;
+    color: black;
+    font-weight: bolder;
+  }
+}
+
+.repayment-table {
+  width: 100%;
+  border: none;
+  border-collapse: collapse;
+
+  &_sum {
+    background: none !important;
+    td {
+      font-family: Ubuntu-Medium, serif;
+    }
+  }
+}
+
+.repayment-table thead th {
+  font-family: Ubuntu-Bold, serif;
+  text-align: left;
+  border: none;
+  padding: 10px 15px;
+  background: #d8d8d8;
+  font-size: 14px;
+}
+
+.repayment-table thead tr th:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.repayment-table thead tr th:last-child {
+  border-radius: 0 8px 8px 0;
+}
+
+.repayment-table tbody td {
+  text-align: left;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  vertical-align: top;
+}
+
+.repayment-table tbody tr:nth-child(even) {
+  background: $background-row-color;
+}
+
+.repayment-table tbody tr td:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.repayment-table tbody tr td:last-child {
+  border-radius: 0 8px 8px 0;
+}
+
+@media screen and (max-width: $phone-screen-width) {
+
+  ::ng-deep.repayment-schedule {
+    mat-dialog-container {
+      padding: 12px;
+      margin: 0 auto;
+    }
+  }
+
+  .repayment-card {
+    &_header {
+      &_title {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .repayment-table thead th {
+    padding: 5px 5px;
+    font-size: 10px;
+  }
+
+  .repayment-table tbody td {
+    padding: 5px 5px;
+    font-size: 10px;
+  }
+
+  .repayment-buttons {
+    &_container {
+      button {
+        font-size: 14px;
+      }
+    }
+  }
+}

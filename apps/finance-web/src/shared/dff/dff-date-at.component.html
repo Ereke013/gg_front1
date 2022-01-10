@@ -1,0 +1,18 @@
+<app-dff-label
+  [field]="f"
+  [value]="val"
+  [errors]="errors"
+  [oneLineMode]="oneLineMode"
+  [touched]="touched"
+></app-dff-label>
+
+<div class="nz-container">
+  <nz-date-picker
+    class="gb-date-input"
+    [nzFormat]="format"
+    [nzDisabled]="true"
+    [ngModel]="dateValue"
+    [class.invalid]="invalid"
+    [nzPlaceHolder]="datePlaceholder | translate"
+  ></nz-date-picker>
+</div>

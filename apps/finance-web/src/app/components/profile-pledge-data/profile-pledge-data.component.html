@@ -1,0 +1,86 @@
+<!--<div *ngIf='true'>-->
+<!--  <p>Сервис находится в разработке ☹</p>-->
+<!--</div>-->
+<div *ngIf='pledges'>
+  <div *ngFor='let pledge of pledges; let index = index' class='pledge-margin'>
+    <div class='change-name'>
+      <h2 *ngIf='!pledge?.changeName'>{{pledge?.name}}</h2>
+      <input *ngIf='pledge?.changeName'
+             autofocus
+             type='text'
+             class='input-form change-name_input'
+             placeholder='{{"enter_title" | translate}}'
+             [ngModel]='pledge.name'
+             (ngModelChange)='changeName($event, index)'>
+      <div class='change-name_buttons'>
+        <p class='change-name_change-text'
+           *ngIf='pledgeList.length > 0'
+           (click)='pledge.changeName = !pledge.changeName'>{{'change_name' | translate}}</p>
+        <p class='change-name_delete-text' (click)='deletePledge(index)'>{{'delete' | translate}}</p>
+      </div>
+    </div>
+    <div class='pledge_wrapper'>
+      <div class='pledge_form' *ngIf='pledge?.pledgeType && this.collateral'>
+        <mat-label>{{collateral.title | translate}}</mat-label>
+        <input type='text'
+               class='input-form disabled-input'
+               disabled
+               [value]='pledge?.pledgeType | translate'
+               [placeholder]='pledge?.pledgeType | translate'>
+      </div>
+      <div class='pledge_form' *ngIf='!pledge?.pledgeType && this.collateral'>
+        <mat-label>{{collateral.title | translate}}</mat-label>
+        <mat-select placeholder='{{collateral.title}}'
+                    class='input-form'
+                    disableOptionCentering
+                    panelClass='mat-select-dropdown'
+                    (valueChange)='onChangeSelect($event, index)'>
+          <mat-option *ngFor='let value of collateral.values' [value]='value.dict'>
+            {{value.displayTitle}}
+          </mat-option>
+        </mat-select>
+      </div>
+      <div *ngFor='let filter of pledge?.filters; let i = index'>
+        <mat-label>{{filter.title | translate}}</mat-label>
+
+        <mat-select *ngIf='filter.type === "DICT" || filter.type === "MULTI_DICT" || filter.type === "DATE_SELECTOR"'
+                    placeholder='{{filter.title}}'
+                    class='input-form pledge_form'
+                    disableOptionCentering
+                    panelClass='mat-select-dropdown'
+                    [value]='pledge?.filters[i]?.value'
+                    (valueChange)='changeValue(filter.dict, $event, index)'>
+          <mat-option *ngFor='let value of filter.values' [value]='value.dict'>
+            {{value.displayTitle}}
+          </mat-option>
+        </mat-select>
+
+        <input type='text'
+               class='input-form pledge_form'
+               *ngIf="filter.type === 'STR'"
+               (change)='changeValue(filter.dict, $event.target.value, index)'
+               [value]='pledge?.filters[i]?.value ? pledge?.filters[i]?.value : ""'
+               [placeholder]='filter.title'>
+
+        <input type='number'
+               class='input-form pledge_form'
+               *ngIf="filter.type === 'PERCENTAGE' || filter.type === 'DOUBLE' || filter.type === 'INT' || filter.type === 'LONG' || filter.type === 'RANGE'"
+               (change)='changeValue(filter.dict, $event.target.value, index)'
+               [value]='pledge?.filters[i]?.value ? pledge?.filters[i]?.value : ""'
+               [placeholder]='filter.title'>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf='pledges.length === 0' class='not-found'>
+    <p>{{'not_found' | translate}}</p>
+  </div>
+
+  <div class='pledge_buttons'>
+    <button class='pledge-button pledge-button_add' *ngIf='numberOfAddedPledges < 3'
+            (click)='addPledge()'>{{'add_pledge' | translate}}</button>
+    <button class='pledge-button pledge-button_save'
+            [class.disable-button]='pledges.length === 0 || pledgeList.length === 0'
+            (click)='savePledge()'>{{'save' | translate}}</button>
+  </div>
+</div>

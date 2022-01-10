@@ -1,0 +1,40 @@
+<div
+  *ngIf="useSearch"
+  class="search-block"
+  fxLayout="row"
+  fxLayoutGap=".5rem"
+  fxLayoutAlign="start center"
+>
+  <app-search-block
+    placeholder="search"
+    (valueChanged)="filterOptions($event)"
+  ></app-search-block>
+</div>
+
+<div class="options scroll-bar">
+  <div
+    class="option"
+    *ngFor="let option of optionsToShow"
+  >
+
+    <mat-checkbox
+      [checked]="optionIsSelected(option[idFieldName])"
+      (change)="selected.emit(option)"
+    ></mat-checkbox>
+
+    <span
+      *ngIf="labelMapper"
+      (click)="selected.emit(option)"
+    >{{labelMapper(option) | translate}}</span>
+  </div>
+
+  <div
+    class="option"
+  >
+    <ng-container *ngTemplateOutlet="lastOptionTemplate"></ng-container>
+  </div>
+
+  <div *ngIf="optionsToShow.length === 0">
+    {{'not_found' | translate}}
+  </div>
+</div>

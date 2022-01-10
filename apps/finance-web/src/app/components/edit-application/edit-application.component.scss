@@ -1,0 +1,49 @@
+@import "variables";
+
+.application-file {
+  font-size: 14px;
+  cursor: pointer;
+  color: $secondary-text-primary-color;
+  border-bottom: 1px solid $secondary-text-primary-color;
+  margin-left: 1vw;
+}
+
+.container {
+  display: flex;
+
+  h1 {
+    margin-right: 15px;
+  }
+
+  mat-select {
+    align-self: center;
+    margin-bottom: 20px;
+    width: 30%;
+  }
+
+  mat-icon {
+    margin-left: auto;
+    cursor: pointer;
+    position: sticky;
+  }
+}
+
+::ng-deep.edit-application-dialog {
+  mat-dialog-container {
+    overflow: unset;
+
+    .mat-dialog-content {
+      max-height: unset;
+      overflow: unset;
+    }
+  }
+}
+
+::ng-deep .dialog-size {
+  height: 65vh;
+  overflow: auto;
+}
+
+:host::ng-deep.mat-select-value {
+  color: inherit;
+}

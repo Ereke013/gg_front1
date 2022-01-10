@@ -1,0 +1,31 @@
+<div class='container' *ngIf='status'>
+  <h1 mat-dialog-title>{{titleName}}</h1>
+
+  <mat-select disableOptionCentering
+              panelClass='mat-select-dropdown'
+              placeholder='Статус заявки'
+              [class.status_denied]='status === "DENIED"'
+              [class.status_approved]='status === "APPROVED"'
+              [class.status_under-consideration]='status === "UNDER_CONSIDERATION"'
+              [class.status_sent]='status === "SENT"'
+              [value]='status'
+              (valueChange)='changeValue($event)'>
+    <mat-option *ngFor='let value of statuses'
+                [value]='value'>
+      {{value | translate}}
+    </mat-option>
+  </mat-select>
+
+  <h1 mat-dialog-title class="application-file" (click)="downloadApplicationFile()">{{'download' | translate}}</h1>
+
+  <mat-icon svgIcon='close' (click)='close()'></mat-icon>
+</div>
+
+<div mat-dialog-content>
+  <mat-tab-group animationDuration='0ms'>
+    <mat-tab *ngFor='let tabName of tabNames' label='{{tabName | translate }}'>
+      <app-pledge-data-tab [id]='id' [tab]='tabName'></app-pledge-data-tab>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+

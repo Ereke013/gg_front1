@@ -1,0 +1,180 @@
+@import "variables";
+
+$margin-bottom: 1.6vh;
+
+::ng-deep .document-dialog {
+  mat-dialog-container {
+    border-radius: 12px;
+    height: unset;
+  }
+}
+
+.button-back {
+  height: 4.8vh;
+  float: right;
+  margin-bottom: 1vh;
+  padding: 16px;
+  margin-right: 1vw;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.disable-btn {
+  background-color: $border-btn-color;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.document {
+  &_container {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: wrap;
+    align-items: center;
+  }
+
+  &_add {
+    color: $primary-btn-color;
+    font-size: 14px;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  &_header {
+    margin: 0 0 8px 0;
+  }
+
+  &_header-container {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: wrap;
+  }
+
+  &_delete {
+    color: $alert-color;
+    font-size: 14px;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  &_wrapper {
+    border: 1px solid #D5D9DC;
+    padding: 12px;
+    border-radius: 12px;
+    margin-top: 1vh;
+  }
+}
+
+
+.document-menu {
+  position: absolute;
+  padding: 1vh 1vw;
+  width: 100%;
+  top: -100px;
+  left: 0;
+  background: $secondary-card-background-color;
+  border-radius: 8px;
+  box-shadow: 0 0 9px 0;
+}
+
+.card {
+  position: relative;
+  border: 1px solid $border-switch-color;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 2.4vh;
+}
+
+.title-document-card {
+  margin-bottom: 0;
+  font-weight: bolder;
+}
+
+.documents {
+  display: flex;
+
+  &_warning {
+    align-items: center;
+  }
+
+  &_title-wrap {
+    min-width: 1vw;
+    padding: 0 1vw;
+
+    &_title {
+      background: $background-light-blue;
+      padding: 0.5vh 0.5vw;
+      cursor: pointer;
+    }
+  }
+}
+
+input::placeholder {
+  color: $placeholder-color
+}
+
+.product-header {
+  margin: 0 0 $margin-bottom 0;
+  font-family: Ubuntu-Medium, Ubuntu, serif;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10vw, 14vw));
+  margin-bottom: $margin-bottom;
+  grid-gap: 1vw;
+
+  &_container {
+
+    p {
+      margin: 8px 0 0 0;
+      word-break: break-word;
+    }
+  }
+
+  .none-display {
+    display: none;
+  }
+}
+
+.document-title-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.document-container {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  h2 {
+    margin: 2vh 0 1.6vh 0;
+    font-family: Ubuntu-Bold, Ubuntu, serif;
+  }
+}
+
+.document-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media screen and (max-width: $phone-screen-width) {
+
+  .button-back {
+    width: 100%;
+  }
+
+  .product-header {
+    margin-bottom: 2vh;
+  }
+
+  .filters {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 4vw;
+  }
+}

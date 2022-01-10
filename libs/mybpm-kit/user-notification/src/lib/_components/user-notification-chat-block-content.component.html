@@ -1,0 +1,46 @@
+<ng-container *ngIf="notification">
+
+  <div class="un-block-content-header">{{header}}</div>
+
+  <div class="un-block-content-title">
+    <a (click)="boiClicked(notification.roomId)">{{notification.name}}</a>
+    <mb-user-notification-button-set
+      [noExpand]="notification.count <= 1"
+      (expandClick)="toggleRows()"
+      (closeClick)="deleteMessage()"
+    ></mb-user-notification-button-set>
+  </div>
+
+  <div
+    class="un-block-content-message"
+    *ngIf="notification.lastNotification as last"
+  >
+
+    <div class="un-block-content-message-author">{{last.authorName}}:</div>
+    <div
+      class="un-block-content-message-text"
+      [innerHTML]="last.text"
+    ></div>
+    <mb-user-notification-button-set
+      [noExpand]="true"
+      [noClose]="notification.count <= 1"
+      (closeClick)="deleteMessage()"
+    ></mb-user-notification-button-set>
+
+  </div>
+
+  <div
+    class="un-block-content-message"
+    *ngFor="let row of rows"
+  >
+
+    <div class="un-block-content-message-author">{{row.authorName}}:</div>
+    <div class="un-block-content-message-text">{{row.text}}</div>
+    <mb-user-notification-button-set
+      [noExpand]="true"
+      (closeClick)="deleteMessageRow(notification.roomId, row.happenedAt)"
+    ></mb-user-notification-button-set>
+
+  </div>
+
+</ng-container>

@@ -1,0 +1,68 @@
+<!--<div *ngIf='true'>-->
+<!--  <p>Сервис находится в разработке ☹</p>-->
+<!--</div>-->
+
+<div class='container'>
+  <div class='wrapper'>
+    <div class='header'>
+      <p>{{'sort' | translate}}</p>
+      <p class='header_sort' (click)='changeOrdering()'>
+        {{'by_status' | translate}}
+        <mat-icon svgIcon='sort-asc' *ngIf='ordering === "UNSET" || ordering === "ASC"'></mat-icon>
+        <mat-icon svgIcon='sort-desc' *ngIf='ordering === "DESC"'></mat-icon>
+      </p>
+    </div>
+    <p>{{'total_applications' | translate}}: {{dataSource.length}}</p>
+  </div>
+  <table mat-table [dataSource]='dataSource' class='mat-elevation-z8'>
+
+    <ng-container matColumnDef='position'>
+      <th mat-header-cell *matHeaderCellDef> №</th>
+      <td mat-cell *matCellDef='let element'> {{element.position}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef='nameOfOrganization'>
+      <th mat-header-cell *matHeaderCellDef> {{'name_of_organization' | translate}} </th>
+      <td mat-cell *matCellDef='let element'>
+        <img appImageCache [appSetImage]='{id : element.nameOfOrganization}'>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef='nameOfCredit'>
+      <th mat-header-cell *matHeaderCellDef> {{'type_of_credit' | translate}} </th>
+      <td mat-cell *matCellDef='let element'> {{element.nameOfCredit}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef='monthlyPayment'>
+      <th mat-header-cell *matHeaderCellDef> {{'monthly_payment' | translate}} </th>
+      <td mat-cell *matCellDef='let element'> {{element.monthlyPayment}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef='totalCost'>
+      <th mat-header-cell *matHeaderCellDef> {{'total_cost' | translate}} </th>
+      <td mat-cell *matCellDef='let element'> {{element.totalCost}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef='status'>
+      <th mat-header-cell *matHeaderCellDef> {{'status' | translate}} </th>
+      <td mat-cell *matCellDef='let element'>
+        <p *ngIf='element.status === "DENIED" || element.status === "DOESNT_MEET_THE_REQUIREMENTS"' class='status_denied'>{{element.status | translate}}</p>
+        <p *ngIf='element.status === "SENT"' class='status_sent'>{{element.status | translate}}</p>
+        <p *ngIf='element.status === "APPROVED"' class='status_approved'>{{element.status | translate}}</p>
+        <p *ngIf='element.status === "UNDER_CONSIDERATION"'
+           class='status_under-consideration'>{{element.status | translate}}</p>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef='dateAndTime'>
+      <th mat-header-cell *matHeaderCellDef> {{'date_and_time' | translate}} </th>
+      <td mat-cell *matCellDef='let element'> {{element.dateAndTime}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef='displayedColumns'></tr>
+    <tr mat-row
+        class="application-row"
+        *matRowDef='let row; columns: displayedColumns;'
+        (click)="showApplication(row)"></tr>
+  </table>
+</div>

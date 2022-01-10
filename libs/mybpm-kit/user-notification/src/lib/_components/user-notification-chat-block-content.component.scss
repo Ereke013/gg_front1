@@ -1,0 +1,34 @@
+mb-user-notification-block-content {
+
+  display: flex;
+  flex-direction: column;
+
+  .un-block-content-message {
+    display: flex;
+  }
+
+  .un-block-content-title {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    a {
+      flex-grow: 1;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .un-block-content-message-text {
+    flex-grow: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .un-block-content-message-author {
+    margin-right: 5px;
+  }
+}

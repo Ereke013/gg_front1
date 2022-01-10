@@ -1,0 +1,287 @@
+@import "variables";
+
+$margin-bottom: 1.6vh;
+
+::ng-deep .auth-dialog {
+  mat-dialog-container {
+    border-radius: 12px;
+    overflow: hidden;
+    height: unset;
+  }
+}
+
+$input-padding: 2.5vw;
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+
+  mat-icon {
+    margin-left: auto;
+    cursor: pointer;
+  }
+}
+
+.login-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 6.4vh auto;
+  padding: 0;
+  width: 30vw;
+  background: $secondary-background-color;
+  border: 1px solid $border-switch-color;
+  border-radius: 12px;
+}
+
+.checkbox_wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.registration-step {
+  display: flex;
+  justify-content: center;
+  margin-top: 2vh;
+
+  label {
+    margin-top: 0.8vh;
+    font-size: 12px;
+  }
+
+  &_step-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .check-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .ellipse-icon {
+    width: 10px;
+    height: 10px;
+  }
+
+  &_step-center {
+    margin-right: 0.7vw;
+
+    mat-icon {
+      width: 6.7vw;
+    }
+  }
+
+  &_step-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.login-form {
+  display: flex;
+  width: 100%;
+  padding: 2.4vh 2vw;
+  flex-direction: column;
+  justify-content: center;
+
+  p {
+    color: $primary-btn-color;
+    text-decoration-line: underline;
+    text-align: center;
+    margin: 0;
+    cursor: pointer;
+  }
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 4.8vh;
+  font-family: Ubuntu-Bold, serif;
+  text-align: center;
+  font-size: 32px;
+}
+
+.login-btn {
+  margin-top: 2.5vh;
+  margin-bottom: 3.2vh;
+  padding: 1.6vh 0.8vh;
+  border-radius: 8px;
+  border: none;
+  color: $main-white;
+  font-size: 16px;
+}
+
+.disable-btn {
+  background: $tab-disabled-text-color;
+}
+
+.btn-clicker {
+  background: $primary-btn-color;
+  cursor: pointer;
+}
+
+.phone-number {
+  padding: 1.6vh 0.75vw;
+  min-width: 5vw;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid $border-grey-color;
+  outline: none;
+  font-size: 16px;
+}
+
+label {
+  margin-bottom: 2px;
+  color: $grey-text-color;
+  font-size: 12px;
+}
+
+.forgot-password {
+  margin-bottom: 1.6vh;
+  height: 100%;
+  min-width: 5vw;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid $border-grey-color;
+  outline: none;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $main-white;
+
+  input {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+  }
+
+  p {
+    cursor: pointer;
+    width: 60%;
+  }
+
+  mat-icon {
+    width: 20%;
+  }
+}
+
+.firstInput {
+  margin-bottom: 1.6vh;
+  min-width: 5vw;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid $border-grey-color;
+  outline: none;
+  font-size: 16px;
+  display: grid;
+  grid-template-columns: 4fr;
+  background: $main-white;
+  align-items: center;
+
+  input {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+  }
+
+  p {
+    cursor: pointer;
+  }
+
+  mat-icon {
+    width: 20%;
+  }
+}
+
+.display-hidden {
+  display: none;
+}
+
+.disable-visible {
+  grid-template-columns: 2.5fr 1.6fr;
+}
+
+.pick-pass {
+  //grid-template-columns: 4fr;
+  display: flex;
+}
+
+.error-message {
+  display: flex;
+  margin-bottom: 1vh;
+  align-items: center;
+
+  mat-icon {
+    height: 15px;
+    color: $alert-color;
+  }
+
+  span {
+    color: $alert-color;
+    font-size: 14px;
+  }
+
+  &_icon {
+    margin-left: unset !important;
+  }
+}
+
+.check-icon {
+  color: $main-green;
+}
+
+.error-wrapper {
+  margin-bottom: 5px;
+
+  mat-icon {
+    height: 9px;
+    margin-right: 5px;
+  }
+
+  span {
+    color: $grey-text-color;
+  }
+}
+
+.phone-style {
+  padding: 1.6vh 0.5vw;
+}
+
+.recover-pass {
+  text-align: end !important;
+  color: $main-text-color !important;
+}
+
+.error-msg {
+  color: $delete-red !important;
+}
+
+.success-msg {
+  color: green !important;
+}
+
+.sms-timer {
+  color: $grey-text-color !important;
+  text-decoration-line: unset !important;
+  cursor: unset !important;
+  text-align: end !important;
+  margin-right: 1vh !important;
+}
+
+@media screen and (max-width: $phone-screen-width) {
+  ::ng-deep .auth-dialog {
+    position: absolute;
+  }
+
+  .login-block {
+    margin: 6.4vh 1vw;
+    width: 100%;
+  }
+}

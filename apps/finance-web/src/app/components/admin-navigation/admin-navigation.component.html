@@ -1,0 +1,9 @@
+<ul>
+  <li
+    *ngFor='let item of items'
+    [class.not-active-li]="currUrl !== ('/'+ item.url)"
+    [class.active-li]="currUrl === ('/' + item.url)"
+  >
+    <a (click)="navigateTo(item.url)">{{item.title | translate}}</a>
+  </li>
+</ul>

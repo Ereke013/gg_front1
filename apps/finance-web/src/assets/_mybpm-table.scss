@@ -1,0 +1,66 @@
+@import "variables";
+@import "helper-placeholders";
+
+%mybpm-table {
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid $secondary-gray;
+  border-radius: 5px;
+  border-spacing: 0;
+
+  th, td {
+    border-right: 1px $secondary-gray solid;
+    padding-left: .25rem;
+    border-bottom: 1px solid $secondary-gray;
+    white-space: nowrap;
+  }
+
+  th {
+    text-align: start;
+    line-height: 30px;
+    color: $table-text-color;
+    font-weight: normal;
+    cursor: default;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  td {
+    line-height: 25px;
+    color: $main-blue;
+    cursor: pointer;
+    max-width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 5px;
+
+    input {
+      @extend %input-no-style;
+      width: 100%;
+      outline: none;
+    }
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  tr {
+    th:first-child {
+      width: 30px;
+      text-align: center;
+    }
+
+    td:first-child {
+      text-align: center;
+    }
+
+    &:last-child {
+      th, td {
+        border-bottom: none;
+      }
+    }
+  }
+}

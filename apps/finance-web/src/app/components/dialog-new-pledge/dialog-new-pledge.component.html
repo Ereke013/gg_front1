@@ -1,0 +1,74 @@
+<div>
+
+  <div>
+    <div class="pledge-head">
+      <div>
+        <label>Название залога</label>
+        <input autofocus
+               type='text'
+               class='input-form change-name_input'
+               placeholder='{{"enter_title" | translate}}'
+               [ngModel]='pledgeName'
+               (ngModelChange)='changeName($event)'>
+      </div>
+
+      <div class='pledge_wrapper'>
+        <div class='pledge_form' *ngIf='pledgeType && this.collateral'>
+          <mat-label>{{collateral.title | translate}}</mat-label>
+          <input type='text'
+                 class='input-form disabled-input'
+                 disabled
+                 [value]='pledgeType | translate'
+                 [placeholder]='pledgeType | translate'>
+        </div>
+        <div class='pledge_form' *ngIf='!pledgeType && this.collateral'>
+          <mat-label>{{collateral.title | translate}}</mat-label>
+          <mat-select placeholder='{{collateral.title}}'
+                      class='input-form'
+                      disableOptionCentering
+                      panelClass='mat-select-dropdown'
+                      (valueChange)='onChangeSelect($event)'>
+            <mat-option *ngFor='let value of collateral.values' [value]='value.dict'>
+              {{value.displayTitle}}
+            </mat-option>
+          </mat-select>
+        </div>
+    </div>
+      <div *ngFor='let filter of filters; let i = index'>
+        <mat-label>{{filter.title | translate}}</mat-label>
+
+        <mat-select *ngIf='filter.type === "DICT"
+                    || filter.type === "DATE_SELECTOR"
+                    || filter.type === "MULTI_DICT"'
+                    placeholder='{{filter.title}}'
+                    class='input-form pledge_form'
+                    disableOptionCentering
+                    panelClass='mat-select-dropdown'
+                    [value]='pledge?.filters[i]?.value'
+                    (valueChange)='changeValue(filter.dict, $event, i)'>
+          <mat-option *ngFor='let value of filter.values' [value]='value.dict'>
+            {{value.displayTitle}}
+          </mat-option>
+        </mat-select>
+
+        <input type='text'
+               class='input-form pledge_form'
+               *ngIf="filter.type === 'STR'"
+               (change)='changeValue(filter.dict, $event.target.value, i)'
+               [value]='pledge?.filters[i]?.value ? pledge?.filters[i]?.value : ""'
+               [placeholder]='filter.title'>
+
+        <input type='number'
+               class='input-form pledge_form'
+               *ngIf="filter.type === 'PERCENTAGE' || filter.type === 'DOUBLE' || filter.type === 'INT' || filter.type === 'LONG' || filter.type === 'RANGE'"
+               (change)='changeValue(filter.dict, $event.target.value, i)'
+               [value]='pledge?.filters[i]?.value ? pledge?.filters[i]?.value : ""'
+               [placeholder]='filter.title'>
+      </div>
+    </div>
+
+  </div>
+
+  <button class='button-primary button-back' (click)='savePledge()'>Сохранить</button>
+  <button class='button-primary button-back' (click)='close()'>Вернуться назад</button>
+</div>

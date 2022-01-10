@@ -1,0 +1,35 @@
+@import "variables";
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 250px;
+  background-color: $main-white;
+  height: 100%;
+}
+
+.not-active-li {
+  padding: 8px 0 8px 0;
+}
+
+.active-li {
+  padding: 8px 0 8px 0;
+  border-left: 3px solid $main-blue;
+  color: $main-blue;
+  background-color: $main-background;
+}
+
+.not-active-li a {
+  display: block;
+  color: $secondary-gray;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.active-li a {
+  display: block;
+  color: $main-user-color;
+  padding: 8px 16px;
+  text-decoration: none;
+}

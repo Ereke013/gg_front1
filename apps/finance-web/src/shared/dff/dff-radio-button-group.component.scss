@@ -1,0 +1,26 @@
+@import "libs/mybpm-styles/variables";
+
+:host {
+  display: flex;
+  flex-direction: column;
+
+  > * {
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.label {
+  font-size: 13px;
+
+  &.readonly {
+    color: $secondary-gray;
+  }
+}
+
+mat-checkbox {
+  display: flex;
+}

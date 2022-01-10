@@ -1,0 +1,35 @@
+@import "variables";
+@import "helper-placeholders";
+
+:host {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-right: 5px;
+  white-space: nowrap;
+}
+
+.label-block {
+  width: 100%;
+  margin-right: 9px;
+
+  span {
+    font-family: $font-medium;
+    font-size: 13px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+.star {
+  color: $main-red;
+  transform: translateY(3px);
+}
+
+.error-icon {
+  mat-icon {
+    @extend %middle-icon;
+    color: $main-orange;
+  }
+}

@@ -1,0 +1,100 @@
+<h1 mat-dialog-title>{{titleName}}</h1>
+<div mat-dialog-content>
+  <form [formGroup]='productForm'>
+    <mat-card-content class='card-content'>
+
+      <div class='product-titles'>
+        <mat-form-field appearance='outline'>
+          <mat-label>{{'name_ru' | translate}}</mat-label>
+          <input matInput placeholder="{{'name_ru_field' | translate}}" formControlName='displayTitleRu' required>
+          <mat-error *ngIf='productForm.controls.displayTitleRu?.invalid'>{{'required_field' | translate}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance='outline'>
+          <mat-label>{{'name_en' | translate}}</mat-label>
+          <input matInput placeholder="{{'name_en_field' | translate}}" formControlName='displayTitleEn'>
+        </mat-form-field>
+
+        <mat-form-field appearance='outline'>
+          <mat-label>{{'name_kk' | translate}}</mat-label>
+          <input matInput placeholder="{{'name_kk_field' | translate}}" formControlName='displayTitleKk'>
+        </mat-form-field>
+      </div>
+
+      <div *ngIf='id != null'>
+        <h3 mat-dialog-content>{{'product_params' | translate}}</h3>
+        <br>
+      </div>
+      <div *ngIf='id != null' class='param-block'>
+        <div *ngFor='let prm of parametersFormArray.controls; let i = index'
+             [class.hide]='product.parameters[i].filterType?.includes("pledgeAuto") ||
+                          product.parameters[i].filterType?.includes("pledgeProperty") ||
+                          product.parameters[i].filterType?.includes("borrower")'>
+          <app-dynamic-form-fields
+            [paramType]='product.parameters[i].parameterType'
+            (componentOut)='getComponent($event, product.parameters[i], prm)'>
+            {{product.parameters[i].displayTitle}}
+          </app-dynamic-form-fields>
+        </div>
+      </div>
+
+      <div *ngIf='id != null'>
+        <h3 mat-dialog-content>{{'borrower' | translate}}</h3>
+        <br>
+      </div>
+      <div *ngIf='id != null' class='param-block'>
+        <div *ngFor='let prm of parametersFormArray.controls; let i = index'
+             [class.hide]='!product.parameters[i].filterType?.includes("borrower")'>
+          <app-dynamic-form-fields
+            [paramType]='product.parameters[i].parameterType'
+            (componentOut)='getComponent($event, product.parameters[i], prm)'>
+            {{product.parameters[i].displayTitle}}
+          </app-dynamic-form-fields>
+        </div>
+      </div>
+
+      <div *ngIf='id != null'>
+        <h3 mat-dialog-content>{{'auto' | translate}}</h3>
+        <br>
+      </div>
+      <div *ngIf='id != null' class='param-block'>
+        <div *ngFor='let prm of parametersFormArray.controls; let i = index'
+             [class.hide]='!product.parameters[i].filterType?.includes("pledgeAuto")'>
+          <app-dynamic-form-fields
+            [paramType]='product.parameters[i].parameterType'
+            (componentOut)='getComponent($event, product.parameters[i], prm)'>
+            {{product.parameters[i].displayTitle}}
+          </app-dynamic-form-fields>
+        </div>
+      </div>
+
+      <div *ngIf='id != null'>
+        <h3 mat-dialog-content>{{'realEstate' | translate}}</h3>
+        <br>
+      </div>
+      <div *ngIf='id != null' class='param-block'>
+        <div *ngFor='let prm of parametersFormArray.controls; let i = index'
+             [class.hide]='!product.parameters[i].filterType?.includes("pledgeProperty")'>
+          <app-dynamic-form-fields
+            [paramType]='product.parameters[i].parameterType'
+            (componentOut)='getComponent($event, product.parameters[i], prm)'>
+            {{product.parameters[i].displayTitle}}
+          </app-dynamic-form-fields>
+        </div>
+      </div>
+    </mat-card-content>
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button
+    [disabled]='!validation()'
+    (click)='submit()'
+    mat-button
+    [class.modal-action-btn]='!productForm.invalid'
+    [class.modal-invalid-action-btn]='productForm.invalid'>
+    {{buttonName}}
+  </button>
+  <button mat-button (click)='closeHandler()'>{{'close' | translate}}</button>
+</div>
+

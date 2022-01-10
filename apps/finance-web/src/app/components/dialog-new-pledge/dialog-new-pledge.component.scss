@@ -1,0 +1,42 @@
+@import "variables";
+
+$margin-bottom: 1.6vh;
+
+::ng-deep .new-pledge-dialog{
+  mat-dialog-container {
+    border-radius: 12px;
+  }
+}
+
+.button-back {
+  height: 4.8vh;
+  margin-top: 2vh;
+  margin-right: 1vw;
+  padding: 16px;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.pledge-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 3vw;
+}
+
+.disabled-input {
+  background: $disabled-input-color;
+}
+
+::placeholder {
+  font-size: 16px;
+  color: $placeholder-color;
+}
+
+@media screen and (max-width: $phone-screen-width){
+
+  .button-back {
+    width: 100%;
+  }
+}

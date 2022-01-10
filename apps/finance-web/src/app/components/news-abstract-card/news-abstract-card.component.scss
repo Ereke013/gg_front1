@@ -1,0 +1,81 @@
+@import "variables";
+
+$card-padding: 1.2vh;
+$image-size: 11vw;
+$border-radius: 8px;
+
+.news {
+  &_container {
+    cursor: pointer;
+    width: 100%;
+    border: 0.5px solid $border-switch-color;
+    border-radius: $border-radius;
+    padding: $card-padding;
+  }
+
+  &_wrapper {
+    display: flex;
+  }
+
+  &_image {
+    margin-right: 2.4vh;
+
+    img {
+      border-radius: $border-radius;
+      width: $image-size;
+      height: $image-size;
+      object-fit: contain;
+    }
+  }
+
+  &_date {
+    display: flex;
+
+    &_circle {
+      height: 4px;
+      width: 4px;
+      margin: 0 6px 0 0;
+    }
+
+    &_eye {
+      width: 12px;
+      margin: 0 6px 0 0;
+    }
+
+    p {
+      margin: 0 6px 0 0;
+      align-self: center;
+      font-size: 12px;
+      color: $light-grey;
+    }
+
+    &_wrapper {
+      display: flex;
+      margin: 0 0 0 1.6vh;
+    }
+  }
+
+  &_title {
+    p {
+      margin: 0 0 0.8vh;
+      font-size: 16px;
+      font-family: Ubuntu-Medium, Ubuntu, serif;
+      text-decoration: underline;
+    }
+  }
+
+  &_content {
+    p {
+      margin: 0;
+      font-size: 14px;
+      color: $grey-text-color;
+    }
+  }
+}
+
+.views {
+  margin: 0;
+  font-size: 12px;
+  align-self: center;
+  color: $light-grey
+}

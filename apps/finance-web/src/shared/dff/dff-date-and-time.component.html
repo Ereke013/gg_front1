@@ -1,0 +1,46 @@
+<app-dff-label
+  [field]="f"
+  [value]="val"
+  [errors]="errors"
+  [oneLineMode]="oneLineMode"
+  [touched]="touched"
+></app-dff-label>
+
+<div class="nz-container">
+  <nz-date-picker
+    *ngIf="date"
+    class="gb-date-input"
+    [(ngModel)]="val.value"
+    [nzFormat]="format"
+    [nzDisabled]="f.isReadonly"
+    [class.full-date]="isFullDate"
+    [class.invalid]="invalid"
+    [nzPlaceHolder]="datePlaceholder | translate"
+    [nzShowTime]="isFullDate ? { nzFormat: 'HH:mm' } : false"
+    (nzOnOpenChange)="changeTouched($event)"
+    (ngModelChange)="updateValue()"
+  ></nz-date-picker>
+
+  <nz-year-picker
+    *ngIf="year"
+    class="gb-date-input"
+    nzPlaceHolder="{{'year' | translate}}"
+    [(ngModel)]="val.value"
+    [class.invalid]="invalid"
+    [nzDisabled]="f.isReadonly"
+    (ngModelChange)="updateValue()"
+    (nzOnOpenChange)="changeTouched($event)"
+  ></nz-year-picker>
+
+  <nz-time-picker
+    *ngIf="time"
+    class="gb-date-input"
+    nzPlaceHolder="HH:mm"
+    [(ngModel)]="val.value"
+    [nzFormat]="'HH:mm'"
+    [nzDisabled]="f.isReadonly"
+    [class.invalid]="invalid"
+    (ngModelChange)="updateValue()"
+    (nzOpenChange)="changeTouched($event)"
+  ></nz-time-picker>
+</div>

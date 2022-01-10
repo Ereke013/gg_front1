@@ -1,0 +1,39 @@
+<div
+  *ngIf="field.type !== BoFieldType.CHECKBOX && field.type !== BoFieldType.TAB_GROUP"
+  [style.margin-bottom]="oneLineMode ? '0px' : '9px'"
+  class="label-block"
+  fxLayout="row"
+>
+  <span
+    *ngIf="showLabel"
+    [title]="field.label"
+    fxFlex
+  >{{field.label}}:</span>
+  <span
+    class="star"
+    *ngIf="showRequiredIcon && !touched && field.isRequired && value?.isEmpty()"
+  >
+    *
+  </span>
+  <div
+    #errorIcon
+    *ngIf="showInvalidIcon && touched && errors.length > 0"
+    class="error-icon"
+    fxLayoutAlign="center center"
+    (mouseenter)="showErrorOverlay(errorIcon, errorOverlay)"
+    (mouseleave)="closeErrorOverlay()"
+  >
+
+    <mat-icon svgIcon="no-color-war"></mat-icon>
+
+    <!--  Error popover  -->
+    <ng-template #errorOverlay>
+
+      <app-error-popover>
+        <span *ngFor="let error of errors">{{error | translate}}</span>
+      </app-error-popover>
+
+    </ng-template>
+
+  </div>
+</div>

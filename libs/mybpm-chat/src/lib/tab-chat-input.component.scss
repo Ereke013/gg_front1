@@ -1,0 +1,52 @@
+@import "libs/mybpm-styles/variables";
+@import "libs/mybpm-styles/helper-placeholders";
+
+.text-area {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-width: 0;
+  border-radius: 5px;
+  background-color: $main-white;
+  display: block;
+  resize: none;
+  min-height: 33px;
+  max-height: 80px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  line-height: 20px;
+  padding-right: 3.6rem;
+  padding-left: 0.5rem;
+  overflow-wrap: anywhere;
+  outline: none;
+  font-size: 14px;
+  padding-top: 5px;
+
+  &:empty::before {
+    content: "Введите сообщение";
+    color: $secondary-text-color;
+    font-size: 12px;
+  }
+
+}
+
+.send-attachment {
+  position: absolute;
+  bottom: 1rem;
+  right: 3.2rem;
+
+  color: $main-blue;
+
+  @extend %middle-icon;
+}
+
+.send-message {
+  position: absolute;
+  bottom: 1rem;
+  right: 1.6rem;
+
+  @extend %middle-icon;
+}
+
+.attachment-template {
+  background-color: $main-background;
+}

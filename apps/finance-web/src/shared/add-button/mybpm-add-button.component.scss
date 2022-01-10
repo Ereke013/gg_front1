@@ -1,0 +1,37 @@
+@import "libs/mybpm-styles/variables";
+@import "libs/mybpm-styles/helper-placeholders";
+
+:host {
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+
+  mat-icon {
+    margin-right: .3rem;
+
+    &.green {
+      color: $main-green;
+    }
+
+    &.blue {
+      color: $main-blue;
+    }
+  }
+
+  span {
+    color: $secondary-text-color;
+  }
+
+  .active {
+    color: $button-text-color;
+  }
+}
+
+.middle-icon {
+  @extend %middle-icon
+}
+
+.large-icon {
+  @extend %middle-xx-icon
+}

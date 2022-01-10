@@ -1,0 +1,303 @@
+@import 'variables';
+@import '_theme';
+
+$circle-size: 14px;
+$height-wrap: 50px;
+
+.client-credit-sel {
+
+  mat-icon {
+    align-items: center;
+
+    width: 1.5vw;
+    height: 2vh;
+
+  }
+
+  ::placeholder {
+    font-size: 16px;
+    color: $placeholder-color;
+  }
+
+  .credit-wrapper {
+    margin: 3vh 15vw;
+
+    display: grid;
+    grid-template-columns: 1.6fr 2fr 0.5fr;
+    gap: 1%;
+  }
+
+  .sum-block {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+
+    &_wrapper {
+      position: absolute;
+      width: 100%;
+
+      label {
+        color: $grey-text-color;
+        font-size: 12px;
+        margin-bottom: 2px;
+      }
+
+      ::ng-deep .mat-accent .mat-slider-thumb {
+        background-color: #039BE5;
+        border: 0;
+      }
+    }
+
+  }
+
+  &_form {
+    display: flex;
+    border: 1px solid $border-grey-color;
+    border-radius: 8px;
+    height: $height-wrap;
+    margin-top: 1vh;
+
+    input {
+      border-radius: 8px;
+      border: 1px none;
+      padding: 1.6vh 0.75vw;
+      min-width: 5vw;
+      width: 100%;
+      outline: none;
+      font-size: 16px;
+    }
+
+    button {
+      align-self: center;
+    }
+  }
+
+  &_all-filter-btn {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+
+    button {
+      width: 100%;
+      height: $height-wrap;
+      cursor: pointer;
+      bottom: 0;
+    }
+  }
+}
+
+.block-term {
+  width: 100%;
+
+  &_wrap {
+    width: 100%;
+
+    label {
+      color: $grey-text-color;
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+
+    .period-of-credit {
+      width: 100%;
+      display: flex;
+      border: 1px solid $border-grey-color;
+      border-radius: 8px;
+      align-items: center;
+      height: $height-wrap;
+      margin-top: 1vh;
+
+
+      mat-form-field {
+        padding: 0;
+      }
+
+      input {
+        border-radius: 8px;
+        border: 1px none;
+        padding: 1.6vh 0.75vw;
+        min-width: 5vw;
+        width: 55%;
+        outline: none;
+        height: 100%;
+        font-size: 16px;
+      }
+
+      mat-select {
+        border: 0 none;
+        border-left: 1px solid $border-grey-color;
+        padding: 1.6vh 0.75vw;
+        width: 45%;
+        font-size: 16px;
+        height: 100%;
+      }
+
+      .credit-term-select {
+        ::ng-deep {
+
+          .mat-select-arrow {
+            border-left: 12px solid transparent !important;
+            border-right: none !important;
+            border-top: 7px solid transparent !important;
+            background-image: url('option-arrow-down.svg') !important;
+          }
+
+          .mat-select-panel-wrap.ng-trigger {
+            margin-top: 5vh;
+          }
+        }
+      }
+
+    }
+
+  }
+}
+
+.display-change {
+  display: grid;
+  grid-template-columns: 1.1fr 1.1fr 1.2fr 0.6fr !important;
+  gap: 1%;
+
+  input {
+    text-overflow: ellipsis;
+  }
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  margin: $main-block-margin-top $main-block-margin-left;
+}
+
+
+.hidden {
+  display: none;
+}
+
+.button-primary {
+  font-size: 18px;
+}
+
+.fixed-button {
+}
+
+@media screen and (max-width: $phone-screen-width) {
+
+  .fixed-button {
+    position: fixed;
+    top: 0;
+    width: calc(100% - #{$main-block-margin-mobile-left * 2});
+    border-radius: 12px;
+    background: $main-white;
+  }
+
+  .client-credit-sel {
+    .credit-wrapper {
+      margin: $main-block-margin-mobile-top;
+      grid-template-columns: 1fr;
+    }
+
+    input::placeholder {
+      font-size: 14px;
+    }
+
+    &_form {
+      input {
+        padding: 1.6vh 3vw;
+      }
+
+      button {
+        align-self: center;
+      }
+    }
+
+    .sum-block {
+      &_wrapper {
+        position: relative;
+        margin-bottom: 3vh;
+      }
+    }
+
+    &_all-filter-btn {
+      margin-top: 3vh;
+      z-index: 2;
+    }
+  }
+
+  .block-term {
+    &_wrap {
+      .period-of-credit {
+        input {
+          width: 60%;
+          padding: 1.6vh 3vw;
+        }
+
+        mat-select {
+          width: 40%;
+          padding: 1.6vh 3vw;
+        }
+      }
+    }
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    margin: $main-block-margin-mobile-top $main-block-margin-mobile-left;
+  }
+}
+
+
+@media screen and (max-width: 1410px) {
+  .client-credit-sel {
+    .credit-wrapper {
+      margin: 3vh 15vw;
+
+      display: grid;
+      grid-template-columns: 1.6fr 1.7fr 0.8fr;
+      gap: 1%;
+    }
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .client-credit-sel {
+    mat-icon {
+      align-items: center;
+
+      width: 2.5vw;
+      height: 2vh;
+    }
+  }
+}
+
+@media screen and (max-width: 888px) {
+  .client-credit-sel {
+    .credit-wrapper {
+      margin: 3vh 15vw;
+
+      display: grid;
+      grid-template-columns: 1.4fr 1.7fr 0.9fr;
+      gap: 1%;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .client-credit-sel {
+    .credit-wrapper {
+      margin: 3vh 4vw;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    mat-icon {
+      align-items: center;
+
+      width: 5.5vw;
+      height: 3vh;
+    }
+  }
+}

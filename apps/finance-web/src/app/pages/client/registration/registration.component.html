@@ -1,0 +1,13 @@
+<app-sign
+  [inputFirstModel]="inputFirstModel"
+  [inputSecondModel]="inputSecondModel"
+  [formTitle]="formTitle"
+  [buttonText]="buttonText"
+  [navigateText]="navigateText"
+  [code]="code"
+  [step]="step"
+  [errorMsg]="errorMessage"
+  [isSmsSend]="isSmsSend"
+  (formOutput)="submitChange($event)"
+  (smsSendPhone)="smsSender($event)"
+></app-sign>

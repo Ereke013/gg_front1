@@ -1,0 +1,53 @@
+<div
+  class="input-reply-overlay scroll-bar"
+  *ngIf="message"
+  [style.color]="currentColor"
+>
+
+  <div class="chat-message reply">
+    <div class="message-header">
+      <span
+        class="sender"
+        contenteditable="false"
+      >
+          {{message.userId === service.userId ? 'Я' : message.userFio}}
+      </span>
+    </div>
+
+    <div class="message-wrapper">
+
+      <span
+        class="message"
+        *ngIf="message.text"
+        [innerHTML]="message.text"
+      ></span>
+
+      <span
+        class="message"
+        *ngIf="!message.text && fileInfo?.mimeType | isMime : 'image'"
+      >
+        Фото:
+      </span>
+
+      <img
+        *ngIf="message.imageFileId && fileInfo?.mimeType | isMime : 'image'"
+        [src]="message.imageFileId | imageUrl"
+        alt="image of replied message"
+      />
+
+      <div
+        *ngIf="message.imageFileId && fileInfo?.mimeType | isMime : 'image'"
+        class="file-attachment-wrapper"
+      >
+        <mat-icon [svgIcon]="fileInfo?.mimeType | mimeToSvgName"></mat-icon>
+      </div>
+
+    </div>
+
+    <span class="message-time">
+      {{message.createdAt | date:'HH:mm'}}
+    </span>
+
+  </div>
+
+</div>

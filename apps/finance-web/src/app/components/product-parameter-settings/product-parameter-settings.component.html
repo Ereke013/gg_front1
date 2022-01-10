@@ -1,0 +1,55 @@
+<h1 mat-dialog-title>{{titleName}}</h1>
+<div mat-dialog-content class='dialog-content'>
+  <mat-card-content class='card-content'>
+
+    <div class='visibility-block' *ngIf='id != null'>
+
+      <div class='visibility-block-title'>
+        <div class='visibility-block-row'>
+          <div>
+            <mat-label class='visibility-block-row-item'>{{'param_title' | translate}}</mat-label>
+            <mat-label class='visibility-block-row-item'>{{'displayable' | translate}}</mat-label>
+            <mat-label class='visibility-block-row-item'>{{'visible_to_fo' | translate}}</mat-label>
+            <mat-label class='visibility-block-row-item'>{{'displayable_in_ac' | translate}}</mat-label>
+          </div>
+        </div>
+      </div>
+
+      <div class='visibility-block-fields' cdkDropList (cdkDropListDropped)='drop($event)'>
+        <div *ngFor='let param of product?.parameters; let i = index'
+             class='visibility-block-row' cdkDrag>
+          <div>
+            <mat-label class='visibility-block-row-item'>{{param.displayTitle}}</mat-label>
+            <mat-checkbox class='visibility-block-row-item'
+                          [(ngModel)]='param.isDisplayable'
+                          [checked]='param.isDisplayable'
+                          (ngModelChange)='product.parameters[i].isDisplayable = $event'></mat-checkbox>
+            <mat-checkbox class='visibility-block-row-item'
+                          [(ngModel)]='param.isVisibleToFo'
+                          [checked]='param.isVisibleToFo'
+                          (ngModelChange)='product.parameters[i].isVisibleToFo = $event'></mat-checkbox>
+            <mat-checkbox class='visibility-block-row-item'
+                          [(ngModel)]='param.isDisplayableInApplicationCard'
+                          [checked]='param.isDisplayableInApplicationCard'
+                          (ngModelChange)='product.parameters[i].isDisplayableInApplicationCard = $event'></mat-checkbox>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class='visibility-block' *ngIf='id == null'>
+      <h2 mat-dialog-content>{{'no_params' | translate}}</h2>
+    </div>
+
+  </mat-card-content>
+</div>
+
+<div mat-dialog-actions>
+  <button
+    (click)='submit()'
+    mat-button>
+    {{buttonName}}
+  </button>
+  <button mat-button (click)='closeHandler()'>{{'close' | translate}}</button>
+</div>

@@ -1,0 +1,15 @@
+.form-field-block {
+  padding: 32px 64px 32px 64px;
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.form-field {
+  width: 15vw;
+
+  mat-form-field {
+    width: 100%;
+    height: auto;
+  }
+}
+

@@ -1,0 +1,39 @@
+<div class='dict-page' [class.touch-blocked] = isDragging>
+
+  <div class="{{isDictValueTableShown?'dict-block-part':'dict-block-full'}}">
+
+    <app-admin-item-page
+      [boiTable]='dictBoiTable'
+      [boiFilter]='boiDictFilter'
+      [pageItemName]="'dict'"
+      [isSettingsButtonNeeded]='true'
+      (settingsItemId)='openDictEditDialog($event)'
+      (bulkUpButtonClicked)='onDictBulkOpButtonClick($event)'
+      (searchTextResult)='handleDictSearchText($event)'
+      (deleteItemId)='deleteDict($event)'
+      (editItemId)='openDictValueTables($event)'
+      (loadMoreItems)='loadNextDictInstanceRecords($event)'
+      (tableOrdering)='setDictOrdering($event)'
+    >
+
+    </app-admin-item-page>
+
+  </div>
+
+  <div class='dict-value-block' *ngIf='isDictValueTableShown'>
+
+    <app-admin-item-page
+      [boiTable]='dictValueBoiTable'
+      [boiFilter]='boiDictValueFilter'
+      [pageItemName]="'dict_value'"
+      (bulkUpButtonClicked)='onDictValueBulkOpButtonClick($event)'
+      (searchTextResult)='handleDictValueSearchText($event)'
+      (deleteItemId)='deleteDictValue($event)'
+      (editItemId)='openDictValueEditDialog($event)'
+      (tableOrdering)='setDictValueOrdering($event)'
+      (loadMoreItems)='loadNextDictValueInstanceRecords($event)'
+    >
+    </app-admin-item-page>
+  </div>
+</div>
+<app-edit-dict-value *ngIf="isDragging" [data]="selectedId" (closing)="closeDialog($event)" (savingData)="saveData($event)"></app-edit-dict-value>

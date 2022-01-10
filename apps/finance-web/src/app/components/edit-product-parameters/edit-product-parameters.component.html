@@ -1,0 +1,97 @@
+<h1 mat-dialog-title>{{titleName}}</h1>
+<div mat-dialog-content>
+
+  <form [formGroup]='parameterForm'>
+    <mat-card-content class='card-content'>
+
+      <mat-form-field appearance='outline'>
+        <mat-label>{{'code_field' | translate}}</mat-label>
+        <input matInput placeholder="{{'code' | translate}}" formControlName='tableName' required>
+        <mat-error *ngIf='parameterForm.controls.tableName?.invalid'>{{'required_field' | translate}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance='outline'>
+        <mat-label>{{'name_en_field' | translate}}</mat-label>
+        <input matInput placeholder="{{'name_en' | translate}}" formControlName='displayTitleEn'>
+      </mat-form-field>
+
+      <mat-form-field appearance='outline'>
+        <mat-label>{{'name_ru_field' | translate}}</mat-label>
+        <input matInput placeholder="{{'name_ru' | translate}}" formControlName='displayTitleRu' required>
+        <mat-error *ngIf='parameterForm.controls.displayTitleRu?.invalid'>{{'required_field' | translate}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance='outline'>
+        <mat-label>{{'name_kk_field' | translate}}</mat-label>
+        <input matInput placeholder="{{'name_kk' | translate}}" formControlName='displayTitleKk'>
+      </mat-form-field>
+
+      <mat-form-field appearance='outline'>
+        <mat-label>{{'type_field' | translate}}</mat-label>
+        <mat-select formControlName='type' (selectionChange)='onDictSelected($event)' required>
+          <mat-option *ngFor='let t of getTypeList()' value='{{t}}'>{{t}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf='parameterForm.controls.type?.invalid'>{{'required_field' | translate}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field *ngIf='isDictSelected || isMultipleDictSelected || isComboDictSelected || isSelector'
+                      appearance='outline'>
+        <mat-label>{{'dict_table_field' | translate}}</mat-label>
+        <mat-select formControlName='dictTable' required>
+          <mat-option *ngFor='let d of dictForSelect' value='{{d.dict}}'>{{d.displayTitle}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf='parameterForm.controls.dictTable?.invalid'>{{'required_field' | translate}}</mat-error>
+      </mat-form-field>
+
+      <section class='checkbox-section'>
+        <mat-checkbox formControlName='isFilter' (click)="changeIsFilter($event)">{{'param_for_filter' | translate}}</mat-checkbox>
+      </section>
+
+      <app-dynamic-multi-dict-select
+        *ngIf="parameterForm.value['isFilter']"
+        [label]="'select_filter_type' | translate"
+        [formControls]='paramForFilter'
+        [dictList]='dictList'
+        [placeholder]="'select_filter_type' | translate"
+        (filterType)='changeType($event)'
+      ></app-dynamic-multi-dict-select>
+
+      <section class='checkbox-section' *ngIf="isSortBox">
+        <mat-checkbox formControlName='isSorting'>{{'param_for_sort' | translate}}</mat-checkbox>
+      </section>
+      <p class="msg-err">{{errorSort}}</p>
+
+      <section class='checkbox-section'>
+        <mat-checkbox (change)='subParameterChecked($event)'
+                      formControlName='isSubParameter'>{{'is_sub_param' | translate}}</mat-checkbox>
+      </section>
+
+      <mat-form-field *ngIf='isSubParameterChecked' appearance='outline'>
+        <mat-label>{{'parameter_ref' | translate}}</mat-label>
+        <mat-select formControlName='parameterRef' (selectionChange)='subParameterSelected($event)'>
+          <mat-option *ngFor='let r of parameterSelect?.records' [value]='r.id'>{{r.title}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field *ngIf='isSubParameterChecked' appearance='outline'>
+        <mat-label>{{'dict_value' | translate}}</mat-label>
+        <mat-select formControlName='dictCodeColumn'>
+          <mat-option *ngFor='let d of dictValueForSelect' [value]='d.dict'>{{d.displayTitle}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </mat-card-content>
+  </form>
+
+</div>
+<div mat-dialog-actions>
+  <button
+    [disabled]='parameterForm.invalid'
+    (click)='submit()'
+    mat-button
+    [class.modal-action-btn]='!parameterForm.invalid'
+    [class.modal-invalid-action-btn]='parameterForm.invalid'>
+    {{buttonName}}
+  </button>
+  <button mat-button (click)='closeHandler()'>{{'close' | translate}}</button>
+</div>

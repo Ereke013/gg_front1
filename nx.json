@@ -1,0 +1,128 @@
+{
+  "npmScope": "finance.workspace",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.base.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "finance-web": {
+      "tags": ["type:app"]
+    },
+    "click-util": {
+      "tags": ["type:lib"]
+    },
+    "coordinate-selector": {
+      "tags": ["type:lib"]
+    },
+    "dynamic-filter": {
+      "tags": ["type:lib"]
+    },
+    "dynamic-form": {
+      "tags": ["type:lib"]
+    },
+    "error-popover": {
+      "tags": ["type:lib"]
+    },
+    "expansion-panel": {
+      "tags": ["type:lib"]
+    },
+    "file-selector": {
+      "tags": ["type:lib"]
+    },
+    "file-util": {
+      "tags": ["type:lib"]
+    },
+    "file-viewer": {
+      "tags": ["type:lib"]
+    },
+    "finance-web": {
+      "tags": ["type:app"]
+    },
+    "focus-on-init": {
+      "tags": ["type:lib"]
+    },
+    "http-service": {
+      "tags": ["type:lib"]
+    },
+    "image-url": {
+      "tags": ["type:lib"]
+    },
+    "image-viewer": {
+      "tags": ["type:lib"]
+    },
+    "loading": {
+      "tags": ["type:lib"]
+    },
+    "mybpm-chat": {
+      "tags": ["type:lib"]
+    },
+    "mybpm-kit-boi-card": {
+      "tags": ["type:lib"]
+    },
+    "mybpm-kit-boi-table": {
+      "tags": ["type:lib"]
+    },
+    "mybpm-kit-controller": {
+      "tags": ["type:lib"]
+    },
+    "mybpm-kit-user-notification": {
+      "tags": ["type:lib"]
+    },
+    "mybpm-link": {
+      "tags": ["type:lib"]
+    },
+    "nca-layer-service": {
+      "tags": ["type:lib"]
+    },
+    "notification": {
+      "tags": ["type:lib"]
+    },
+    "org-unit-select": {
+      "tags": ["type:lib"]
+    },
+    "overlay-multiple-select": {
+      "tags": ["type:lib"]
+    },
+    "overlay-single-select": {
+      "tags": ["type:lib"]
+    },
+    "popover": {
+      "tags": ["type:lib"]
+    },
+    "search-block": {
+      "tags": ["type:lib"]
+    },
+    "shared-model": {
+      "tags": ["type:lib"]
+    },
+    "shared-util": {
+      "tags": ["type:lib"]
+    },
+    "ui-chip": {
+      "tags": ["type:lib"]
+    },
+    "ui-radio": {
+      "tags": ["type:lib"]
+    },
+    "ws-service": {
+      "tags": ["type:lib"]
+    }
+  }
+}

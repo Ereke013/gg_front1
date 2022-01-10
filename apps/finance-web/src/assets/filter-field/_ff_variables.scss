@@ -1,0 +1,15 @@
+@import "variables";
+
+$filter-field-input-height: 1.8rem;
+
+.filter-field-input {
+  border: 1px solid #D4D4D4;
+  border-radius: 5px;
+  height: $filter-field-input-height;
+  text-indent: 10px;
+
+  &:focus {
+    outline: none;
+    border: 1px solid $main-blue;
+  }
+}

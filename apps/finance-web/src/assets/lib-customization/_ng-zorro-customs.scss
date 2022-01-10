@@ -1,0 +1,68 @@
+@import "variables";
+
+%date-input {
+  border: 1px solid $secondary-gray;
+  border-radius: 5px;
+  padding: 0;
+
+  &.ant-picker-focused {
+    box-shadow: none;
+    border-color: $main-blue;
+  }
+
+  &.invalid {
+    border-color: $main-orange;
+  }
+
+  &:hover {
+    border-color: $secondary-gray;
+  }
+
+  .ant-picker-range-separator {
+    .anticon {
+      display: block;
+    }
+  }
+
+  .ant-picker-active-bar {
+    display: none;
+  }
+
+  input {
+    width: 100px;
+    color: $main-text-color;
+    font-size: 13px;
+
+    &::placeholder {
+      color: $silver-position;
+      font-size: 11px;
+    }
+  }
+
+  .anticon {
+    margin-right: 4px;
+  }
+}
+
+.gb-date-input {
+  @extend %date-input;
+  min-height: 30px;
+
+  .ant-picker-clear {
+    right: 0 !important;
+  }
+
+  &.ant-picker-disabled {
+    background-color: $readonly-bg;
+    border-color: transparent;
+
+    input {
+      font-family: $font-medium;
+      color: $main-text-color;
+    }
+  }
+
+  input {
+    text-align: center;
+  }
+}

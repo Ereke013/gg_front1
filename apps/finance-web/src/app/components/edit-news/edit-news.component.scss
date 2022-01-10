@@ -1,0 +1,40 @@
+@import "variables";
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  max-width: 30vw;
+  max-height: 30vw;
+}
+
+.text {
+  display: flex;
+}
+
+.preview {
+  margin-right: 2%;
+}
+
+.editor {
+}
+
+.input {
+  width: 50%;
+  align-self: center;
+  margin-right: 2%;
+}
+
+button {
+  padding: 8px 16px;
+}
+
+.invalid {
+  background: $border-switch-color;
+}
+
+.preview-wrapper {
+  display: flex;
+}

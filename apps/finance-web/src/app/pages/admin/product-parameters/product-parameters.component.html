@@ -1,0 +1,16 @@
+<app-admin-item-page
+  *ngIf="boiTable"
+  [boiTable]="boiTable"
+  [boiFilter]="boiFilter"
+  [pageItemName]="'product_params'"
+  [isPopOverNeeded]="false"
+  [isSettingsButtonNeeded]="false"
+  (bulkUpButtonClicked)="onBulkOpButtonClick($event)"
+  (searchTextResult)="handleSearchText($event)"
+  (deleteItemId)="deleteParameter($event)"
+  (editItemId)="openEditDialog($event)"
+  (loadMoreItems)="loadNextBoInstanceRecords($event)"
+  (tableOrdering)="setParameterOrdering($event)"
+>
+
+</app-admin-item-page>

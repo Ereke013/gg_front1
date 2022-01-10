@@ -1,0 +1,104 @@
+/*Размер тулбара сверху*/
+$toolbar-height: 64px;
+/*Размер остального контента*/
+$content-height: calc(100vh - #{$toolbar-height});
+/*Размеры меню слева*/
+$sidenav-width: 95px;
+
+$main-blue: #74A1E3;
+$main-green: #6CCD6A;
+$secondary-green: #5ea35c;
+$main-red: #FF4141;
+$main-white: #FFFFFF;
+$main-gray: #efefef;
+$title-gray: #898989;
+$border-btn-color: #DADADA;
+$border-dashed-color: #DBDBDB;
+$bg-btn-color: #d5cece;
+$table-gray: #F2F2F2;
+$main-purple: #A182D3;
+$main-background: #E9EDEE;
+$main-orange: #FF8F51;
+$main-black: #000000;
+
+$secondary-gray: #C7C7C7;
+$delete-red: #FF5353;
+$table-gray: #F2F2F2;
+$main-user-color: #232323;
+$silver-position: rgba(0, 0, 0, 0.4);
+$new-silver-stage: #BABABA;
+$main-text-color: #3A3A3A;
+$gray-add: #cccccc;
+$gray-filter-arrow: #B5B5B5;
+$icon-gray: #D9D9D9;
+$hover-gray: #F2F4F5;
+$description-blue: #0261A1;
+$border-gray: #E4E4E4;
+$send-input-bg: #F4F4F4;
+$comment-container-bg: #dedede;
+$readonly-bg: #E7E7E7;
+$textarea-border: #D4D4D4;
+$card-border: #C5C5C5;
+$circle-arrow-color: #BDBDBD;
+$disabled-bo-gray: #dee0e3;
+
+$secondary-text-color: #B2B2B2;
+$secondary-card-background-color: #F4F7F9;
+$button-text-color: #7A7A7A;
+$table-text-color: rgba(35, 35, 35, 0.6);
+$tab-text-color: rgba(35, 35, 35, 0.8);
+$tab-disabled-text-color: rgba(35, 35, 35, 0.2);
+$inactive-text-color: #A4A4A4;
+$kanban-editor-border: #CBCBCB;
+$task-border-color: #EDEDED;
+$task-header-text-color: rgba(0, 0, 0, 0.8);
+$cancel-btn-color: #FE5B5B;
+$table-border-color: #EAEAEA;
+
+$primary-btn-color: #039BE5;
+$primary-color: #039BE5;
+$sky-color: #E1F3FC;
+$client-footer: #8B98A7;
+
+$font-family: 'Ubuntu';
+$font-light: 'Ubuntu-Light';
+$font-medium: 'Ubuntu-Medium';
+
+$grey-text-color: #666C72;
+$border-grey-color: #DBDFE2;
+$background-light-blue: #DEF4FF;
+$placeholder-color: #B7BEC5;
+$background-row-color: #f3f3f3;
+
+$main-block-margin-left: 15vw;
+$main-block-margin-top: 3vh;
+
+$text-background: #F1F1F2;
+$border-switch-color: #D5D9DC;
+$secondary-background-color: #EBF0F3;
+$secondary-text-primary-color: #00A8F0;
+$alert-color: #F50000;
+$disabled-input-color: #F0F0F0;
+$light-grey: #A4A9B5;
+
+$main-block-margin-mobile-left: 4vw;
+$main-block-margin-mobile-top: 3vh;
+
+$phone-screen-width: 540px;
+$phone-middle-screen-width: 400px;
+$phone-small-screen-width: 340px;
+
+$main-block-margin-mobile-left: 4vw;
+$main-block-margin-mobile-top: 3vh;
+
+$mobile-input-padding-width: 3vw;
+
+$web-screen-width: 768px;
+$phone-middle-screen-width: 400px;
+$phone-small-screen-width: 340px;
+
+$success-color: #E6F5F5;
+$success-text-color: #27AE60;
+$secondary-gray-color: #94a6ad;
+
+$alert-error-color: #FED9D9;

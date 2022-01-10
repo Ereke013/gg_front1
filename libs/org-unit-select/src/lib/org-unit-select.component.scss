@@ -1,0 +1,12 @@
+@import "./libs/mybpm-styles/variables";
+@import "./libs/mybpm-styles/helper-placeholders";
+
+.popover {
+  @extend %popover;
+  background: $main-white;
+  padding: .5rem;
+}
+
+.vert-dots-icon {
+  @extend %middle-icon;
+}

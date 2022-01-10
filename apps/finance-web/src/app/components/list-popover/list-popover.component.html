@@ -1,0 +1,17 @@
+<mat-card class="example-card" >
+  <mat-card-content>
+    <section class="example-section" [formGroup]="form" >
+      <p formArrayName="elements" *ngFor="let element of elementFormArray.controls; let i = index">
+        <mat-checkbox (change)="countCheckedBoxes($event)"
+                      [formControlName]="i"
+                      [disabled]="isMore && !element?.value"
+        >{{inputElements[i].title}}
+        </mat-checkbox>
+      </p>
+    </section>
+  </mat-card-content>
+  <mat-card-actions>
+    <button class="add-btn" (click)="submit()" mat-button>{{'apply' | translate}}</button>
+  </mat-card-actions>
+
+</mat-card>

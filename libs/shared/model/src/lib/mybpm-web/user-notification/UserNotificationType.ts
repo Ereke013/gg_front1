@@ -1,0 +1,7 @@
+export enum UserNotificationType {
+  READ_MESSAGES = 'READ_MESSAGES',
+  READ_EVENTS = 'READ_EVENTS',
+  NEW_MESSAGE = 'NEW_MESSAGE',
+  NEW_MENTION = 'NEW_MENTION',
+  NEW_EVENT = 'NEW_EVENT'
+}

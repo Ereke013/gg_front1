@@ -1,0 +1,111 @@
+@import "variables";
+
+::ng-deep.bank-contacts-dialog {
+  mat-dialog-container {
+    border-radius: 12px;
+  }
+}
+
+.branch {
+  &_container {
+    display: flex;
+    flex-direction: column;
+
+    mat-icon {
+      margin-left: auto;
+      cursor: pointer;
+      position: sticky;
+      top: 0;
+      bottom: 0;
+    }
+  }
+
+  &_product-info {
+    margin-right: 2vw;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+
+    img {
+      width: 150px;
+    }
+
+  }
+
+  &_product-title {
+    background: $background-light-blue;
+    border-radius: 8px;
+    color: $primary-btn-color;
+    word-break: break-word;
+    padding: 0.5vh 0.5vw;
+  }
+
+  &_info {
+    display: flex;
+  }
+
+  &_info-container {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+  }
+
+  &_info-wrapper {
+    margin-right: 2vw;
+    width: 50%;
+  }
+
+  &_header {
+
+  }
+
+  &_text {
+
+  }
+}
+
+.button-back {
+  height: 4.8vh;
+  float: right;
+}
+
+.contact-wrapper {
+   display: flex;
+}
+
+@media screen and (max-width: $phone-screen-width){
+  .branch {
+    &_container {
+      flex-direction: column;
+    }
+    &_info {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid;
+    }
+    &_info-wrapper {
+      width: 100%;
+    }
+
+    &_info-container {
+      width: 90%;
+      margin-top: 2vw;
+    }
+
+    &_product-info {
+      img {
+        width: 100px;
+      }
+
+    }
+  }
+
+  .contact-wrapper {
+    flex-direction: column;
+  }
+
+  .button-back {
+    width: 100%;
+  }
+}

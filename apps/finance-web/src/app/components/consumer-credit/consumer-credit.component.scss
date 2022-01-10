@@ -1,0 +1,385 @@
+@import 'variables';
+@import '_theme';
+
+$card-margin: 8px;
+$button-height: 56px;
+
+.consumer-credit-container {
+  border-radius: 8px;
+  border: 1px solid $border-grey-color;
+}
+
+.container-margin {
+  margin: 0 $main-block-margin-left 2vh $main-block-margin-left;
+}
+
+p {
+  margin: 0;
+}
+
+.filter-block {
+  display: flex;
+  font-size: 12px;
+  margin-left: 1.4vw;
+  margin-top: 1.4vw;
+  align-items: center;
+
+  p {
+    color: $grey-text-color;
+    margin-right: 0.7vw;
+  }
+
+  &_overpayment {
+    padding: 1vh 1vw;
+    display: flex;
+    flex-direction: row;
+    top: 0;
+    border-radius: 4px;
+    align-items: center;
+    cursor: pointer;
+
+    p {
+      color: $primary-btn-color;
+      margin-right: 0.5vw;
+      font-size: 14px;
+      font-family: 'Ubuntu-Medium', serif;
+    }
+
+    .sort {
+      background: $primary-btn-color;
+    }
+  }
+
+  mat-icon {
+    color: $primary-btn-color;
+    width: 12px;
+    height: 12px;
+  }
+
+  &_found-container {
+    display: flex;
+  }
+
+  &_found {
+    display: flex;
+
+    ::ng-deep .mat-select-value {
+      max-width: 100%;
+    }
+  }
+}
+
+.block-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.filter-found {
+  margin-left: auto;
+}
+
+.sort {
+  background: $sky-color;
+  color: $main-white;
+}
+
+hr {
+  width: 100%;
+  border: 0;
+  height: 1px;
+  background-color: $border-grey-color;
+  margin-top: 2.4vh;
+  margin-bottom: 0;
+  color: $border-grey-color;
+}
+
+.info-container {
+  cursor: pointer;
+  display: flex;
+  border-bottom: 1px solid $border-grey-color;
+  width: 100%;
+}
+
+.blur {
+  filter: blur(2px);
+}
+
+.info-block {
+  overflow-y: auto;
+}
+
+.empty-info {
+  text-align: center;
+
+  p {
+    margin: 8vw;
+  }
+}
+
+.display-hidden {
+  display: none;
+}
+
+.info-wrapper {
+  margin: 3.5vh 1.4vw;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 1vw;
+}
+
+.info-wrapper-card {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.info-values {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.info-value {
+  margin-right: 2vw;
+  width: 10vw;
+}
+
+.text {
+  &_header {
+    color: $grey-text-color;
+    font-size: 14px;
+    margin-bottom: 1.2vh;
+  }
+
+  &_value {
+    font-size: 18px;
+    margin-bottom: 1.6vh;
+    word-break: break-word;
+  }
+}
+
+.bank {
+
+  &_header {
+    color: $main-text-color;
+    width: fit-content;
+    font-size: 12px;
+    padding: 0.4vh 0.5vw;
+    margin-bottom: 1.2vh;
+    border-radius: 8px;
+    background-color: $text-background;
+    overflow-wrap: anywhere;
+  }
+
+  &_logo {
+    width: 18vh;
+    height: 5vh;
+    margin-right: 3vw;
+
+    img {
+      width: 8vw;
+    }
+  }
+}
+
+.buttons {
+
+  &_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: auto;
+    margin-right: 1.5vw;
+  }
+
+  &_star {
+    width: 2vw;
+    height: 2vw;
+    border-radius: 4px;
+    margin-left: auto;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  &_submit {
+    width: 10.2vw;
+    height: 5.4vh;
+    cursor: pointer;
+  }
+}
+
+.star {
+
+  &_active {
+    mat-icon {
+      color: $main-white;
+    }
+
+    cursor: pointer;
+  }
+
+  &_inactive {
+    background: none;
+    cursor: pointer;
+
+    mat-icon {
+      color: $primary-btn-color;
+    }
+  }
+}
+
+.load-more {
+  margin: 0 auto 1vh auto;
+  display: flex;
+  padding: 1vh;
+  cursor: pointer;
+}
+
+.scroll-top {
+  border-radius: 50%;
+  border: 1px solid $border-switch-color;
+  width: 48px;
+  height: 48px;
+  background: $main-white;
+  cursor: pointer;
+  position: fixed;
+  bottom: 20%;
+  right: 2vw;
+}
+
+.block-container {
+  display: grid;
+}
+
+.full-width{
+  width: 100%;
+}
+
+.found-type {
+  margin-right: 1vw;
+}
+
+@media screen and (max-width: 1397px) {
+  .info-value {
+    margin-right: 1.5vw;
+    width: 9vw;
+  }
+}
+
+@media screen and (max-width: 1109px) {
+  .info-value {
+    margin-right: 1vw;
+  }
+}
+
+@media screen and (max-width: 1016px) {
+  .info-value {
+    margin-right: 2vw;
+  }
+}
+
+@media screen and (max-width: $phone-screen-width) {
+  .consumer-credit-container {
+    margin: 0 $main-block-margin-mobile-left $main-block-margin-mobile-top $main-block-margin-mobile-left;
+  }
+
+  .filter-found {
+    margin-left: 0;
+    width: 100%;
+    margin-top: 2vh;
+  }
+
+  .filter-block {
+    margin: 2vh 2.5vw 0 2.5vw;
+    flex-direction: column;
+
+    mat-icon {
+      width: 18px;
+    }
+
+    &_overpayment {
+      margin-right: 1vw;
+      width: min-content;
+    }
+    &_found {
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .info-block {
+  }
+
+  .info-container {
+    display: inherit;
+    width: initial;
+  }
+
+  .info-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 2.5vh $card-margin;
+  }
+
+  .info-wrapper-card {
+    margin-top: 2vh;
+  }
+
+  .info-values {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 1;
+  }
+
+  .info-wrapper-card {
+    &_values {
+      width: 50%;
+    }
+  }
+
+  .favorite-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .buttons {
+
+    &_submit {
+      width: calc(100% - #{$card-margin * 2});
+      height: $button-height;
+      margin: 12px $card-margin;
+    }
+
+    &_star {
+      width: initial;
+      height: initial;
+    }
+  }
+
+  .info-value {
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .found-type {
+    display: flex;
+    align-items: center;
+  }
+
+  .bank {
+    &_logo {
+      img {
+        max-height: 6vh;
+        width: 30vw;
+      }
+    }
+  }
+
+  .block-wrapper {
+    justify-content: space-between;
+    width: 100%;
+  }
+}

@@ -1,0 +1,122 @@
+@import "./libs/mybpm-styles/variables";
+@import "./libs/mybpm-styles/helper-placeholders";
+
+.image-viewer-container {
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+
+  img {
+    align-self: center;
+    margin-top: 25px;
+    object-fit: contain;
+    max-width: 77vw;
+    max-height: 80vh;
+    text-align: center;
+  }
+}
+
+.close-btn {
+  color: $main-red;
+}
+
+.download-image-text {
+  font-size: 13px;
+  margin-top: 10px;
+  cursor: pointer;
+  color: $description-blue;
+  width: fit-content;
+  border-bottom: 1px dashed transparent;
+  transition: border-bottom-color 150ms;
+
+  &:hover {
+    border-bottom: 1px dashed $description-blue;
+  }
+}
+
+.download-icon {
+  margin-right: 8px;
+  color: $main-blue;
+}
+
+.icon-block {
+  top: -12px;
+  position: absolute;
+  right: -8px;
+
+  mat-icon {
+    @extend %middle-icon;
+    cursor: pointer;
+  }
+}
+
+
+.buttons-wrapper-file {
+  align-self: center;
+  border-radius: 5px;
+  padding: .1rem 0;
+  width: 25vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: .5rem;
+  border: 2px #dedede solid;
+
+  > div {
+    border: 1px transparent solid;
+    border-radius: 5px;
+    padding: .5rem;
+  }
+}
+
+.text-area-image {
+  width: 100%;
+  margin: 0.1rem 0.5rem 0.1rem 0.2rem;
+  background-color: white;
+  border-radius: 5px;
+  outline: none;
+  font-size: 14px;
+  line-height: 15px;
+  text-align: start;
+  padding: 0.1rem;
+  display: flex;
+  overflow: hidden;
+  max-height: 20px;
+  white-space: nowrap;
+
+  &:empty::before {
+    content: "Введите сообщение";
+    color: $secondary-text-color;
+    font-size: 12px;
+  }
+}
+
+.send-message-image {
+
+  @extend %middle-icon;
+  color: $main-blue;
+  margin-right: .3rem;
+}
+
+.file-attachment-wrapper {
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  span {
+    margin-left: 0.5rem;
+    font-size: 14px;
+    line-height: 15px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 20vw;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  mat-icon {
+    @extend %middle-icon;
+  }
+}

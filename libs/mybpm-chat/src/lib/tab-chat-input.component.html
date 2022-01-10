@@ -1,0 +1,41 @@
+<span
+  #inputSpan
+  selenide="bqoA4h69OF"
+  contenteditable="true"
+  class="text-area scroll-bar"
+  (keydown.enter)="send(inputSpan.innerHTML, $event)"
+  (input)="onTextChanged(inputSpan.innerText)"
+  (paste)="pasteFile($event)"
+></span>
+
+<input
+  #file
+  accept=".jpg, .png, .jpeg, .docx, .pdf, .ppt, .pptx, .xlsx, .zip, .rar, .csv, .txt, .mp4, .avi, .mov, .wmv, .mpeg, .flv, .mkv"
+  (change)="fileChanged($event)"
+  hidden
+  type="file"
+/>
+<mat-icon
+  svgIcon="no-color-attachment"
+  class="send-attachment"
+  (click)="openAttachments()"
+></mat-icon>
+
+<mat-icon
+  svgIcon="send-message"
+  class="send-message"
+  (click)="send(inputSpan.innerHTML, $event)"
+></mat-icon>
+
+<ng-template #orgUnitSelect>
+  <app-org-unit-select-search
+    type="person"
+    [chosenOrgUnitIds]="members"
+    [ignoredOrgUnitId]="ignoredOrgUnitId"
+    (orgUnitAdded)="addMemberToInnerText($event)"
+    (orgUnitDeleted)="deleteMemberFromInnerText($event)"
+    (escapeClicked)="focusInEnd(inputSpan); closePopover()"
+    (shiftEnterClicked)="focusInEnd(inputSpan); closePopover()"
+  ></app-org-unit-select-search>
+</ng-template>
+

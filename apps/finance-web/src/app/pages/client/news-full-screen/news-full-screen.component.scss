@@ -1,0 +1,25 @@
+@import "variables";
+
+.news {
+  margin: $main-block-margin-top $main-block-margin-left;
+}
+
+.back-container {
+  display: flex;
+
+  label {
+    margin-left: 0.5vw;
+    cursor: pointer;
+  }
+  mat-icon {
+    stroke: $secondary-text-primary-color;
+    cursor: pointer;
+  }
+}
+
+.back-btn {
+  min-height: 50px;
+  margin-right: 1vw;
+  margin-bottom: 1vh;
+  padding: 16px;
+}

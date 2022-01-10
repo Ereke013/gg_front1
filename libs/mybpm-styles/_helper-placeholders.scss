@@ -1,0 +1,108 @@
+@import "variables";
+
+$huge-icon-size: 80px;
+$large-x-icon-size: 50px;
+$large-icon-size: 38px;
+$middle-icon-size: 16px;
+$middle-x-icon-size: 20px;
+$middle-xx-icon-size: 24px;
+$small-icon-size: 9px;
+$small-x-icon-size: 11px;
+$small-xx-icon-size: 14px;
+$icon-12-size: 12px;
+
+%input-no-style {
+  background: none;
+  border: none;
+}
+
+%button-no-style {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+%huge-icon {
+  width: $huge-icon-size;
+  height: $huge-icon-size;
+}
+
+%large-x-icon {
+  width: $large-x-icon-size;
+  height: $large-x-icon-size;
+}
+
+%large-icon {
+  width: $large-icon-size;
+  height: $large-icon-size;
+}
+
+%middle-icon {
+  width: $middle-icon-size;
+  height: $middle-icon-size;
+  font-size: 0;
+}
+
+%small-icon {
+  width: $small-icon-size;
+  height: $small-icon-size;
+  font-size: 0;
+}
+
+%middle-x-icon {
+  width: $middle-x-icon-size;
+  height: $middle-x-icon-size;
+}
+
+%middle-xx-icon {
+  width: $middle-xx-icon-size;
+  height: $middle-xx-icon-size;
+}
+
+%small-x-icon {
+  width: $small-x-icon-size;
+  height: $small-x-icon-size;
+  font-size: 0;
+}
+
+%small-xx-icon {
+  width: $small-xx-icon-size;
+  height: $small-xx-icon-size;
+  font-size: 0;
+}
+
+%icon-12 {
+  width: $icon-12-size;
+  height: $icon-12-size;
+  font-size: 0;
+}
+
+%popover {
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+%icon {
+  @extend %middle-icon;
+  cursor: pointer;
+  color: $secondary-gray;
+  transition: color 250ms;
+
+  &.active {
+    color: $main-blue;
+  }
+
+}
+
+%red-on-hover-icon {
+  &:hover {
+    color: $main-red;
+  }
+}
+
+%blue-on-hover-icon {
+  &:hover {
+    color: $main-blue;
+  }
+}

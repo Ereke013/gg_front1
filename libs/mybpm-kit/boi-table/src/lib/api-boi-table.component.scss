@@ -1,0 +1,57 @@
+mb-api-boi-table {
+
+  .bat-table-container {
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  thead th {
+    background: white;
+    position: sticky;
+    top: 0;
+  }
+
+  thead th div {
+    display: flex;
+    align-items: center;
+
+    span {
+      overflow: hidden;
+    }
+  }
+
+  tbody {
+    position: relative;
+  }
+
+  tr {
+    height: 30px;
+    line-height: 14px;
+  }
+
+  th, td {
+    text-align: start;
+    padding: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .bat-no-data {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+}
+

@@ -1,0 +1,45 @@
+<h1 mat-dialog-title>{{titleName}}</h1>
+<div mat-dialog-content>
+
+  <form [formGroup]="dictForm">
+    <mat-card-content class="card-content">
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{'code_field' | translate}}</mat-label>
+        <input (ngModelChange)="controlDictUnique()" matInput placeholder="{{'code' | translate}}" formControlName="dict" required>
+        <mat-icon *ngIf="isCodeUnique && !isCodeEmpty" class="check_mark" matSuffix svgIcon="no-color-check-mark"></mat-icon>
+        <mat-error *ngIf="dictForm.controls.dict?.invalid && isCodeEmpty">{{'required_field' | translate}}</mat-error>
+        <mat-error *ngIf="!isCodeUnique">{{'unique_field' | translate}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{'name_en_field' | translate}}</mat-label>
+        <input matInput placeholder="{{'name_en' | translate}}" formControlName="displayTitleEn">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{'name_ru_field' | translate}}</mat-label>
+        <input matInput placeholder="{{'name_ru' | translate}}" formControlName="displayTitleRu" required>
+        <mat-error *ngIf="dictForm.controls.displayTitleRu?.invalid">{{'required_field' | translate}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{'name_kk_field' | translate}}</mat-label>
+        <input matInput placeholder="{{'name_kk' | translate}}" formControlName="displayTitleKk">
+      </mat-form-field>
+
+    </mat-card-content>
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button
+    [disabled]="dictForm.invalid"
+    (click)="submit()"
+    mat-button
+    [class.modal-action-btn]="!dictForm.invalid"
+    [class.modal-invalid-action-btn]="dictForm.invalid">
+    {{buttonName}}
+  </button>
+  <button mat-button (click)="closeHandler()">{{'close' | translate}}</button>
+</div>

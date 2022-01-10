@@ -1,0 +1,41 @@
+<div
+  fxLayout="row wrap"
+  fxLayoutAlign="start center"
+  fxLayoutGap=".5rem"
+  *ngIf="orgUnitRecords && orgUnitRecords.length > 0; else choose"
+>
+
+  <ui-chip
+    *ngFor="let rec of orgUnitRecords"
+    (closeClicked)="deleteOrgUnitRec(rec)"
+  >{{rec.name}}</ui-chip>
+
+  <mat-icon
+    #origin
+    class="vert-dots-icon default-icon"
+    (click)="openPopover(origin._elementRef.nativeElement, content)"
+    svgIcon="no-color-vert-dots"
+  ></mat-icon>
+</div>
+
+<ng-template #choose>
+  <app-mybpm-link
+    #origin
+    (click)="openPopover(origin.element.nativeElement, content)"
+  >
+    {{'choose' | translate}}
+  </app-mybpm-link>
+
+</ng-template>
+
+<ng-template #content>
+  <app-org-unit-select-search
+    [chosenOrgUnitIds]="chosenOrgUnitIds"
+    [chosenOrgUnitId]="chosenOrgUnitId"
+    [multiple]="multiple"
+    [type]="type"
+    (orgUnitAdded)="addOrgUnitRec($event)"
+    (orgUnitDeleted)="deleteOrgUnitRec($event)"
+    (chosenOrgUnitIdChanged)="onOrgUnitIdChanged($event)"
+  ></app-org-unit-select-search>
+</ng-template>

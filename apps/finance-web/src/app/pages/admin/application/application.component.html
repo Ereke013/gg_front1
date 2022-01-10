@@ -1,0 +1,15 @@
+<app-admin-item-page
+  [boiTable]='table'
+  [boiFilter]='filter'
+  [pageItemName]="'client_application'"
+  [isPopOverNeeded]='false'
+  [isSettingsButtonNeeded]='false'
+  [isAccess]='isAccess'
+  (searchTextResult)='handleSearchText($event)'
+  (tableOrdering)='setProductOrdering($event)'
+  (editItemId)='openEditDialog($event)'
+  (loadMoreItems)="loadNextBoInstanceRecords($event)"
+  [isCustomButtonNeeded]='false'
+>
+
+</app-admin-item-page>

@@ -1,0 +1,70 @@
+<div
+  class="image-viewer-container"
+>
+  <div
+    class="icon-block"
+  >
+    <mat-icon
+      class="download-icon"
+      svgIcon="no-color-download"
+      clickPreventDefault
+      [appDownloadOnClick]="attachment.fileId"
+    ></mat-icon>
+    <mat-icon
+      class="close-btn"
+      svgIcon="no-color-cancel"
+      clickPreventDefault
+      (click)="closeModal()"
+    ></mat-icon>
+  </div>
+
+  <div
+    *ngIf="attachment.mimeType | isMime: 'file'"
+    class="file-attachment-wrapper"
+  >
+    <mat-icon
+      [svgIcon]="attachment.mimeType | mimeToSvgName"
+    ></mat-icon>
+    <span
+    >{{'file' | translate}}: {{attachment.fileName}}
+    </span>
+  </div>
+  <img
+    *ngIf="attachment.mimeType | isMime: 'image'"
+    [src]="attachment.fileId | imageUrl"
+    alt="image"
+  />
+  <div
+    *ngIf="attachment.mimeType | isMime: 'file'"
+    class="download-image-text"
+    clickPreventDefault
+    [appDownloadOnClick]="attachment.fileId"
+  >{{'download_file' | translate}}
+  </div>
+  <div
+    *ngIf="attachment.mimeType | isMime: 'image'"
+    class="download-image-text"
+    clickPreventDefault
+    [appDownloadOnClick]="attachment.fileId"
+  >{{'download_photo' | translate}}
+  </div>
+  <div
+    *ngIf="attachment"
+    class="buttons-wrapper-file"
+  >
+    <!--suppress AngularUndefinedBinding -->
+    <span
+      #inputText
+      maxlength="5"
+      class="text-area-image scroll-bar"
+      contenteditable="true"
+      (keydown.enter)="sendToInput()"
+    ></span>
+    <mat-icon
+      svgIcon="send-message"
+      class="send-message-image"
+      (click)="sendToInput()"
+    ></mat-icon>
+
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<app-sign
+  [inputFirstModel]="inputFirstModel"
+  [inputSecondModel]="inputSecondModel"
+  [formTitle]="formTitle"
+  [buttonText]="buttonText"
+  [navigateText]="navigateText"
+  [code]="code"
+  [step]="step"
+  [errorMsg]="errorMessage"
+  (formOutput)="submitChange($event)"
+  (passwordIsRecovery)="passwordRecover()"
+></app-sign>

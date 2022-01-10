@@ -1,0 +1,27 @@
+<div class="range-cash-container">
+  <label>{{label}}</label>
+  <div class="range-cash-container_inputs">
+    <mat-form-field appearance="outline"  class = "input-left">
+      <mat-label>От</mat-label>
+      <input matInput
+             mask='separator'
+             thousandSeparator=" "
+             type="text"
+             class="range-right-align"
+             [(ngModel)]="cashFrom"
+             (ngModelChange)="onChangeCashValue()">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class = "input-right">
+      <mat-label>До</mat-label>
+      <input matInput
+             mask='separator'
+             thousandSeparator = " "
+             separatorLimit="100000000"
+             type="text"
+             class="range-right-align"
+             [(ngModel)]="cashTo"
+             (ngModelChange)="onChangeCashValue()">
+    </mat-form-field>
+  </div>
+</div>

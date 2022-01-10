@@ -1,0 +1,54 @@
+<app-dff-label
+  [field]="f"
+  [value]="val"
+  [errors]="errors"
+  [oneLineMode]="oneLineMode"
+  [touched]="touched"
+></app-dff-label>
+
+<div
+  fxLayout="row wrap"
+  fxLayoutAlign="start center"
+  fxLayoutGap=".5rem"
+  *ngIf="selectedOption else choose"
+>
+
+  <ui-chip
+    [class.is-active]="true"
+    [text]="selectedOption.label"
+    [hasCloseButton]="!f.isReadonly"
+    (click)="openVertDotsPopover(optionChooser)"
+    (closeClicked)="closeOption()"
+  ></ui-chip>
+
+  <div
+    #vertDotsOrigin
+    *ngIf="!f.isReadonly"
+    class="vert-dots"
+    fxLayoutAlign="center center"
+    (click)="openVertDotsPopover(optionChooser)"
+  >
+    <mat-icon svgIcon="no-color-vert-dots"></mat-icon>
+  </div>
+</div>
+
+<ng-template #choose>
+  <app-mybpm-link
+    #chooseOrigin
+    *ngIf="!f.isReadonly"
+    (click)="openPopover(chooseOrigin.element.nativeElement, optionChooser)"
+  >
+    {{'choose' | translate}}
+  </app-mybpm-link>
+
+</ng-template>
+
+<ng-template #optionChooser>
+  <app-overlay-single-select
+    [options]="f.options"
+    [value]="val.optionId"
+    [idFieldName]="'id'"
+    [labelFieldName]="'label'"
+    (selected)="updateValue($event)"
+  ></app-overlay-single-select>
+</ng-template>

@@ -1,0 +1,37 @@
+<app-dff-label
+  [field]="f"
+  [value]="val"
+  [errors]="errors"
+  [oneLineMode]="oneLineMode"
+  [touched]="touched"
+></app-dff-label>
+
+<section class="add-file-section">
+
+  <input
+    #fileInput
+    hidden
+    type="file"
+    [multiple]="params?.viewType !== FileUploadViewType.SINGLE"
+    (change)="fileChanged($event)"
+  />
+
+  <button
+    *ngIf="params?.viewType !== FileUploadViewType.TILE"
+    class="upload-button"
+    [disabled]="f.isReadonly"
+    (click)="fileInput.click()"
+    [class.is-readonly]="f.isReadonly"
+  >
+    <span>{{'attach_file' | translate}}</span>
+  </button>
+
+  <app-file-selector
+    [type]="fileSelectorType"
+    [fileList]="fileList"
+    [hasDelete]="!f.isReadonly"
+    (addClicked)="fileInput.click()"
+    (deleteClicked)="removeById($event)"
+  ></app-file-selector>
+
+</section>

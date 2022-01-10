@@ -1,0 +1,22 @@
+<div [class.info-container]='!isMobile'
+     [class.info-container-mobile]='isMobile'>
+  <div [class.left-menu_container]='!isMobile'
+       [class.left-menu_container-mobile]='isMobile'>
+    <div class='left-menu_tabs' *ngFor='let info of leftMenu'>
+      <div class='left-menu_wrapper'
+           [class.left-menu_active]='selectedLeftTab.title === info.title'
+           (click)='selectLeftTab(info)'>
+        <mat-icon [svgIcon]='info.icon' [class.icon-size]="selectedLeftTab.title === 'borrower_data'"></mat-icon>
+        <p>{{info.title | translate}}</p>
+      </div>
+    </div>
+  </div>
+  <app-profile-borrower-data *ngIf='selectedLeftTab.title === "borrower_data"'
+                             class='right-menu-margin'></app-profile-borrower-data>
+  <app-profile-pledge-data *ngIf='selectedLeftTab.title === "pledge_data"'
+                           class='right-menu-margin'></app-profile-pledge-data>
+  <app-profile-change-password *ngIf='selectedLeftTab.title === "change_password"'
+                               class='right-menu-margin'></app-profile-change-password>
+</div>
+
+

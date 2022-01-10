@@ -1,0 +1,39 @@
+<div class='container'>
+  <div class='wrapper'>
+    <form [formGroup]='form'>
+      <div class='text'>
+        <mat-form-field appearance='outline' class='input'>
+          <mat-label>{{'name' | translate}}</mat-label>
+          <input matInput formControlName='title' placeholder="{{'name' | translate}}" required>
+        </mat-form-field>
+        <mat-form-field appearance='outline' class='input'>
+          <mat-label>{{'description' | translate}}</mat-label>
+          <textarea matInput formControlName='description' placeholder="{{'name' | translate}}" required></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class='preview-wrapper'>
+        <div class='preview'>
+          <button class='button-primary' onclick="document.getElementById('getFile').click()">
+            {{buttonText}}
+          </button>
+          <input matInput type='file'
+                 accept='image/*'
+                 id='getFile' style='display:none'
+                 name='Your label here.'
+                 placeholder="{{'logo'}}"
+                 (change)='onFileChanged($event)' />
+        </div>
+        <img *ngIf='preview?.fileId' appImageCache [appSetImage]='{id: preview.fileId}' alt=''>
+      </div>
+
+      <quill-editor class='editor' formControlName='fullText'>
+      </quill-editor>
+    </form>
+  </div>
+  <button class='button-primary'
+          [disabled]='form.invalid'
+          [class.invalid]='form.invalid'
+          (click)='onSubmit()'>{{'save' | translate}}
+  </button>
+</div>

@@ -1,0 +1,75 @@
+<div class="pledge-container">
+  <div class='wrapper-step'>
+    <div class='wrapper-step_step-left'>
+      <mat-icon svgIcon='check' class='check-icon'></mat-icon>
+      <label>{{'step' | translate}} 1</label>
+    </div>
+
+    <div class='wrapper-step_step-center'>
+      <mat-icon svgIcon='rectangle'></mat-icon>
+    </div>
+
+    <div class='wrapper-step_step-right'>
+      <mat-icon svgIcon='check' class='check-icon'></mat-icon>
+      <label>{{'step' | translate}} 2</label>
+    </div>
+
+    <div class='wrapper-step_step-center'>
+      <mat-icon svgIcon='rectangle'></mat-icon>
+    </div>
+
+    <div class='wrapper-step_step-right'>
+      <mat-icon svgIcon='ellipse' class='ellipse-icon'></mat-icon>
+      <label>{{'step' | translate}} 3</label>
+    </div>
+  </div>
+  <h2>{{'pledge_attachment' | translate}}</h2>
+  <div class='card'>
+    <div class='pledge-menu' *ngIf='isPledgeMenu' #pledgeId>
+      <div class='pledge-card-wrap'>
+        <p class='title-pledge-card'>Залоги</p>
+        <div class="pledge-title-row">
+          <label class='def-pledge-card'>Залоги которые вы загрузили в профиль</label>
+          <label class="pledge_add" (click)="addNewPledge()"> + Добавить новые залоги</label>
+        </div>
+
+        <div class='pledges'>
+          <p class='pledges_warning' *ngIf='pledgeList.length === 0'>Список залогов пуст! Загрузите залоги
+            в профиле.</p>
+          <div *ngFor='let pledge of pledgeList; let i = index' class='pledges_title-wrap'>
+            <p class='pledges_title-wrap_title' (click)='notSelectedPledgeList(i)'>{{pledge.title}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class='pledge_container'>
+      <p class='product-header'>{{'by_pledge' | translate}}</p>
+      <p class='pledge_add' (click)='addPledge()' #addPledgeButton>{{'add' | translate}}</p>
+    </div>
+    <div class='pledge_wrapper' *ngFor='let pledge of pledgeShowList; let i = index'>
+      <div class='pledge_header-container'>
+        <p class='product-header pledge_header'>{{pledge.title}}</p>
+        <p class='pledge_delete' (click)='removeSelectedPledge(i)'>{{'delete' | translate}}</p>
+      </div>
+      <div class='filters'>
+        <div *ngFor='let value of pledges' [class.none-display]="value.index !== pledge.id">
+          <div class='filters_container' *ngIf='value.index === pledge.id'>
+            <label>{{value.title | translate}}</label>
+            <p *ngIf='value.value'>{{value.value}}</p>
+            <p *ngIf='!value.value'>{{'not_indicated' | translate}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pledge-btn">
+    <button class='button-white-primary button-back' (click)='skip()'>{{'skip' | translate}}</button>
+
+    <button class='button-primary button-back'
+            [class.disable-btn]="!pledgeShowList || pledgeShowList.length <= 0"
+            [disabled]="!pledgeShowList || pledgeShowList.length <= 0"
+            (click)='save()'>Продолжить
+    </button>
+  </div>
+</div>

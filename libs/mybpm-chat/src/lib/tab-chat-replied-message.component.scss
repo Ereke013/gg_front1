@@ -1,0 +1,113 @@
+@import "libs/mybpm-styles/variables";
+@import "libs/mybpm-styles/helper-placeholders";
+
+
+.input-reply-overlay {
+  width: 100%;
+  height: auto;
+  overflow-y: auto;
+}
+
+.reply {
+  max-width: 100%;
+  border: 1px;
+  border-radius: 5px;
+  border-left: 3px solid;
+}
+
+.chat-message {
+  width: auto;
+  max-width: 100%;
+  height: min-content;
+  min-width: 60%;
+  margin-top: 10px;
+  padding: .5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  background-color: hsla(0, 0%, 93%, 1);
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-right: 0.5rem;
+  color: inherit;
+
+  mat-icon {
+    @extend %middle-icon;
+    color: inherit;
+  }
+}
+
+.sender {
+  margin-bottom: 0;
+  font-size: 12px;
+  line-height: 14px;
+  white-space: nowrap;
+}
+
+.message-wrapper {
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  margin-top: .5rem;
+
+  img {
+    margin-left: .5rem;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border: 1px transparent solid;
+    border-radius: 5px;
+
+  }
+}
+
+
+.message {
+  font-size: 14px;
+  line-height: 15px;
+  color: $main-text-color;
+  max-width: 10vw;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+
+.message-time {
+  color: $main-text-color;
+  align-self: flex-end;
+  font-size: 10px;
+  line-height: 12px;
+  width: 24px;
+  margin-top: .5rem;
+}
+
+.file-attachment-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  span {
+    margin-left: 0.5rem;
+    font-size: 14px;
+    line-height: 16px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  mat-icon {
+    width: 50px;
+    height: 50px;
+  }
+}

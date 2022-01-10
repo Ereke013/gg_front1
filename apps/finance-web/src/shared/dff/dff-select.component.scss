@@ -1,0 +1,14 @@
+@import "variables";
+@import "helper-placeholders";
+
+:host {
+  display: flex;
+  align-items: flex-start;
+}
+
+.vert-dots {
+  mat-icon {
+    @extend %middle-icon;
+    color: $secondary-gray;
+  }
+}

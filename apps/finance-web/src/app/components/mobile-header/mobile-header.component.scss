@@ -1,0 +1,223 @@
+@import "variables";
+
+.menu-wrap {
+  top: $main-block-margin-mobile-left;
+  right: 0;
+  z-index: 1;
+}
+
+.toggler {
+  position: absolute;
+  top: $main-block-margin-mobile-left;
+  right: 0;
+  z-index: 2;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+}
+
+.toggler:checked ~ .menu {
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.toggler:checked ~ .menu > div {
+  transform: scale(1);
+}
+
+.toggler:checked ~ .menu > div > div {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.hamburger {
+  position: absolute;
+  top: $main-block-margin-mobile-left;
+  right: 0;
+  z-index: 1;
+  width: 60px;
+  height: 60px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+
+.lines {
+  position: relative;
+  width: 100%;
+  background-color: $main-black;
+  display: flex;
+  height: 3px;
+  align-items: center;
+  justify-content: center;
+}
+
+.lines-cross {
+  position: relative;
+  width: 100%;
+  background-color: $main-black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lines:before, .lines:after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: -10px;
+  width: 100%;
+  height: 3px;
+  background: inherit;
+}
+
+.lines:before {
+  width: 50%;
+  right: 0;
+}
+
+.lines-cross:before, .lines-cross:after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: -10px;
+  width: 100%;
+  height: 3px;
+  background: inherit;
+}
+
+.lines-cross:before {
+  transform: rotate(225deg);
+}
+
+.lines-cross:after {
+  transform: rotate(135deg);
+}
+
+.lines:after {
+  top: 10px;
+}
+
+.logo {
+  font-size: 36px;
+  cursor: pointer;
+  margin: $main-block-margin-mobile-left;
+
+  p {
+    margin: 0 0 $main-block-margin-mobile-left 0;
+    font-family: Ubuntu-Bold, serif;
+  }
+}
+
+.menu-item-text {
+  padding: 2.2vh $main-block-margin-mobile-left;
+  margin: 0;
+}
+
+.menu-items {
+  margin-top: calc(#{$main-block-margin-mobile-left} * 3);
+}
+
+.active-tab {
+  background: $background-light-blue;
+
+  p{
+    color: $primary-color;
+  }
+}
+
+.header_language_sel {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-left: $main-block-margin-mobile-left;
+}
+
+.header_language_sel > p {
+  margin-left: $main-block-margin-mobile-left;
+  font-size: 14px;
+}
+
+.header_p {
+  margin-left: $main-block-margin-mobile-left;
+  display: flex;
+  align-items: center;
+
+  label {
+    margin-left: $main-block-margin-mobile-left;
+  }
+}
+
+.bottom-icons {
+  bottom: 22vw;
+  position: absolute;
+}
+
+::ng-deep.popover-menu {
+  padding: 0;
+  background-color: $main-white;
+  border: 1px solid $border-grey-color;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04), 0 2px 2px rgba(0, 0, 0, 0.06), 0 0 1px rgba(0, 0, 0, 0.04);
+  border-radius: 12px !important;
+  min-width: 20vw !important;
+  text-align: center;
+}
+
+.menu-text {
+  padding: 0.5vh 1.5vw;
+  margin-left: 3.7vw;
+  cursor: pointer;
+}
+
+.log {
+  display: flex;
+  margin-left: 4vw;
+  align-items: center;
+
+  mat-icon {
+    cursor: pointer;
+  }
+
+  p {
+    padding-left: 0.3vw;
+  }
+}
+
+.login-svg {
+  ::ng-deep #lo-arr {
+    stroke: $secondary-text-primary-color;
+  }
+
+  ::ng-deep #lo-line {
+    stroke: $secondary-text-primary-color;
+  }
+
+  ::ng-deep #lo-square {
+    stroke: $secondary-text-primary-color;
+  }
+}
+
+.logout-svg {
+  ::ng-deep #lo-arr {
+    stroke: $delete-red;
+  }
+
+  ::ng-deep #lo-line {
+    stroke: $delete-red;
+  }
+
+  ::ng-deep #lo-square {
+    stroke: $delete-red;
+  }
+}
+
+.login-text{
+  color: $secondary-text-primary-color;
+}
+
+.logout-text{
+  color: $main-red;
+}

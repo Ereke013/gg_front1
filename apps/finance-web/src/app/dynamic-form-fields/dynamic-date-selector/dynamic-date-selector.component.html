@@ -1,0 +1,45 @@
+<!--<mat-form-field appearance='outline' class='param-block-input'>-->
+<!--  <mat-label>{{label}}</mat-label>-->
+<!--  <div style="display:flex;">-->
+<!--    <span matPrefix class="before-prefix">До</span>-->
+<!--    <input matInput [formControl]='formControl' type="number"-->
+<!--           placeholder='{{placeholder}}' >-->
+<!--    &lt;!&ndash;  <span matSuffix class="after-suffix">дней</span>&ndash;&gt;-->
+<!--    <mat-select placeholder="{{'select'|translate}}"-->
+<!--                disableOptionCentering panelClass="mat-select-dropdown"-->
+<!--                [(ngModel)]="commissionType" (ngModelChange)="getOptionValue()">-->
+<!--      <mat-option *ngFor='let value of dictList' [value]='value'>-->
+<!--        {{value.displayTitle | translate}}-->
+<!--      </mat-option>-->
+<!--    </mat-select>-->
+<!--  </div>-->
+<!--&lt;!&ndash;  <mat-error *ngIf="fontSizeControl.invalid">Min size: 10px</mat-error>&ndash;&gt;-->
+<!--</mat-form-field>-->
+<div class="commission-container">
+  <label>{{label | translate}}</label>
+  <div class="commission-container_inputs">
+    <mat-select placeholder="{{'select'|translate}}"
+                class="selector-prefix"
+                disableOptionCentering panelClass="mat-select-dropdown"
+                [(ngModel)]="dateSelectorSuffix" (ngModelChange)="changeSelectorValue()">
+      <mat-option *ngFor='let value of prefixDictList' [value]='value.dict'>
+        {{value.displayTitle | translate}}
+      </mat-option>
+    </mat-select>
+    <input type="text"
+           mask='separator'
+           thousandSeparator=" "
+           placeholder="{{label | translate}}"
+           [(ngModel)]="formInput"
+           (ngModelChange)="changeSelectorValue()"
+           step="0.1"
+    >
+    <mat-select placeholder="{{'select'|translate}}"
+                disableOptionCentering panelClass="mat-select-dropdown"
+                [(ngModel)]="dateSelectorType" (ngModelChange)="changeSelectorValue()">
+      <mat-option *ngFor='let value of dictList' [value]='value.dict'>
+        {{value.displayTitle | translate}}
+      </mat-option>
+    </mat-select>
+  </div>
+</div>

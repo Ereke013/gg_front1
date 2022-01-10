@@ -1,0 +1,8 @@
+@import "libs/mybpm-styles/variables";
+
+:host {
+  font-size: 13px;
+  color: $main-blue;
+  cursor: pointer;
+  border-bottom: 1px dashed $main-blue;
+}

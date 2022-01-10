@@ -1,0 +1,26 @@
+mb-user-notification {
+
+  overflow: hidden;
+  padding: 10px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  max-height: 500px;
+
+  .un-head-block {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .un-head-block-title {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+
+    span {
+      flex-grow: 1;
+    }
+
+  }
+}

@@ -1,0 +1,16 @@
+@import "variables";
+@import "custom-input";
+
+
+%df-input {
+  @extend %mybpm-input;
+  width: 100%;
+  min-height: 30px;
+  font-size: 13px;
+  font-family: $font-medium;
+}
+
+%df-textarea {
+  @extend %mybpm-textarea;
+  font-size: 13px;
+}

@@ -1,0 +1,47 @@
+@import "variables";
+@import "helper-placeholders";
+
+:host {
+  display: flex;
+}
+
+.quill-container {
+  width: 100%;
+  display: flex;
+  position: relative;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+quill-editor {
+  height: calc(100% - 21px);
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $secondary-gray;
+  transition: border-color 150ms;
+  border-radius: 5px;
+
+  &.invalid {
+    border-color: $main-orange;
+  }
+}
+
+.star {
+  position: absolute;
+  color: $main-red;
+  right: 10px;
+  top: 14px;
+}
+
+.error-icon {
+  position: absolute;
+  right: 8px;
+  top: 14px;
+
+
+  mat-icon {
+    @extend %middle-icon;
+    color: $main-orange;
+  }
+}

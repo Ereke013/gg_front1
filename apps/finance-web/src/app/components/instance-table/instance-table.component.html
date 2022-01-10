@@ -1,0 +1,146 @@
+<div
+  class='table-overlay scroll-bar scroll-bar-x'
+  infiniteScroll
+  [fromRoot]='true'
+  [scrollWindow]='false'
+  [infiniteScrollDistance]='scrollDistance'
+  [infiniteScrollUpDistance]='scrollUpDistance'
+  [infiniteScrollThrottle]='throttle'
+  (scrolled)='onScrollDown()'
+>
+  <table>
+
+    <thead>
+
+    <tr>
+
+      <th class='check'>
+        <div class='check-overlay'>
+          <mat-checkbox
+            [(ngModel)]='selectedAll'
+            (change)='onToggleChangeAll()'
+          ></mat-checkbox>
+        </div>
+      </th>
+
+      <th
+        *ngFor='let head of table?.heads; index as j'
+        [title]='head'
+        (click)='toggleOrder(head)'
+        [class.first-header-cell]='j === 0'
+        [class.next-header-cells]='j !== 0'
+      >
+
+        <span class='header-name'>
+                {{head.name | translate}}
+        </span>
+        <div
+          [class.visible-overlay]='head.fieldId == ordering.fieldId'
+          class='ordering-overlay'
+        >
+
+          <mat-icon
+            class='header-icon'
+            svgIcon='no-color-order-asc'
+            [class.visible-item]='ordering.state === OrderState.ASC'
+            [class.half-visible-item]='ordering.state === OrderState.DESC'
+          >
+          </mat-icon>
+
+          <mat-icon
+            class='header-icon'
+            svgIcon='no-color-order-desc'
+            [class.visible-item]='ordering.state === OrderState.DESC'
+            [class.half-visible-item]='ordering.state === OrderState.UNSET'
+          >
+          </mat-icon>
+
+        </div>
+
+      </th>
+
+    </tr>
+
+    </thead>
+
+    <tbody id='table-tbody-scroll-container'>
+
+    <tr
+      *ngFor='let x of table?.records; let i = index'
+      (click)='edit(x.instanceId)'
+      class='table-tr'
+    >
+
+      <td class='check'>
+        <mat-checkbox
+          [(ngModel)]='x.checked'
+          [ngModelOptions]='{standalone:true}'
+          (click)='$event.stopPropagation();'
+          (change)='onToggle()'
+        ></mat-checkbox>
+      </td>
+
+      <td
+        *ngFor='let y of x.values; index as j'
+        [title]='y?.displayValue'
+        [class.first-cell-td]='j === 0'
+        [class.next-cells-td]='j !== 0'
+      >
+
+        {{y?.displayValue}}
+
+      </td>
+
+      <td class='buttons-overlay' *ngIf='isCustomButtonNeeded'>
+
+        <div class='buttons-wrapper'>
+
+          <div class='buttons-container'>
+
+            <mat-icon
+              class='delete'
+              svgIcon='no-color-delete'
+              clickPreventDefault
+              clickStopPropagation
+              (click)='deleteInstance(x.instanceId)'
+            ></mat-icon>
+
+            <mat-icon
+              *ngIf='isSettingButtonNeeded'
+              class='settings'
+              svgIcon='no-color-settings'
+              clickPreventDefault
+              clickStopPropagation
+              (click)='editProductParamsSettings(x.instanceId)'
+            ></mat-icon>
+
+            <mat-icon
+              *ngIf='isCopyButtonNeeded'
+              class='settings'
+              svgIcon='document'
+              clickPreventDefault
+              clickStopPropagation
+              (click)='copyInstance(x.instanceId)'
+            ></mat-icon>
+
+          </div>
+
+        </div>
+
+      </td>
+
+    </tr>
+
+    </tbody>
+  </table>
+
+  <div *ngIf='boiTableHasNext'>
+    <button
+      mat-button
+      (click)='loadNext.emit()'
+    >
+      {{'load_more' | translate}}
+    </button>
+  </div>
+
+</div>

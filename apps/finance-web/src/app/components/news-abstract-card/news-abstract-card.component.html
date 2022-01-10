@@ -1,0 +1,23 @@
+<div class='news_container'>
+  <div class='news_wrapper'>
+    <div class='news_image'>
+      <img appImageCache [appSetImage]='{id: news.previewId}'>
+    </div>
+    <div class='news_text-container'>
+      <div class='news_wrapper'>
+
+        <div class='news_date'><p>{{news.createdAt}}</p></div>
+        <mat-icon class='news_date_circle' svgIcon='fill-circle'></mat-icon>
+        <mat-icon class='news_date_eye' svgIcon='eye'></mat-icon>
+        <p class='views'>{{news.views}}</p>
+      </div>
+
+      <div class='news_title'>
+        <p>{{news.title}}</p>
+      </div>
+      <div class='news_content'>
+        <p>{{news.description}}</p>
+      </div>
+    </div>
+  </div>
+</div>

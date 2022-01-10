@@ -1,0 +1,49 @@
+<div class='credit_container'>
+  <mat-icon svgIcon='close' (click)='close()'></mat-icon>
+  <div class="block-credit">
+    <div class="сredit-wrapper">
+      <label class="hitory-day-label">{{'amount_of_days' | translate}}</label>
+      <div class="credit_container_inputs">
+        <input type="text"
+               mask='separator'
+               thousandSeparator=" "
+               placeholder="{{'amount_of_days' | translate}}"
+               [(ngModel)]="formAmountInput"
+               step="0.1"
+        >
+        <mat-select placeholder="{{'select'|translate}}"
+                    disableOptionCentering panelClass="mat-select-dropdown"
+                    [(ngModel)]="creditAmountSelectorType" disabled>
+          <mat-option *ngFor='let value of dictList' [value]='value.dict'>
+            {{value.displayTitle | translate}}
+          </mat-option>
+        </mat-select>
+      </div>
+    </div>
+    <div class="сredit-wrapper">
+      <label class="hitory-day-label">{{'delay_term' | translate}}</label>
+      <div class="credit_container_inputs">
+        <input type="text"
+               mask='separator'
+               thousandSeparator=" "
+               placeholder="{{'delay_term' | translate}}"
+               [(ngModel)]="formDelayInput"
+               step="0.1"
+        >
+        <mat-select placeholder="{{'select'|translate}}"
+                    disableOptionCentering panelClass="mat-select-dropdown"
+                    [(ngModel)]="creditDelaySelectorType"
+                    disabled
+        >
+          <mat-option *ngFor='let value of dictList' [value]='value.dict'>
+            {{value.displayTitle | translate}}
+          </mat-option>
+        </mat-select>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="buttons-block">
+  <button class='button-primary button-back' (click)='save()'>Добавить</button>
+  <button class='button-primary button-back' (click)='close()'>Вернуться назад</button>
+</div>

@@ -1,0 +1,145 @@
+@import "libs/mybpm-styles/variables";
+@import "libs/mybpm-styles/helper-placeholders";
+
+
+.chat-message {
+  width: auto;
+  max-width: 90%;
+  height: min-content;
+  min-width: 40%;
+  margin-top: 10px;
+  padding: .5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: $main-white;
+  box-shadow: -2px 2px 6px 0 #c4c4c4;
+}
+
+.received {
+  align-self: flex-start;
+  border-radius: 0 5px 5px 5px;
+  color: inherit;
+
+  .message {
+    color: $main-user-color;
+  }
+
+  .message-time {
+    color: $main-user-color;
+  }
+}
+
+
+.sent {
+  align-self: flex-end;
+  border-radius: 5px 0 5px 5px;
+  background-color: #dcf8c6;
+  color: $main-user-color;
+
+  .message {
+    color: $main-user-color;
+  }
+
+  .message-time {
+    color: $main-user-color;
+  }
+}
+
+
+.sender {
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 15px;
+  white-space: nowrap;
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 3px;
+  margin-right: 0.5rem;
+  color: inherit;
+  font-weight: bold;
+
+  mat-icon {
+    @extend %middle-icon;
+  }
+}
+
+.message {
+  font-size: 14px;
+  line-height: 15px;
+  margin-top: 5px;
+  color: initial;
+  overflow-wrap: anywhere;
+}
+
+.image-comment {
+  max-width: 150px;
+}
+
+.message-time {
+  align-self: flex-end;
+  font-size: 10px;
+  line-height: 12px;
+  width: 24px;
+  color: initial;
+}
+
+.img-wrapper {
+  margin-top: 0.5rem;
+
+  img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 1px transparent solid;
+    border-radius: 5px;
+  }
+
+  mat-icon {
+    flex-shrink: 0;
+  }
+}
+
+app-tab-chat-replied-message {
+  width: 100%;
+}
+
+.file-attachment-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  span {
+    cursor: pointer;
+    margin-left: 0.5rem;
+    font-size: 14px;
+    line-height: 15px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  mat-icon {
+    @extend %middle-icon;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeInFadeOut {
+  animation: fadein 500ms cubic-bezier(0.55, 0.09, 0.68, 0.53) alternate infinite;
+  animation-delay: -500ms
+}

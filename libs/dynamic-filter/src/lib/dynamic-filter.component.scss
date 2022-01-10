@@ -1,0 +1,58 @@
+@import "libs/mybpm-styles/variables";
+@import "libs/mybpm-styles/helper-placeholders";
+
+:host {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-height: 200px;
+}
+
+.filter {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 100%;
+  padding-right: 5px;
+  padding-left: 5px;
+
+  mat-icon {
+    flex-shrink: 0;
+    @extend %middle-icon;
+  }
+}
+
+app-filter-field {
+  display: flex;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.filter-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.filter-direction-column {
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.filter-field-container {
+  display: flex;
+}
+
+.filter-field-center {
+  align-items: center;
+}
+
+.vert-dots {
+  mat-icon {
+    @extend %middle-icon;
+    color: $secondary-gray;
+  }
+
+  cursor: pointer;
+}

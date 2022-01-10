@@ -1,0 +1,21 @@
+<div class="wrapper-dict-credit">
+  <mat-form-field appearance='outline' class='credit-select-field'>
+    <mat-label>{{label}}</mat-label>
+    <mat-select multiple
+                (selectionChange)='selectChanged()'
+                [formControl]='dicts'
+                [placeholder]='placeholder'>
+      <mat-option *ngFor='let d of dictList'
+                  [value]='d.dict'
+                  matTooltip="{{d.displayTitle}}"
+                  matTooltipClass="tooltip">
+        <mat-icon *ngIf="isAddNewCreditHistory"
+                  svgIcon='no-color-delete'
+                  class='g-delete-icon'
+                  (click)="deleteKI(d.dict)"></mat-icon>
+        {{d.displayTitle}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <label class="add-history-label" (click)="addYourselfCreditHistory()" *ngIf="isAddNewCreditHistory"> + Добавить свою кредитную историю</label>
+</div>

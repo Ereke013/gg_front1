@@ -1,0 +1,6 @@
+export enum EventNotificationType {
+  CREATE = 'CREATE',
+  ADD_PARTICIPANTS = 'ADD_PARTICIPANTS',
+  DEL_PARTICIPANTS = 'DEL_PARTICIPANTS',
+  REMOVE = 'REMOVE'
+}

@@ -1,0 +1,71 @@
+<form [formGroup]='form' class='form-container'>
+  <div class='form-wrapper'>
+    <mat-label>{{'iin' | translate}}</mat-label>
+    <div class='form-iin-wrapper input-form disabled-input'>
+      <input type='text'
+             placeholder='--- --- --- ---'
+             formControlName='iin'
+             class='input-iin disabled-input'
+             mask='000 000 000 000'
+             maxlength='15'
+             readonly>
+    </div>
+
+  </div>
+  <div class='form-wrapper'>
+    <mat-label>{{'fio' | translate}}</mat-label>
+    <input type='text' class='input-form disabled-input' formControlName='fullName' readonly>
+  </div>
+  <div class='form-wrapper'>
+    <mat-label>{{'birth_date' | translate}}</mat-label>
+    <input type='text' class='input-form disabled-input' placeholder='_ _ - _ _ - _ _ _ _'
+           formControlName='dateOfBirth' readonly>
+  </div>
+  <div class='form-wrapper'>
+    <mat-label>{{'phone' | translate}}</mat-label>
+    <input type='text' class='input-form disabled-input' placeholder='+7(_ _ _)_ _ _  _ _  _ _' formControlName='phone'
+           readonly>
+  </div>
+  <div class='form-wrapper'>
+    <mat-label>{{'address_residence' | translate}}</mat-label>
+    <input type='text' class='input-form disabled-input' placeholder='{{"enter_address" | translate}}'
+           formControlName='address' readonly>
+  </div>
+  <div class='form-wrapper-group'>
+    <div class='form-wrapper'>
+      <mat-label>{{'work_experience' | translate}}</mat-label>
+      <input type='text' class='input-form disabled-input' placeholder='{{"months_amount" | translate}}'
+             formControlName='workExperience' readonly>
+    </div>
+    <div class='form-wrapper'>
+      <mat-label>{{'income_amount_tenge' | translate}}</mat-label>
+      <input type='text' class='input-form disabled-input' placeholder='{{"select_sum" | translate}}'
+             formControlName='incomeAmount' readonly>
+    </div>
+  </div>
+
+  <div class='checkbox_container'>
+    <div class='upload-files_container'>
+      <mat-label>{{'add_documents' | translate}}</mat-label>
+      <div class='upload-files_wrapper'>
+        <div class='upload-files_attach' onclick="document.getElementById('getDocument').click()">
+          <mat-icon svgIcon='clip'></mat-icon>
+          <p>{{'attach_files' | translate}}</p>
+          <input matInput type='file'
+                 accept='image/*'
+                 id='getDocument' style='display:none'
+                 name='Your label here.'
+                 placeholder="{{'logo'}}"
+                 (change)='onFileChanged($event)' />
+        </div>
+        <div class='upload-files_chip' *ngFor='let document of documents'>
+          <p class="download-doc" (click)="downloadDoc(document.fileId)">{{document.name}}</p>
+          <mat-icon svgIcon='delete-chip' (click)='delete(document.fileId)'></mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<div *ngIf='false'>
+  <p>Сервис находится в разработке ☹</p>
+</div>

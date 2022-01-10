@@ -1,0 +1,90 @@
+@import "variables";
+
+.container {
+  border: 1px solid $border-grey-color;
+  border-radius: 4px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 24px;
+  font-size: 12px;
+  align-items: center;
+  p {
+    color: $grey-text-color;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+
+  p {
+    margin-right: 12px;
+  }
+
+  &_sort {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background: $background-light-blue;
+    border-radius: 4px;
+    padding: 8px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+  }
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  color: $main-text-color;
+  font-family: Ubuntu-Medium, Ubuntu, serif;
+  font-size: 14px;
+  padding-right: 1vw;
+  background: $secondary-background-color;
+}
+
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+  padding-right: 0;
+  border-bottom-width: 0;
+}
+
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+  padding-right: 12px;
+  padding-left: 12px;
+  text-align: center;
+}
+
+.mat-elevation-z8 {
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+td {
+  width: 50px;
+  color: $main-text-color;
+  font-size: 16px;
+}
+
+img {
+  height: 4vh;
+}
+
+mat-icon {
+  height: 16px;
+  width: 16px;
+  margin-left: 6px;
+}
+
+.application-row {
+  cursor: pointer;
+}
+
+.application-row:hover {
+  background-color: $disabled-bo-gray;
+}

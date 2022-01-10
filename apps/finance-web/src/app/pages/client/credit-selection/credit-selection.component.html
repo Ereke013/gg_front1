@@ -1,0 +1,7 @@
+<app-consumer-credit-header (selectedTabs)='setPageTab($event)'></app-consumer-credit-header>
+<app-client-credit-selection [pageTabFilter]='pageTab'
+                             [isSumOfCreditTitleChanged]='isSumOfCreditTitleChanged'
+                             (filterList)='setFilterList($event)'
+                             (selectionTermType)="termSelected($event)"
+></app-client-credit-selection>
+<app-consumer-credit [filterList]='filterList' [termType]="termType" [pageTab]='pageTab'></app-consumer-credit>

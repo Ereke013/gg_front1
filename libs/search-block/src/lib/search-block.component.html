@@ -1,0 +1,26 @@
+<div
+  class="search-block"
+  fxLayout="row"
+  fxLayoutAlign="start center"
+  fxLayoutGap="0.5rem"
+>
+
+  <div fxLayoutAlign="center center">
+    <mat-icon svgIcon="search"></mat-icon>
+  </div>
+  <input
+    #input
+    placeholder="{{placeholder | translate}}"
+    (keyup.enter)="valueChanged.emit(input.value)"
+  >
+  <div
+    *ngIf="input.value.length > 0"
+    (click)="input.value = '';
+    valueChanged.emit(input.value)"
+    class="reset-icon"
+    fxLayoutAlign="center center"
+  >
+    <mat-icon svgIcon="no-color-close-x"></mat-icon>
+  </div>
+
+</div>

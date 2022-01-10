@@ -1,0 +1,17 @@
+<app-dff-label
+  [field]="f"
+  [value]="val"
+  [errors]="errors"
+  [oneLineMode]="oneLineMode"
+  [touched]="touched"
+></app-dff-label>
+<nz-range-picker
+  class="gb-date-input"
+  [nzShowTime]="{nzFormat: 'HH:mm'}"
+  [class.invalid]="invalid"
+  [nzDisabled]="f.isReadonly"
+  [nzFormat]="'dd.MM.yyyy HH:mm'"
+  [ngModel]="val.value"
+  (ngModelChange)="onChange($event)"
+  (nzOnOpenChange)="openChanged($event)"
+></nz-range-picker>

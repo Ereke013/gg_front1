@@ -1,0 +1,128 @@
+@import "variables";
+@import "libs/mybpm-styles/helper-placeholders";
+@import "../../../../assets/custom-elements/filter-fields";
+
+.add_btn_block {
+  display: flex;
+}
+
+.delete-btn {
+  background-color: $delete-red;
+  color: $main-white;
+  margin-left: 8px
+}
+
+.edit-btn {
+  background-color: #4285f4;
+  color: $main-white;
+}
+
+.dict-page {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.dict-value-block {
+  width: 50%;
+}
+
+.dict-value-block > div {
+  margin: 8px 0 8px 0;
+  border-radius: 8px;
+}
+
+.dict-block-part {
+  width: 50%;
+}
+
+
+.dict-block-full {
+  width: 100%;
+}
+
+.dict-block-part > div {
+  margin: 8px 0 8px 0;
+  border-radius: 8px;
+}
+
+
+table {
+  font-size: 14px;
+  border-spacing: 0;
+  width: 100%;
+  height: calc(100% - 2px);
+  background-color: $main-white;
+  border-radius: 8px;
+  border-collapse: collapse;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  max-width: 205px;
+  cursor: pointer;
+  font-weight: lighter;
+}
+
+td {
+  color: $main-user-color;
+  height: 37px;
+}
+
+th {
+  position: sticky;
+  top: -2px;
+  left: 0;
+  background-color: $main-white;
+  border-bottom: 1px solid $main-background;
+  box-shadow: 0 1px 2px 0 $main-background;
+  height: 44px;
+  color: rgba(35, 35, 35, 0.6);
+  z-index: 2;
+}
+
+.object-name {
+  font-size: 19px;
+  line-height: 25px;
+  color: $main-user-color;
+  text-align: start;
+  outline: none;
+}
+
+.filter-block {
+  background-color: $main-white;
+  padding: 8px 0 8px 0;
+}
+
+.buttons {
+  margin-left: 1rem;
+  outline: none;
+
+  mat-icon {
+    @extend %middle-icon;
+  }
+}
+
+.tables-block {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-table-block {
+  max-height: 70vh;
+  overflow: auto;
+}
+
+.secondary-table-block {
+  height: 70vh;
+  overflow: auto;
+}
+
+.touch-blocked {
+  opacity: 0.5;
+  pointer-events: none;
+}

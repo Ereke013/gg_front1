@@ -1,0 +1,5 @@
+<div class="agreement-container">
+    <mat-icon svgIcon='close' (click)='close()'></mat-icon>
+    <p>{{agreementText}}</p>
+    <p *ngIf="!agreementText">{{'no_data' | translate}}</p>
+</div>

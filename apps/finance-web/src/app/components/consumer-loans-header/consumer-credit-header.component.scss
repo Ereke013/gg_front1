@@ -1,0 +1,236 @@
+@import 'variables';
+
+* {
+  margin: 0;
+}
+
+.temporarily_class {
+  border: none;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  padding: 1vh 1vw;
+  color: $primary-btn-color;
+  font-size: 16px;
+}
+
+.loans-header {
+  &_main {
+    box-shadow: inset 0 8px 7px -10px $task-header-text-color;
+    display: inline-block;
+    background: $sky-color;
+    width: 100%;
+
+    &_wrapper {
+      margin: 3vh 30vw 3vh 15vw;
+      display: flex;
+      flex-direction: column;
+
+      &_in-city > p {
+        font-size: 40px;
+        font-family: Ubuntu-Bold, serif;
+
+        span {
+          font-family: Ubuntu-Bold, serif;
+        }
+      }
+
+      &_in-city > p > span {
+        color: $primary-btn-color;
+        border-bottom: 2px dashed $primary-btn-color;
+      }
+
+      &_definition {
+        margin-top: 2vh;
+      }
+
+      &_definition > p {
+        font-size: 14px;
+      }
+
+      &_type-credit {
+        margin-top: 2.5vh;
+        display: flex;
+      }
+
+      &_button {
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 1vh 1vw;
+        margin-right: 0.8vw;
+        font-size: 16px;
+      }
+
+      &_button:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04), 0 2px 2px rgba(0, 0, 0, 0.06), 0 0 1px rgba(0, 0, 0, 0.04);
+        border-radius: 4px;
+        background: none;
+        cursor: pointer;
+        padding: 1vh 1vw;
+        font-size: 16px;
+      }
+
+      &_active {
+        border-radius: 4px;
+        background: white;
+        cursor: pointer;
+        padding: 1vh 1vw;
+        color: $primary-btn-color;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.select-city-wrapper {
+  position: absolute;
+  padding: 2.5vh 1.6vw;
+  background-color: $main-white;
+  border: 1px solid $border-grey-color;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04), 0 2px 2px rgba(0, 0, 0, 0.06), 0 0 1px rgba(0, 0, 0, 0.04);
+  border-radius: 12px;
+
+  width: 20vw;
+  height: 13vh;
+
+  right: 17vw;
+  top: 6vh;
+
+  &_items {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-size: 16px;
+      line-height: 20px;
+      color: $main-text-color;
+    }
+
+    &_select-buttons {
+      display: flex;
+      margin-top: 1.5vh;
+
+      button {
+        width: 7.8vw;
+        border-radius: 4px;
+        background: none;
+        align-items: flex-start;
+        padding: 1.4vh 0.6vw;
+        cursor: pointer;
+      }
+
+      &_save-city {
+        font-size: 16px;
+        line-height: 20px;
+        color: $primary-btn-color;
+        border: 1px solid $primary-btn-color;
+      }
+
+      &_change-city {
+        color: $main-text-color;
+        border: 1px solid $border-grey-color;
+        margin-left: 0.7vw;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .loans-header {
+    &_main {
+      &_wrapper {
+        margin: $main-block-margin-mobile-top $main-block-margin-mobile-left;
+
+        &_in-city {
+          p {
+            font-size: 24px;
+          }
+        }
+
+        &_button {
+          height: fit-content;
+          white-space: nowrap;
+        }
+
+        &_button:hover {
+          box-shadow: none;
+          background: $main-white;
+        }
+
+        &_type-credit {
+          overflow-x: auto;
+        }
+
+        &_type-credit::-webkit-scrollbar {
+          width: 0;
+          height: 0;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) {
+
+  .loans-header {
+    &_main {
+      &_wrapper {
+        margin: 3vh 33vw 3vh 15vw;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1050px) {
+
+  .loans-header {
+    &_main {
+      &_wrapper {
+        margin: 3vh 20vw 3vh 15vw;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 740px) {
+
+  .loans-header {
+    &_main {
+      &_wrapper {
+        margin: 3vh 13vw 3vh 15vw;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .loans-header {
+    &_main {
+      &_wrapper {
+        margin: $main-block-margin-mobile-top $main-block-margin-mobile-left;
+
+        &_in-city {
+          p {
+            font-size: 24px;
+          }
+        }
+
+        &_button {
+          height: fit-content;
+          white-space: nowrap;
+        }
+
+        &_type-credit {
+          overflow-x: auto;
+        }
+
+        &_type-credit::-webkit-scrollbar {
+          width: 0;
+          height: 0;
+        }
+      }
+    }
+  }
+}
+

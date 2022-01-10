@@ -1,0 +1,7 @@
+export enum BusinessObjectKind {
+  CUSTOM = 'CUSTOM',
+  PERSON = 'PERSON',
+  DEPARTMENT = 'DEPARTMENT',
+  PERSON_GROUP = 'PERSON_GROUP',
+  COMPANY = 'COMPANY',
+}

@@ -1,0 +1,83 @@
+<div
+  class="search-block"
+  fxLayout="row"
+  fxLayoutGap=".5rem"
+  fxLayoutAlign="start center"
+>
+  <mat-icon svgIcon="search"></mat-icon>
+  <input
+    #searchField
+    placeholder="{{'search_field' | translate}}"
+    [formControl]="searchControl"
+    (keyup.arrowUp)="clickArrowUp()"
+    (keyup.arrowDown)="clickArrowDown()"
+    (keyup.enter)="clickEnter()"
+    (keyup.escape)="this.escapeClicked.emit()"
+    (keyup.shift.enter)="this.shiftEnterClicked.emit()"
+  >
+</div>
+
+<div
+  class="scroll-bar scroll-bar-x records"
+  *ngIf="orgUnitRecords$ | async as orgUnitRecords"
+>
+  <div
+    @items
+    *ngFor="let i = index; let rec of orgUnitRecords; trackBy: getId"
+    [class.selected-org-unit]="i === orgUnitSelectedIndex"
+  >
+
+    <ng-template
+      [ngIf]="multiple"
+      [ngIfElse]="single"
+    >
+
+      <mat-checkbox
+        [checked]="chosenOrgUnitIdsSet.has(rec.id)"
+        (change)="toggleCheckboxItem(rec, $event)"
+      >
+
+        <div
+          fxLayoutAlign="start center"
+          fxLayoutGap="5px"
+        >
+
+          <mat-icon [svgIcon]="getIconType(rec.type)"></mat-icon>
+
+          <span>{{rec.name}}</span>
+
+        </div>
+
+      </mat-checkbox>
+
+    </ng-template>
+
+    <ng-template #single>
+      <ui-radio
+        [ngModel]="chosenOrgUnitId?.id === rec.id"
+        (ngModelChange)="toggleRadioButtonItem(rec)"
+      >
+
+        <div
+          class="radio-button-content"
+          fxLayoutAlign="start center"
+          fxLayoutGap="5px"
+        >
+
+          <mat-icon [svgIcon]="getIconType(rec.type)"></mat-icon>
+
+          <span
+            class="pointer-span"
+            (click)="toggleRadioButtonItem(rec)"
+          >{{rec.name}}</span>
+
+        </div>
+
+      </ui-radio>
+    </ng-template>
+  </div>
+
+  <div *ngIf="orgUnitRecords.length === 0">
+    {{'not_found' | translate}}
+  </div>
+</div>

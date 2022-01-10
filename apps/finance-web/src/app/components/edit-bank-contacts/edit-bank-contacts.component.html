@@ -1,0 +1,96 @@
+<h1 mat-dialog-title>{{titleName}}</h1>
+<div mat-dialog-content>
+  <form [formGroup]='form'>
+    <mat-card-content class='card-content'>
+
+      <div>Название банка</div>
+
+      <div class='product-titles'>
+        <mat-form-field appearance='outline'>
+          <mat-label>{{'name_ru' | translate}}</mat-label>
+          <mat-select placeholder='{{"name_ru_field" | translate}}' class='credit-term-select'
+                      disableOptionCentering
+                      panelClass='mat-select-dropdown'
+                      formControlName='bankCode'>
+            <mat-option *ngFor='let value of financialOrganizations'
+                        [value]='value.dict'>
+              {{value.displayTitle}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <section class='checkbox-section-cooperation'>
+          <mat-checkbox formControlName='isCooperation'>{{'Сотрудничество' | translate}}</mat-checkbox>
+        </section>
+
+      </div>
+
+      <div>Дополнительная информация</div>
+
+      <div class='container'>
+        <div class='add-contact'>
+          <mat-label>{{'bank_contacts' | translate}}</mat-label>
+          <button type='button' class='delete-contact' (click)='addBankContact()'>
+            <mat-icon svgIcon='add'></mat-icon>
+          </button>
+        </div>
+        <div *ngFor='let item of form?.get("branches")["controls"]; let i = index'
+             class='contacts-container'
+             formArrayName='branches'>
+          <div [formGroupName]='i' class='contacts-wrapper'>
+            <input formControlName='address' placeholder='{{"address" | translate}}' class='input-form'>
+            <input formControlName='phone' placeholder='{{"phone" | translate}}' class='input-form'>
+            <mat-select placeholder='{{"city" | translate}}'
+                        class='credit-term-select input-form'
+                        formControlName='city'
+                        panelClass='mat-select-dropdown'>
+              <mat-optgroup *ngFor="let region of cities" [label]="region.region">
+
+                <mat-option *ngFor='let val of region.cityName' [value]='val.cityCode'>
+                  {{val.cityName}}
+                </mat-option>
+              </mat-optgroup>
+            </mat-select>
+            <button type='button' class='delete-contact' (click)='removeBankContact(i)'>
+              <mat-icon svgIcon='delete'></mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class='product-titles'>
+        <mat-form-field appearance='outline'>
+          <mat-label>{{'Сайт банка'}}</mat-label>
+          <input matInput placeholder="{{'Сайт банка' }}" formControlName='siteUrl' />
+        </mat-form-field>
+      </div>
+
+      <input *ngIf='!bankContact?.logo' matInput type='file'
+             accept='image/*'
+             placeholder="{{'logo'}}"
+             (change)='onFileChanged($event)' />
+
+      <div *ngIf='bankContact && bankContact?.logo'
+           class="bank-icon-wrapper">
+        <img appImageCache [appSetImage]='{id: bankContact?.logo}' alt='' src=''>
+        <mat-icon class="delete-bank-icon"
+                  svgIcon='no-color-delete'
+                  (click)="deleteBankIcon()"
+        ></mat-icon>
+      </div>
+
+
+    </mat-card-content>
+  </form>
+
+  <button
+    [disabled]='form.invalid'
+    (click)='submit()'
+    mat-button
+    [class.modal-action-btn]='!form.invalid'
+    [class.modal-invalid-action-btn]='form.invalid'>
+    {{buttonName}}
+  </button>
+  <button mat-button (click)='closeHandler()'>{{'close' | translate}}</button>
+</div>
+

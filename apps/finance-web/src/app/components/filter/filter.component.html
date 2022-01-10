@@ -1,0 +1,66 @@
+<div
+  class="container"
+  [class.filter-prod]="isFilterColumn"
+>
+
+  <div [class.filter-search]="isFilterColumn">
+    <input
+      type="text"
+      placeholder="{{'search'| translate }}..."
+      class="custom-input-style"
+      [(ngModel)]="search"
+      (keydown.enter)="find()"
+      (blur)="find()"
+    >
+
+    <div *ngFor="let filter of filters">
+      <input
+        type="text"
+        placeholder="{{filter.filterModel.title}} ..."
+        class="custom-input-style"
+        [class.filter-input]="filter.filterModel"
+        [(ngModel)]="filter.search"
+        (keydown.enter)="findAdditionalFilter()"
+      >
+    </div>
+  </div>
+
+  <div *ngIf="isFilterColumn">
+    <div
+      class="filter-button"
+      [mdePopoverTriggerFor]='parameterViewPopover'
+      mdePopoverTriggerOn='click'
+      mdePopoverPositionY='below'
+      (click)='setPopOverStatus()'
+    >
+      <div class='change-viewing-mode'>
+        <mat-icon svgIcon="no-color-filter"></mat-icon>
+        <mde-popover #parameterViewPopover='mdePopover'
+                     [mdePopoverOverlapTrigger]='false'
+                     [mdePopoverCloseOnClick]='isPopOverClosed'
+        >
+          <div>
+            <mat-card class="filter-card">
+              <mat-card-content>
+                <section class="filter-section" [formGroup]="filterGroup">
+                  <p formArrayName="elements" *ngFor="let element of elementFormArray.controls; let i = index">
+                    <mat-checkbox
+                      [formControlName]="i"
+                      (ngModelChange)="changeModel(i, $event)"
+                    >{{inputElements[i].title}}
+                    </mat-checkbox>
+                  </p>
+                </section>
+              </mat-card-content>
+              <mat-card-actions>
+                <button class="apply-btn" (click)="submit()" mat-button>{{'apply' | translate}}</button>
+              </mat-card-actions>
+
+            </mat-card>
+          </div>
+
+        </mde-popover>
+      </div>
+    </div>
+  </div>
+</div>

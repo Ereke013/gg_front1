@@ -1,0 +1,60 @@
+<div
+  *ngFor="let item of filterControl.config.filters; let last = last"
+  class="filter"
+  [class.filter-direction-column]="isDirectionColumnEnabled(item)"
+  clickStopPropagation
+>
+
+  <ng-container *ngIf="getProperties(item.id) as properties">
+
+    <ng-container *ngIf="properties.chipsMode; else filterField">
+
+      <ui-chip
+        [text]="(item.label | translate) + ': ' + properties.text"
+        [class.disabled]="!forEdit"
+        (click)="unChip(item.id);"
+        [hasCloseButton]="forEdit"
+        (closeClicked)="deleteFilter(item)"
+      ></ui-chip>
+
+      <div
+        #dotsOrigin
+        *ngIf="hasVertDots && last"
+        (click)="vertDotsClicked.emit({event: $event, dotsOrigin: dotsOrigin})"
+        class="vert-dots"
+        fxLayoutAlign="center center"
+      >
+        <mat-icon svgIcon="no-color-vert-dots"></mat-icon>
+      </div>
+
+    </ng-container>
+
+    <ng-template #filterField>
+
+      <span
+        class="filter-label"
+        [title]="item.label | translate"
+      >{{item.label | translate}}:</span>
+
+      <div
+        class="filter-field-container"
+        [class.filter-field-center]="item.type !== DynamicFilterType.ORG_UNIT"
+      >
+
+        <app-filter-field
+          [filterControl]="filterControl"
+          [filter]="item"
+        ></app-filter-field>
+
+        <mat-icon
+          svgIcon="no-color-close-x"
+          class="default-icon"
+          (click)="deleteFilter(item)"
+        ></mat-icon>
+
+      </div>
+    </ng-template>
+
+  </ng-container>
+
+</div>

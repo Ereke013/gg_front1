@@ -1,0 +1,210 @@
+@import "node_modules/@angular/material/theming";
+@import "~@angular/material/theming";
+@import "variables";
+
+$custom-typography: mat-typography-config(
+  $font-family: $font-family,
+  $display-4: mat-typography-level(112px, 112px, 300),
+  $display-3: mat-typography-level(56px, 56px, 400),
+  $display-2: mat-typography-level(45px, 48px, 400),
+  $display-1: mat-typography-level(34px, 40px, 400),
+  $headline: mat-typography-level(24px, 32px, 400),
+  $title: mat-typography-level(20px, 32px, 50.0),
+  $subheading-2: mat-typography-level(16px, 28px, 400),
+  $subheading-1: mat-typography-level(15px, 24px, 400),
+  $body-2: mat-typography-level(14px, 24px, 500),
+  $body-1: mat-typography-level(14px, 20px, 400),
+  $caption: mat-typography-level(12px, 20px, 400),
+  $button: mat-typography-level(14px, 14px, 500),
+  $input: mat-typography-level(inherit, 1.125, 400)
+);
+@include mat-core($custom-typography);
+
+@include mat-base-typography($custom-typography);
+
+// Override typography for a specific Angular Material components.
+@include mat-checkbox-typography($custom-typography);
+@include mat-tabs-typography($custom-typography);
+// Override typography for all Angular Material, including mat-base-typography and all components.
+@include angular-material-typography($custom-typography);
+
+
+$mat-accent: (
+  50: #74A1E3,
+  100: #FFFFFF,
+  contrast: (
+    50: #B2B2B2,
+    100: #898989,
+  )
+);
+
+$mat-primary: (
+  50: #74A1E3,
+  100: #F8F8F8,
+  contrast: (
+    50: #FFFFFF,
+    100: #666666,
+  )
+);
+
+$foreground: (
+  50: #FFFFFF,
+  100: #F8F8F8,
+  contrast: (
+    50: #B2B2B2,
+    100: #232323,
+  )
+);
+
+$app-accent: mat-palette($mat-accent, 50, 100);
+
+$app-primary: mat-palette($mat-primary, 50, 100);
+
+// The warn palette is optional (defaults to red).
+$app-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+
+
+/////////////////////CUSTOMIZING ANGULAR COMPONENT//////////////////////////////
+
+@mixin custom-mat-toolbar($theme) {
+  mat-toolbar {
+    position: relative;
+    z-index: 3;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    color: mat-contrast($foreground, 50);
+  }
+
+  .mat-toolbar-row, .mat-toolbar-single-row {
+    background-color: mat-color($foreground, 50, null);
+    padding: 0 !important;
+  }
+}
+
+@mixin mat-checkbox() {
+  .mat-checkbox:not(.mat-checkbox-disabled) .mat-checkbox-ripple .mat-ripple-element {
+    background-color: transparent !important;
+  }
+}
+
+@mixin change-icon-color($color) {
+  color: map-get($color, 'color');
+  opacity: 1;
+
+  & {
+    cursor: pointer;
+  }
+
+  &:hover path {
+    fill: map-get($color, 'color');
+  }
+}
+
+@mixin custom-diamond($left, $top, $box-shadow) {
+
+  content: "";
+  position: absolute;
+  background: white;
+  left: map-get($left, 'left');
+  top: map-get($top, 'top');
+  margin-top: -4px;
+  width: 8px;
+  height: 8px;
+  z-index: 1;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  @if $box-shadow != null {
+    box-shadow: map-get($box-shadow, 'box-shadow');
+  }
+}
+
+@mixin custom-button($props, $back) {
+
+  $color: map-get($props, 'color');
+
+  $background: mat-color($foreground, 50);
+  @if $back != null {
+    $background: map-get($back, 'background');
+  }
+
+  @if $back == null {
+    color: $color;
+  }
+  background-color: $background;
+
+  &:hover {
+    @if $back == null {
+      color: $background;
+    }
+    background-color: $color;
+  }
+
+}
+
+@mixin mat-tab-labels($columns) {
+  .mat-tab-label {
+    min-width: 2%;
+    color: mat-contrast($foreground, 100);
+    height: 2.5em;
+    background: transparent;
+  }
+  .mat-tab-label-active {
+    font-weight: bold;
+    opacity: 1;
+    border-top: 3px solid $main-blue;
+
+    path {
+      fill: map-get($mat-accent, 50);
+    }
+  }
+
+  @each $colName, $props in $columns {
+
+    .mat-tab-label:nth-of-type(#{$colName}) {
+
+      @if map-has-key($props, 'width') {
+        $width: map-get($props, 'width');
+        width: $width;
+        flex: $width;
+      }
+
+      @if map-has-key($props, 'min-width') {
+        min-width: map-get($props, 'min-width');
+      }
+
+      @if map-has-key($props, 'max-width') {
+        max-width: map-get($props, 'max-width');
+      }
+
+      @if map-has-key($props, 'justify-content') {
+        justify-content: map-get($props, 'justify-content');
+      }
+      @if map-has-key($props, 'opacity') {
+        opacity: map-get($props, 'opacity') !important;
+      }
+
+      .mat-tab-label-active {
+        color: mat-contrast($foreground, 100);
+      }
+    }
+  }
+}
+
+@mixin custom-mat-sidenav($theme) {
+  mat-sidenav {
+    color: mat-contrast($foreground, 50);
+  }
+}
+
+::ng-deep .mat-card {
+  padding: 0.9375rem;
+  border-radius: 5px;
+}
+
+@include custom-mat-toolbar($app-theme);
+@include custom-mat-sidenav($app-theme);
+@include angular-material-theme($app-theme);
+@include angular-material-typography();
+@include mat-checkbox();

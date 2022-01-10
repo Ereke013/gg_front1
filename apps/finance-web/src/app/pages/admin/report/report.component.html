@@ -1,0 +1,24 @@
+<div class="wrapper-report">
+  <label>{{'reports' | translate}}</label>
+  <div class="report-period">
+    <div class="period-wrapper">
+      <mat-form-field class = "periodDate__1" appearance="outline" >
+        <mat-label>{{'period_from' | translate}}</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="dateFrom" (ngModelChange)="dateChange()">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class = "periodDate__2 periodTo" appearance="outline" >
+        <mat-label>{{'period_to' | translate}}</mat-label>
+        <input matInput [matDatepicker]="picker2" [(ngModel)]="dateTo" (ngModelChange)="dateChange()" >
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <button [class.button-primary]="isDownloadFile"
+            [class.button-disabled]="!isDownloadFile"
+            [disabled]="!isDownloadFile"
+            (click)="downloadReport()">{{'download' | translate}}</button>
+  </div>
+</div>

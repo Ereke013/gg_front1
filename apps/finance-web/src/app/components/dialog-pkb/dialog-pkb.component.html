@@ -1,0 +1,47 @@
+<div class='pkb_container'>
+  <mat-icon svgIcon='close' (click)='close()'></mat-icon>
+  <div class='wrapper-step'>
+    <div class='wrapper-step_step-left'>
+      <mat-icon svgIcon='check' class='check-icon'></mat-icon>
+      <label>{{'step' | translate}} 1</label>
+    </div>
+
+    <div class='wrapper-step_step-center'>
+      <mat-icon svgIcon='rectangle'></mat-icon>
+    </div>
+
+    <div class='wrapper-step_step-right'>
+      <mat-icon svgIcon='ellipse' class='ellipse-icon'></mat-icon>
+      <label>{{'step' | translate}} 2</label>
+    </div>
+
+    <div class='wrapper-step_step-center'>
+      <mat-icon svgIcon='rectangle'></mat-icon>
+    </div>
+
+    <div class='wrapper-step_step-right'>
+      <mat-icon svgIcon='ellipse' class='ellipse-icon'></mat-icon>
+      <label>{{'step' | translate}} 3</label>
+    </div>
+  </div>
+  <div class='close-wrapper'>
+    <h2>{{'borrower_identification' | translate}}</h2>
+<!--    <mat-icon svgIcon='close' (click)='close()'></mat-icon>-->
+  </div>
+  <div class='pkb_wrapper'>
+    <mat-label>{{'iin' | translate}}</mat-label>
+    <div class='input-form pkb_input-wrapper'>
+      <input placeholder='{{"input_iin" | translate}}'
+             mask='000 000 000 000'
+             [(ngModel)]='iin'>
+      <mat-icon [class.hide]='iin.length <= 0' svgIcon='close' (click)='clear()'></mat-icon>
+    </div>
+    <mat-error>{{errorMessage | translate}}</mat-error>
+  </div>
+  <div class='pkb_term'>
+    <mat-checkbox [(ngModel)]='agreement' [checked]='agreement'></mat-checkbox>
+    <p><label (click)="checkedAgreement()">{{'agreement' | translate}} </label> <span (click)='downloadTermOfUse()'>{{'pkb' | translate}}</span></p>
+  </div>
+  <button class='button-primary' [class.pkb_inactive-button]='!agreement'
+          (click)='signClick()'>{{'sign_ecp' | translate}}</button>
+</div>

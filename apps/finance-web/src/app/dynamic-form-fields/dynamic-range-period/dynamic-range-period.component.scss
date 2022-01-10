@@ -1,0 +1,23 @@
+.param-block-input {
+  width: 100%;
+}
+
+.period{
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+}
+
+.periodDate{
+  width: 100%;
+  margin-top: 1vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.periodDate__1{
+  width: 49%;
+}
+.periodDate__2{
+  width: 48%;
+}

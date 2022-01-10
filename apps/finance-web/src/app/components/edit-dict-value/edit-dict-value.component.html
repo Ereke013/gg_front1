@@ -1,0 +1,67 @@
+<div class="example-box" cdkDrag [cdkDragFreeDragPosition]="dragPosition" >
+  <h1 mat-dialog-title>{{titleName}}</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="dictValueForm">
+      <mat-card-content class="card-content">
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{'dict' | translate}}</mat-label>
+          <mat-select formControlName="dict">
+            <mat-option *ngFor="let d of dictForSelect" value="{{d.dict}}">{{d.displayTitle}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{'key_field' | translate}}</mat-label>
+          <input matInput placeholder="{{'key' | translate}}" formControlName="dictCodeColumn" required>
+          <mat-error *ngIf="dictValueForm.controls.dictCodeColumn?.invalid">{{'required_field' | translate}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{'name_ru_field' | translate}}</mat-label>
+          <input matInput placeholder="{{'name_ru' | translate}}" formControlName="dictTitleColumnRu" required>
+          <mat-error
+            *ngIf="dictValueForm.controls.dictTitleColumnRu?.invalid">{{'required_field' | translate}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{'name_en_field' | translate}}</mat-label>
+          <input matInput placeholder="{{'name_en' | translate}}" formControlName="dictTitleColumnEn">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{'name_kk_field' | translate}}</mat-label>
+          <input matInput placeholder="{{'name_kk' | translate}}" formControlName="dictTitleColumnKk">
+        </mat-form-field>
+
+      </mat-card-content>
+    </form>
+  </div>
+
+  <div mat-dialog-actions>
+    <button
+      [disabled]="dictValueForm.invalid"
+      (click)="submit()"
+      mat-button
+      [class.modal-action-btn]="!dictValueForm.invalid"
+      [class.modal-invalid-action-btn]="dictValueForm.invalid">
+      {{buttonName}}
+    </button>
+    <button mat-button (click)="closeHandler()">{{'close' | translate}}</button>
+  </div>
+
+  <div class="right-handle handle" cdkDragHandle>
+    <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+      <path
+        d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+      <path d="M0 0h24v24H0z" fill="none"></path>
+    </svg>
+  </div>
+  <div class="left-handle handle" cdkDragHandle>
+    <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+      <path
+        d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+      <path d="M0 0h24v24H0z" fill="none"></path>
+    </svg>
+  </div>
+</div>

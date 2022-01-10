@@ -1,0 +1,50 @@
+<div *ngIf="flatMode; else layoutMode">
+
+  <ng-container *ngFor="let field of fields; trackBy: getId">
+
+    <div
+      fxLayout="column"
+      class="block"
+    >
+
+      <app-dff-common
+        [field]="field"
+        [control]="dynamicFormControl"
+      ></app-dff-common>
+
+    </div>
+
+  </ng-container>
+
+</div>
+
+<ng-template #layoutMode>
+  <div class="dynamic-form-for-quill">
+
+    <ktd-grid
+      cols="15"
+      compactOnPropsChange
+      compactType="vertical"
+      rowHeight="30"
+      [layout]="layout"
+    >
+
+      <ktd-grid-item
+        *ngFor="let item of fields"
+        [id]="idF(item)"
+        [draggable]="false"
+        [resizable]="false"
+        transition="unset"
+      >
+
+        <app-dff-common
+          [field]="item"
+          [control]="dynamicFormControl"
+        ></app-dff-common>
+
+      </ktd-grid-item>
+
+    </ktd-grid>
+
+  </div>
+</ng-template>

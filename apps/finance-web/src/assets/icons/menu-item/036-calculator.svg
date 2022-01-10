@@ -1,0 +1,17 @@
+<svg
+  id="Capa_1"
+  enable-background="new 0 0 512 512"
+  height="512"
+  viewBox="0 0 512 512"
+  width="512"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g>
+    <path d="m51 0v512h410v-512zm380 482h-350v-452h350z"/>
+    <path d="m400.72 60h-289.44v148h289.44zm-30 118h-229.44v-88h229.44z"/>
+    <path d="m400.72 452v-210h-289.44v210zm-30-30h-145.22v-30h145.22zm-84.22-60h-61v-30h61zm84.22-90v90h-54.22v-90zm-84.22 0v30h-61v-30zm-145.22 0h54.22v30h-54.22zm0 60h54.22v30h-54.22zm0 90v-30h54.22v30z"/>
+    <path d="m181 118h30v30h-30z"/>
+    <path d="m241 118h30v30h-30z"/>
+    <path d="m301 118h30v30h-30z"/>
+  </g>
+</svg>

@@ -1,0 +1,33 @@
+@import "variables";
+
+%__common-styles {
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  transition: border-color 150ms;
+
+  &:focus {
+    outline: none;
+    border-color: $main-blue;
+  }
+
+  &:read-only {
+    background-color: $readonly-bg;
+    border-color: transparent;
+  }
+
+  &.invalid {
+    border-color: $main-orange;
+  }
+}
+
+%mybpm-input {
+  @extend %__common-styles;
+  text-indent: 5px;
+}
+
+%mybpm-textarea {
+  @extend %__common-styles;
+  padding: 5px;
+}

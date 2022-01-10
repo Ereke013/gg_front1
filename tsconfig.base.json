@@ -1,0 +1,81 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": "./",
+    "paths": {
+      "@finance-web/*": ["apps/finance-web/src/*"],
+      "@finance.workspace/click-util": ["libs/click-util/src/index.ts"],
+      "@finance.workspace/coordinate-selector": [
+        "libs/coordinate-selector/src/index.ts"
+      ],
+      "@finance.workspace/dynamic-filter": ["libs/dynamic-filter/src/index.ts"],
+      "@finance.workspace/dynamic-form": ["libs/dynamic-form/src/index.ts"],
+      "@finance.workspace/error-popover": ["libs/error-popover/src/index.ts"],
+      "@finance.workspace/expansion-panel": [
+        "libs/expansion-panel/src/index.ts"
+      ],
+      "@finance.workspace/file-selector": ["libs/file-selector/src/index.ts"],
+      "@finance.workspace/file-util": ["libs/file-util/src/index.ts"],
+      "@finance.workspace/file-viewer": ["libs/file-viewer/src/index.ts"],
+      "@finance.workspace/focus-on-init": ["libs/focus-on-init/src/index.ts"],
+      "@finance.workspace/http-service": ["libs/http-service/src/index.ts"],
+      "@finance.workspace/image-url": ["libs/image-url/src/index.ts"],
+      "@finance.workspace/image-viewer": ["libs/image-viewer/src/index.ts"],
+      "@finance.workspace/loading": ["libs/loading/src/index.ts"],
+      "@finance.workspace/mybpm-chat": ["libs/mybpm-chat/src/index.ts"],
+      "@finance.workspace/mybpm-kit/boi-card": [
+        "libs/mybpm-kit/boi-card/src/index.ts"
+      ],
+      "@finance.workspace/mybpm-kit/boi-table": [
+        "libs/mybpm-kit/boi-table/src/index.ts"
+      ],
+      "@finance.workspace/mybpm-kit/controller": [
+        "libs/mybpm-kit/controller/src/index.ts"
+      ],
+      "@finance.workspace/mybpm-kit/user-notification": [
+        "libs/mybpm-kit/user-notification/src/index.ts"
+      ],
+      "@finance.workspace/mybpm-link": ["libs/mybpm-link/src/index.ts"],
+      "@finance.workspace/nca-layer-service": [
+        "libs/nca-layer-service/src/index.ts"
+      ],
+      "@finance.workspace/notification": ["libs/notification/src/index.ts"],
+      "@finance.workspace/org-unit-select": [
+        "libs/org-unit-select/src/index.ts"
+      ],
+      "@finance.workspace/overlay-multiple-select": [
+        "libs/overlay-multiple-select/src/index.ts"
+      ],
+      "@finance.workspace/overlay-single-select": [
+        "libs/overlay-single-select/src/index.ts"
+      ],
+      "@finance.workspace/popover": ["libs/popover/src/index.ts"],
+      "@finance.workspace/search-block": ["libs/search-block/src/index.ts"],
+      "@finance.workspace/shared/model": ["libs/shared/model/src/index.ts"],
+      "@finance.workspace/shared/util": ["libs/shared/util/src/index.ts"],
+      "@finance.workspace/ui/chip": ["libs/ui/chip/src/index.ts"],
+      "@finance.workspace/ui/radio": ["libs/ui/radio/src/index.ts"],
+      "@finance.workspace/ws-service": ["libs/ws-service/src/index.ts"]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": false
+  },
+  "exclude": ["node_modules", "tmp"]
+}

@@ -1,0 +1,153 @@
+<div class='container all-filter'>
+  <div *ngFor='let filter of filters'>
+    <div class='wrapper'>
+      <mat-label>{{filter.title}}</mat-label>
+      <app-combo-box *ngIf='filter.type === "COMBO_DICT"'
+                     [list]='filter'
+                     [filterTitle]="filter.dict"
+                     (comboFilter)="changedComboDict($event)"
+      ></app-combo-box>
+      <mat-select *ngIf='filter.type === "DICT" || filter.type === "MULTI_DICT" || filter.type === "NOT_MULTI_DICT" || filter.type === "SELECTOR"'
+                  class='term-select-option' disableOptionCentering panelClass='mat-select-dropdown'
+                  [placeholder]='filter.title'
+                  (valueChange)='filterListChangedMethod(filter.dict, filter.type, $event)'>
+        <mat-option *ngFor='let value of filter.values'
+                    [value]='getOptionValue(value.dict)'
+                    matTooltip="{{value.displayTitle}}"
+                    matTooltipClass="tooltip"
+        >
+          {{value.displayTitle}}
+        </mat-option>
+      </mat-select>
+
+      <mat-select *ngIf='filter.type === "DATE_SELECTOR"'
+                  class='term-select-option' disableOptionCentering panelClass='mat-select-dropdown'
+                  [placeholder]='filter.title'
+                  (valueChange)='filterListChangedMethod(filter.dict, filter.type, $event)'>
+        <mat-option *ngFor='let value of filter.values'
+                    [value]='getOptionValue(value.dict)'
+                    matTooltip="{{value.displayTitle}}"
+        >
+          <p>{{value.displayTitle}}</p>
+        </mat-option>
+      </mat-select>
+
+      <input type='text' *ngIf="filter.type === 'STR'" [placeholder]='filter.title'
+             (keyup)='filterListChangedMethod(filter.dict, filter.type, $event)'>
+
+      <input type='number'
+             *ngIf="filter.type === 'PERCENTAGE' || filter.type === 'DOUBLE' || filter.type === 'INT' || filter.type === 'LONG' || filter.type === 'RANGE'"
+             [placeholder]='filter.title'
+             (keyup)='filterListChangedMethod(filter.dict, filter.type, $event)' min='1'>
+    </div>
+  </div>
+</div>
+<div class='filter-add-switch'>
+
+  <div class='filter-add-switch_checkbox-container'>
+    <input type='checkbox' class='toggle-button' [ngModel]='isBorrowerSwitch' (ngModelChange)='isBorrowerOn()'>
+    <label class='filter-add-switch_text'>{{'specify_borrower_data' | translate}}</label>
+  </div>
+
+  <div class='filter-add-switch_checkbox-container' *ngIf='isPledgeAutoSwitch'>
+    <input type='checkbox' class='toggle-button' [ngModel]='isPledgeSwitch' (ngModelChange)='isPledgeOn()'>
+    <label class='filter-add-switch_text'>{{ labelPledgeSwitch | translate}}</label>
+  </div>
+
+</div>
+
+<div class='filter-switch-wrapper'>
+
+  <div class="{{isBorrowerSwitch?'wrap-wrap1' : 'hidden'}}">
+
+    <div class='filter-switch-wrapper_borrower-wrapper' *ngFor='let borrow of borrowersFilter'>
+      <div class='filter-switch-wrapper_input'
+           *ngIf="borrow.type === 'INT' || borrow.type === 'DOUBLE' || borrow.type === 'LONG' || borrow.type === 'RANGE'">
+        <label>{{borrow.title}}</label>
+        <input type='number' placeholder='{{borrow.title}}' [class.error-input]='isErrorInput'
+               (keyup)='switchFilterChange(borrow.dict, borrow.type, $event)' min='1'/>
+      </div>
+
+      <div class='filter-switch-wrapper_select' *ngIf="borrow.type === 'DICT'
+                                                || borrow.type === 'MULTI_DICT'
+                                                || borrow.type === 'NOT_MULTI_DICT'">
+        <label>{{borrow.title}}</label>
+        <mat-select placeholder='{{borrow.title}}' class='credit-term-select'
+                    disableOptionCentering
+                    panelClass='mat-select-dropdown'
+                    (valueChange)='switchFilterChange(borrow.dict, borrow.type, $event)'>
+          <mat-option *ngFor='let value of borrow.values'
+                      matTooltip="{{value.displayTitle}}"
+                      matTooltipClass="tooltip"
+                      class="option-value"
+                      [value]='getOptionValue(value.dict)'>
+            {{value.displayTitle}}
+          </mat-option>
+        </mat-select>
+      </div>
+
+      <div class='filter-switch-wrapper_select' *ngIf='borrow.type === "DATE_SELECTOR"'>
+        <label>{{borrow.title}}</label>
+        <mat-select class='credit-term-select' disableOptionCentering panelClass='mat-select-dropdown'
+                    [placeholder]='borrow.title'
+                    (valueChange)='filterListChangedMethod(borrow.dict, borrow.type, $event)'>
+          <mat-option *ngFor='let value of borrow.values'
+                      [value]='getOptionValue(value.dict)'
+                      matTooltip="{{value.displayTitle}}"
+          >
+            <p>{{value.displayTitle}}</p>
+          </mat-option>
+        </mat-select>
+      </div>
+
+      <div class='filter-switch-wrapper_select' *ngIf="borrow.type === 'DICT_CREDIT_HISTORY'">
+        <label>{{borrow.title}}</label>
+        <mat-select multiple
+                    placeholder='{{borrow.title}}'
+                    class='credit-term-select'
+                    disableOptionCentering
+                    panelClass='mat-select-dropdown'
+                    (valueChange)='switchFilterChange(borrow.dict, borrow.type, $event)'>
+          <mat-option *ngFor='let value of borrow.values'
+                      matTooltip="{{value.displayTitle}}"
+                      matTooltipClass="tooltip"
+                      class="option-value"
+                      [value]='getOptionValue(value.dict)'>
+            {{value.displayTitle}}
+          </mat-option>
+        </mat-select>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="{{isPledgeSwitch?'wrap-wrap2' : 'hidden'}}">
+
+    <div class='filter-switch-wrapper_collateral-wrapper' *ngFor='let pledge of pledgeFilter'>
+      <div class='filter-switch-wrapper_input'
+           *ngIf="pledge.type === 'INT' || pledge.type === 'DOUBLE' || pledge.type === 'LONG' || pledge.type === 'RANGE'">
+        <label>{{pledge.title}}</label>
+        <input type='text' placeholder='{{pledge.title}}'
+               (keyup)='switchFilterChange(pledge.dict, pledge.type, $event)'/>
+      </div>
+
+      <div class='filter-switch-wrapper_select' *ngIf="pledge.type === 'DICT'
+                                                || pledge.type === 'MULTI_DICT'
+                                                || pledge.type === 'DATE_SELECTOR'
+                                                || pledge.type === 'NOT_MULTI_DICT'">
+        <label>{{pledge.title}}</label>
+        <mat-select placeholder='{{pledge.title}}' class='credit-term-select'
+                    disableOptionCentering
+                    panelClass='mat-select-dropdown'
+                    (valueChange)='switchFilterChange(pledge.dict, pledge.type, $event)'>
+          <mat-option *ngFor='let value of pledge.values' [value]='getOptionValue(value.dict)'>
+            {{value.displayTitle}}
+          </mat-option>
+        </mat-select>
+      </div>
+    </div>
+  </div>
+
+</div>

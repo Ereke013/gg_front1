@@ -1,0 +1,612 @@
+@import "variables";
+
+$margin-bottom: 1.6vh;
+$circle-size: 14px;
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+
+  mat-icon {
+    margin-left: auto;
+    cursor: pointer;
+  }
+}
+
+.card {
+  &_header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.2vh;
+    align-items: center;
+
+    &_logo {
+      max-width: 8vw;
+      margin-right: 12px;
+      align-self: center;
+    }
+
+    &_title {
+      background: $background-light-blue;
+      color: $primary-btn-color;
+      padding: 4px 8px;
+      border-radius: 8px;
+    }
+
+    &_monthly-payment {
+      margin: 8px;
+
+      span {
+        font-family: Ubuntu-Medium, serif;
+        color: $main-black;
+      }
+
+    }
+  }
+}
+
+.monthly-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+
+  &_span {
+    margin: 8px;
+    width: 80%;
+    font-size: 12px;
+    color: $grey-text-color;
+  }
+}
+
+.card {
+  position: relative;
+  border: 1px solid $border-switch-color;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 2.4vh;
+}
+
+.button-disable {
+  background: $border-btn-color;
+  color: $main-white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 14px 16px;
+}
+
+.product-header {
+  margin: 0 0 $margin-bottom 0;
+  font-family: Ubuntu-Medium, Ubuntu, serif;
+}
+
+.pledge {
+  &_container {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: wrap;
+  }
+
+  &_add {
+    color: $primary-btn-color;
+    font-size: 14px;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  &_header {
+    margin: 0 0 8px 0;
+  }
+
+  &_header-container {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: wrap;
+  }
+
+  &_delete {
+    color: $alert-color;
+    font-size: 14px;
+    margin: 0;
+    cursor: pointer;
+  }
+}
+
+.calc {
+
+  &_wrapper {
+    background: $secondary-background-color;
+  }
+
+  &_container {
+    display: flex;
+    margin-bottom: 24px;
+    flex-flow: wrap;
+  }
+
+  &_chip {
+    padding: 8px 4px;
+    background: $background-light-blue;
+    margin: 0 8px 8px 0;
+    border-radius: 8px;
+
+    span {
+      font-family: Ubuntu-Bold, Ubuntu, serif;
+    }
+  }
+}
+
+.total {
+  margin: 0;
+  font-size: 24px;
+
+  span {
+    font-family: Ubuntu-Medium, Ubuntu, serif;
+  }
+}
+
+.static-filter-wrapper {
+  display: flex;
+  margin-bottom: $margin-bottom;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10vw, 14vw));
+  margin-bottom: $margin-bottom;
+  grid-gap: 1vw;
+
+  &_container {
+
+    p {
+      margin: 8px 0 0 0;
+      word-break: break-word;
+    }
+  }
+}
+
+.document {
+
+  &_container {
+    margin-bottom: $margin-bottom;
+  }
+
+  &_wrapper {
+    display: flex;
+
+  }
+
+  &_title {
+    margin: 0 .7vw 0 0;
+    background: $text-background;
+    border-radius: 8px;
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}
+
+label {
+  color: $grey-text-color;
+  font-size: 12px;
+
+  margin-bottom: 8px;
+}
+
+.upload-files {
+
+  &_container {
+    margin-bottom: $margin-bottom;
+  }
+
+  &_attach {
+    p {
+      font-size: 14px;
+    }
+
+    mat-icon {
+      margin-right: 0.2vw;
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &_chip {
+    p {
+      font-size: 14px;
+      color: $main-text-color;
+      text-decoration: underline;
+    }
+  }
+}
+
+.form {
+  display: flex;
+  border: 1px solid $border-grey-color;
+  border-radius: 8px;
+  margin-top: 1vh;
+
+  input {
+    border-radius: 8px;
+    border: 1px none;
+    padding: 1.6vh 0.75vw;
+    min-width: 5vw;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+  }
+
+  button {
+    align-self: center;
+  }
+}
+
+.credit-amount {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+
+  &_wrapper {
+    width: 100%;
+
+    label {
+      color: $grey-text-color;
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+  }
+
+}
+
+.credit-initial {
+  width: 75% !important;
+
+  &_position {
+    margin-left: 1vw;
+  }
+
+}
+
+.spinner-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1000;
+  background: rgb(0 0 0 / 50%);
+  display: grid;
+  place-items: center;
+
+}
+
+.term-initial {
+  input {
+    width: 55% !important;
+  }
+
+  mat-select {
+    width: 45% !important;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.credit-term-select {
+  ::ng-deep {
+
+    .mat-select-arrow {
+      border-left: 12px solid transparent !important;
+      border-right: none !important;
+      border-top: 7px solid transparent !important;
+      background-image: url('option-arrow-down.svg') !important;
+    }
+
+  }
+}
+
+.button-undisable {
+  padding: 14px 16px;
+}
+
+.wrap-term {
+  width: 100%;
+
+  &_term {
+    width: 100%;
+    padding: 0 0 0 1vw;
+
+    label {
+      color: $grey-text-color;
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+
+    .period-of-credit {
+      width: 100%;
+      display: flex;
+      border: 1px solid $border-grey-color;
+      border-radius: 8px;
+      align-items: center;
+      height: 100%;
+      margin-top: 1vh;
+
+
+      mat-form-field {
+        padding: 0;
+      }
+
+      input {
+        border-radius: 8px;
+        border: 1px none;
+        padding: 1.6vh 0.75vw;
+        min-width: 5vw;
+        width: 70%;
+        outline: none;
+        height: 100%;
+        font-size: 16px;
+      }
+
+      mat-select {
+        border: 0 none;
+        border-left: 1px solid $border-grey-color;
+        padding: 1.6vh 0.75vw;
+        width: 30%;
+        font-size: 16px;
+        height: 100%;
+      }
+
+      .credit-term-select {
+        ::ng-deep {
+
+          .mat-select-arrow {
+            border-left: 12px solid transparent !important;
+            border-right: none !important;
+            border-top: 7px solid transparent !important;
+            background-image: url('option-arrow-down.svg') !important;
+          }
+
+          .mat-select-panel {
+            background-color: red;
+          }
+
+          .mat-select-panel-wrap.ng-trigger {
+            margin-top: 5vh;
+          }
+        }
+      }
+
+    }
+
+  }
+}
+
+.error-input {
+  border: 2px solid red !important;
+}
+
+
+::ng-deep.product-card {
+  mat-dialog-container {
+    border-radius: 12px;
+    padding: 0 16px 12px 16px;
+  }
+}
+
+.buttons {
+
+  &_container {
+    margin-left: auto;
+  }
+
+  &_height {
+    min-height: 50px;
+    margin-right: 1vw;
+    margin-bottom: 1vh;
+    padding: 16px;
+  }
+}
+
+.pledge-menu {
+  position: absolute;
+  padding: 1vh 1vw;
+  width: 100%;
+  top: -100px;
+  left: 0;
+  background: $secondary-card-background-color;
+  border-radius: 8px;
+  box-shadow: 0 0 9px 0;
+}
+
+.title-pledge-card {
+  margin-bottom: 0;
+  font-weight: bolder;
+}
+
+.pledges {
+  display: flex;
+
+  &_warning {
+    align-items: center;
+  }
+
+  &_title-wrap {
+    min-width: 1vw;
+    padding: 0 1vw;
+
+    &_title {
+      background: $background-light-blue;
+      padding: 0.5vh 0.5vw;
+      cursor: pointer;
+    }
+  }
+}
+
+input::placeholder {
+  color: $placeholder-color
+}
+
+.disable-input {
+  background: $readonly-bg;
+}
+
+.error-msg {
+  color: $main-red;
+}
+
+@media screen and (max-width: $phone-screen-width) {
+  ::ng-deep.product-card {
+    mat-dialog-container {
+      padding: 0 16px 12px 16px;
+    }
+  }
+
+  .monthly-wrapper {
+    width: 100%;
+    margin-bottom: 1.5vh;
+
+    span {
+      margin: 0;
+      width: 100%;
+      font-size: 9px;
+    }
+  }
+
+  .card {
+    border: none;
+    padding: 0;
+    border-radius: initial;
+    border-bottom: 1px solid $border-switch-color;
+
+    &_header {
+      margin-bottom: 3vh;
+      margin-top: 1vh;
+
+      &_title {
+        font-size: 14px;
+        margin: 0;
+      }
+
+      &_monthly-payment {
+        margin: 0 0 8px 0;
+
+        span {
+          font-size: 16px;
+        }
+      }
+
+      &_logo {
+        max-width: 30vw;
+        max-height: 6vh;
+      }
+    }
+
+    &_header-mobile {
+      display: initial;
+
+      button {
+        width: 100%;
+        margin-bottom: 3vh;
+      }
+    }
+  }
+
+  .product-header {
+    margin-bottom: 2vh;
+  }
+
+  .static-filter-wrapper {
+    display: initial;
+  }
+
+  .credit-amount {
+    margin-bottom: 2vh;
+  }
+
+  .form {
+    input {
+      margin-top: 0;
+      padding: 1.6vh 3vw;
+      font-size: 14px;
+    }
+  }
+
+  .wrap-term {
+    &_term {
+      padding: 0;
+      font-size: 14px;
+
+      .period-of-credit {
+        margin-bottom: 2vh;
+
+        input {
+          margin-top: 0;
+          padding: 1.6vh 3vw;
+          font-size: 14px;
+        }
+
+        mat-select {
+          width: auto;
+          font-size: 14px;
+          padding: 1.6vh 3vw;
+        }
+
+        ::ng-deep.mat-select-value {
+          display: contents;
+        }
+      }
+    }
+  }
+
+  .filters {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 4vw;
+  }
+
+  .calc {
+    &_wrapper {
+      border: 1px solid #D5D9DC;
+      padding: 12px;
+      border-radius: 12px;
+    }
+
+    &_container {
+      overflow-y: auto;
+      white-space: nowrap;
+      flex-flow: initial;
+    }
+
+    &_container::-webkit-scrollbar {
+      width: 0;
+    }
+
+    &_chip {
+      font-size: 14px;
+      margin: 0 1.5vh 0 0;
+    }
+  }
+
+  .buttons {
+    &_container {
+      margin-left: inherit;
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+
+  ::ng-deep.product-card {
+    mat-dialog-container::-webkit-scrollbar {
+      width: inherit;
+    }
+  }
+
+  :host::ng-deep {
+    ::-webkit-scrollbar {
+      height: 0;
+    }
+  }
+}

@@ -1,0 +1,69 @@
+<div class="document-container">
+  <div class='wrapper-step'>
+
+    <div class='wrapper-step_step-left'>
+      <mat-icon svgIcon='check' class='check-icon'></mat-icon>
+      <label>{{'step' | translate}} 1</label>
+    </div>
+
+    <div class='wrapper-step_step-center'>
+      <mat-icon svgIcon='rectangle'></mat-icon>
+    </div>
+
+    <div class='wrapper-step_step-right'>
+    <mat-icon svgIcon='check' class='check-icon'></mat-icon>
+      <label>{{'step' | translate}} 2</label>
+    </div>
+
+    <div class='wrapper-step_step-center'>
+      <mat-icon svgIcon='rectangle'></mat-icon>
+    </div>
+
+    <div class='wrapper-step_step-right'>
+      <mat-icon svgIcon='check' class='check-icon'></mat-icon>
+      <label>{{'step' | translate}} 3</label>
+    </div>
+  </div>
+  <h2>{{'doc_attachment' | translate}}</h2>
+  <div class='card'>
+      <div class='document-menu' *ngIf='isDocMenu' #documentId>
+        <div class='document-card-wrap'>
+          <p class='title-document-card'>{{'list_of_documents'| translate}}</p>
+          <div class="document-title-row">
+            <label class='def-document-card'>Документы которые вы загрузили в профиль</label>
+            <div class='upload-files_attach' onclick="document.getElementById('getDocument').click()">
+              <label class="document_add"> + Добавить новый документ</label>
+              <input matInput type='file'
+                     accept='image/*'
+                     id='getDocument' style='display:none'
+                     name='Your label here.'
+                     placeholder="{{'logo'}}"
+                     (change)='onFileChanged($event)' />
+            </div>
+          </div>
+
+          <div class='documents'>
+            <p class='documents_warning' *ngIf='documents.length === 0'>Список документов пуст!</p>
+            <div *ngFor='let doc of documents; let i = index' class='documents_title-wrap'>
+              <p class='documents_title-wrap_title' (click)='notSelectedDocList(i)'>{{doc.name}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class='document_container'>
+        <p class='document-header'>{{'documents' | translate}}</p>
+        <p class='document_add' (click)='addDoc()' #addDocButton>{{'add' | translate}}</p>
+      </div>
+      <div class='document_wrapper' *ngFor='let docShow of documentsShow; let i = index'>
+        <div class='document_header-container'>
+          <p class='product-header document_header'>{{docShow.name}}</p>
+          <p class='document_delete' (click)='removeSelectedDocument(i)'>{{'delete' | translate}}</p>
+        </div>
+      </div>
+    </div>
+  <div class="document-btn">
+    <button class='button-white-primary button-back' (click)='back()'>{{'come_back' | translate}}</button>
+    <button class='button-primary button-back' (click)='sendApplication()'>{{'send_request' | translate}}</button>
+  </div>
+</div>

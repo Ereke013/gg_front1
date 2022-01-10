@@ -1,0 +1,73 @@
+@import "libs/mybpm-styles/variables";
+@import "libs/mybpm-styles/helper-placeholders";
+
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.typing-icon-div {
+  width: 100%;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  font-size: 12px;
+  line-height: 15px;
+
+  color: $secondary-text-color;
+  padding: 0.5rem;
+
+  .typer {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  > span:nth-child(n) {
+    margin-left: 5px;
+  }
+}
+
+.typing-icon {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 24px;
+
+
+  div {
+    background-color: $secondary-gray;
+    border: 1px solid $secondary-gray;
+    border-radius: 50%;
+  }
+
+  :nth-child(1) {
+    width: 4px;
+    height: 4px;
+    animation: fadein 1s cubic-bezier(0.55, 0.09, 0.68, 0.53) alternate infinite;
+    animation-delay: -1s
+  }
+
+  :nth-child(2) {
+    width: 6px;
+    height: 6px;
+    animation: fadein 1s cubic-bezier(0.55, 0.09, 0.68, 0.53) alternate infinite;
+    animation-delay: -0.6s
+  }
+
+  :nth-child(3) {
+    width: 8px;
+    height: 8px;
+    animation: fadein 1s cubic-bezier(0.55, 0.09, 0.68, 0.53) alternate infinite;
+    animation-delay: -0.3s
+  }
+}

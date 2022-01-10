@@ -1,0 +1,303 @@
+@import 'variables';
+
+* {
+  margin: 0;
+}
+
+.header {
+  width: 100%;
+}
+
+.header-wrapper {
+  margin: 2vh 15vw;
+  display: flex;
+}
+
+.header_left {
+  display: flex;
+}
+
+.header_left > p {
+  margin-right: 1vw;
+}
+
+.header-right-container {
+  width: 100%;
+  display: flex;
+}
+
+
+.header_right {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header_right > p {
+  margin-left: 1.5vw;
+}
+
+.nav-select {
+  display: flex;
+}
+
+.settings-select {
+  display: flex;
+
+  .select-menu-panel {
+    display: flex;
+  }
+}
+
+.left-margin {
+  margin-left: 2vw;
+}
+
+.header_p {
+  display: flex;
+  align-items: center;
+  color: $primary-btn-color;
+  cursor: pointer;
+  margin-left: 1vw;
+
+  label {
+    margin-left: 0.3vw;
+    color: $main-text-color;
+    font-size: 14px;
+  }
+
+  &::ng-deep .mat-menu-panel {
+    padding: 1vh 1vw !important;
+
+    .mat-menu-content:not(:empty) {
+      padding: 0;
+    }
+  }
+}
+
+.menuIcon {
+  display: none;
+}
+
+.header_left_route {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.header_credit_sel {
+  border-bottom: 3px solid $primary-btn-color;
+}
+
+.header_language_sel {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.header_language_sel > p {
+  margin-left: 0.3vw;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.logo {
+  font-size: 36px;
+  margin-right: 3vw;
+  cursor: pointer;
+
+  p {
+    font-family: Ubuntu-Bold, serif;
+  }
+}
+
+.user_header {
+  width: 5vw;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  margin-left: 0.3vw;
+  font-size: 16px;
+}
+
+::ng-deep.customize-menu {
+  padding: 1vh 1.5vw;
+  background-color: $main-white;
+  border: 1px solid $border-grey-color;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04), 0 2px 2px rgba(0, 0, 0, 0.06), 0 0 1px rgba(0, 0, 0, 0.04);
+  border-radius: 12px !important;
+
+  min-width: 19vw !important;
+
+  .title-menu {
+    font-size: 16px;
+    line-height: 20px;
+
+    color: $main-text-color;
+  }
+
+  .location-btn {
+    margin-top: 1vh;
+    display: flex;
+    width: 100%;
+
+    button {
+      border-radius: 4px;
+      background: none;
+      align-items: flex-start;
+      padding: 1.4vh 0.6vw;
+      cursor: pointer;
+    }
+
+    .save-city {
+      font-size: 16px;
+      line-height: 20px;
+      color: $primary-btn-color;
+      border: 1px solid $primary-btn-color;
+    }
+
+    .change-city {
+      color: $main-text-color;
+      border: 1px solid $border-grey-color;
+      margin-left: 0.7vw;
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+}
+
+::ng-deep.popover-menu {
+  padding: 0;
+  background-color: $main-white;
+  border: 1px solid $border-grey-color;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04), 0 2px 2px rgba(0, 0, 0, 0.06), 0 0 1px rgba(0, 0, 0, 0.04);
+  border-radius: 12px !important;
+  min-width: 12vw !important;
+}
+
+.menu-text {
+  padding: 0.5vh 1.5vw;
+  cursor: pointer;
+  margin: 1vh 0;
+}
+
+//.menu-text:hover {
+//  color: $secondary-text-primary-color
+//}
+
+.log {
+  display: flex;
+  margin-left: 1.5vw;
+  align-items: center;
+
+  mat-icon {
+    cursor: pointer;
+  }
+
+  p {
+    padding-left: 0.3vw;
+  }
+}
+
+.login-svg {
+  ::ng-deep #lo-arr {
+    stroke: $secondary-text-primary-color;
+  }
+
+  ::ng-deep #lo-line {
+    stroke: $secondary-text-primary-color;
+  }
+
+  ::ng-deep #lo-square {
+    stroke: $secondary-text-primary-color;
+  }
+}
+
+.logout-text{
+  color: $main-red;
+}
+
+.login-text{
+  color: $secondary-text-primary-color;
+}
+
+.logout-svg {
+  ::ng-deep #lo-arr {
+    stroke: $delete-red;
+  }
+
+  ::ng-deep #lo-line {
+    stroke: $delete-red;
+  }
+
+  ::ng-deep #lo-square {
+    stroke: $delete-red;
+  }
+}
+
+
+@media screen and (max-width: 1080px) {
+  .header_left_route {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    font-size: 15px;
+  }
+
+  .header_language_sel > p {
+    margin-left: 0.3vw;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  mat-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .header-wrapper {
+    margin: 2vh 13vw;
+  }
+
+}
+
+.active {
+  background: $background-light-blue;
+}
+
+@media screen and (max-width: 880px) {
+  .header_left_route {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    font-size: 14px;
+  }
+
+  .header_language_sel > p {
+    margin-left: 0.3vw;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .header_p {
+    label {
+      font-size: 14px;
+    }
+  }
+
+  mat-icon {
+    width: 18px;
+    height: 20px;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+
+  .header-wrapper {
+    margin: 2vh 8vw;
+  }
+}

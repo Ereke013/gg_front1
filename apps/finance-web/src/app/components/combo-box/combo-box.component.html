@@ -1,0 +1,27 @@
+<div class='combobox'>
+  <div class='wrapper'>
+    <input class='combobox-input'
+           type='text'
+           [placeholder]='list.title'
+           [(ngModel)]='inputItem'
+           (ngModelChange)='getFilteredList()'
+           (keyup)='onKeyPress($event)'
+           (blur)='toggleListDisplay(0)'
+           (focus)='toggleListDisplay(1)'>
+    <img *ngIf="emptyInput" class='arrow-down'
+         src='assets/icons/option-arrow-down.svg'
+         alt=''
+         (click)='getFilteredList()'>
+
+    <mat-icon *ngIf="!emptyInput" svgIcon='close' class="clear-input-icon" (click)="clearInput()"></mat-icon>
+  </div>
+
+  <div class='combobox-options' *ngIf='!listHidden'>
+    <list-item *ngFor='let item of filteredList;let i = index'
+               [ngClass]="{'selected': i===selectedIndex}"
+               (click)='selectItem(i)'>
+      {{item.displayTitle}}
+    </list-item>
+  </div>
+
+</div>

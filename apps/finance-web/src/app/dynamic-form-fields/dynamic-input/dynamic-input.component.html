@@ -1,0 +1,6 @@
+<mat-form-field appearance='outline' class='param-block-input'>
+  <mat-label>{{label}}</mat-label>
+  <input matInput [formControl]='formControl'
+         placeholder='{{placeholder}}' *ngIf="parameterType !== 'DESCRIPTION'">
+  <textarea matInput [formControl]="formControl" placeholder="{{placeholder}}" *ngIf="parameterType === 'DESCRIPTION'"></textarea>
+</mat-form-field>

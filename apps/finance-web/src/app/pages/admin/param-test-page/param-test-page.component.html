@@ -1,0 +1,36 @@
+<div class="form-field-block">
+
+  <div *ngFor="let param of parameterForFilterList; index as id">
+    <div>
+      <div *ngIf="!param.hasChild" class="form-field">
+        <mat-form-field *ngIf="param.type === dictType" appearance="outline">
+          <mat-label>{{param.title}}</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let r of param.dictList"
+                        [value]="r.dict">{{r.displayTitle}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="param.type !== dictType" appearance="outline">
+          <mat-label>{{param.title}}</mat-label>
+          <input placeholder="{{param.title}}" matInput>
+        </mat-form-field>
+      </div>
+
+      <div *ngIf="param.hasChild" class="form-field">
+        <mat-form-field appearance="outline">
+          <mat-label>{{param.title}}</mat-label>
+          <mat-select>
+            <mat-option (onSelectionChange)="dictValueSelected($event, r.dict, param)"
+                        *ngFor="let r of param.dictList"
+                        [value]="r.dict">{{r.displayTitle}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <hr *ngIf="(param.level + 1) === parameterForFilterList[id + 1]?.level">
+
+  </div>
+
+</div>

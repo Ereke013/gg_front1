@@ -1,0 +1,68 @@
+<div class='header'>
+  <div class='header-wrapper'>
+    <div class='header_left'>
+      <div class='logo' (click)='linkToCreditSelection()'><p>{{'your_finance' | translate}}</p></div>
+    </div>
+
+    <div [class]=" isMenuIconClicked ? 'menuSizeClicked showNav' : 'header-right-container'">
+      <div class='header_right'>
+        <div class='nav-select'>
+          <p class='header_left_route' [class.header_credit_sel]='isClientPage'
+             (click)='linkToCreditSelection()'>{{'credit_selection' | translate}}</p>
+          <p class='header_left_route left-margin'
+             [class.header_credit_sel]='isNewsPage'
+             (click)='linkToNews()'>{{'news' | translate}}</p>
+        </div>
+        <div class='settings-select'>
+          <div class='select-menu-panel'>
+            <div class='header_language_sel' [matMenuTriggerFor]='popoverLang'>
+              <mat-icon svgIcon='language'></mat-icon>
+              <p>{{currentLanguage}}</p>
+            </div>
+
+            <mat-menu #popoverLang='matMenu' class='popover-menu'>
+              <p *ngFor='let lang of languages' class='menu-text' (click)='changeLanguage(lang.id)'>
+                {{lang.title}}
+              </p>
+            </mat-menu>
+
+            <p class='header_p' [matMenuTriggerFor]='menu'>
+              <mat-icon svgIcon='location'></mat-icon>
+              <label>{{cityLocation}}</label>
+
+              <mat-menu #menu='matMenu' class='customize-menu'>
+                <label class='title-menu'>{{'city_default' | translate}} {{cityLocation}} ?</label>
+                <label class='location-btn'>
+                  <button class='save-city'>{{'yes_save' | translate}}</button>
+                  <button class='change-city' (click)='changeLocation()'>{{'change_location' | translate}}</button>
+                </label>
+              </mat-menu>
+            </p>
+            <p class='header_p' [matMenuTriggerFor]='popover'>
+              <mat-icon svgIcon='account_person'></mat-icon>
+              <!--              <label class='user_header' [title]='name'> {{name}}</label>-->
+            </p>
+
+            <mat-menu #popover='matMenu' class='popover-menu'>
+              <p class='menu-text' (click)='linkToProfile("profile")'>{{'profile' | translate}}</p>
+              <p class='menu-text' *ngIf='isAdmin' (click)='linkToProfile("admin")'>{{'admin_page' | translate}}</p>
+              <p class='menu-text' (click)='linkToProfile("credit_history")'>{{'credit_history' | translate}}</p>
+              <p class='menu-text' (click)='linkToProfile("favorites")'>{{'favorites' | translate}}</p>
+              <p class='menu-text' (click)='linkToProfile("applications")'>{{'applications' | translate}}</p>
+              <div class='log'>
+                <mat-icon svgIcon='log-out' class="{{isLogIn? 'login-svg' : 'logout-svg'}} "></mat-icon>
+                <p class='menu-text logout-text' *ngIf='!isLogIn'
+                   (click)='linkToProfile("log_out")'>{{'log_out' | translate}}</p>
+                <p class='menu-text login-text' *ngIf='isLogIn'
+                   (click)='linkToProfile("log_in")'>{{'log_in' | translate}}</p>
+              </div>
+            </mat-menu>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class='header_p menuIcon'>
+      <mat-icon svgIcon='menuIcon' (click)='setShowMenuPanel()'></mat-icon>
+    </p>
+  </div>
+</div>

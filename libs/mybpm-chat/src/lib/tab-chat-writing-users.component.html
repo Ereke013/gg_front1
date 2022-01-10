@@ -1,0 +1,23 @@
+<div
+  class="typing-icon-div"
+  *ngIf="writingUsers && writingUsers.length > 0"
+>
+
+  <div class="typing-icon">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <span
+    *ngFor="let wr of writingUsers; let last = last"
+    class="typer"
+  >
+
+    {{wr.name}} <span *ngIf="!last">,</span>
+
+  </span>
+
+  <span class="typer-span">печатает...</span>
+
+</div>

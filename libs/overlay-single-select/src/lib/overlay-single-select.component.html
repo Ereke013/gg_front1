@@ -1,0 +1,45 @@
+<div
+  *ngIf="useSearch"
+  class="search-block"
+  fxLayout="row"
+  fxLayoutGap=".5rem"
+  fxLayoutAlign="start center"
+>
+  <app-search-block
+    (valueChanged)="filterOptions($event)"
+  ></app-search-block>
+</div>
+
+<div class="options scroll-bar">
+  <div
+    class="option"
+    fxLayout="row"
+    fxLayoutGap=".25rem"
+    *ngFor="let option of optionsToShow"
+  >
+
+    <ui-radio
+      [ngModel]="option[idFieldName] === value"
+      (ngModelChange)="selected.emit(option)"
+    >
+      <span [attr.selenide]="'overlay-option-wdJXoOHDXr ' + option[labelFieldName]">
+        {{(labelFieldName ? option[labelFieldName] : asString(option)) | translate}}
+      </span>
+    </ui-radio>
+
+  </div>
+
+  <div
+    class="option"
+    fxLayout="row"
+    fxLayoutGap=".25rem"
+  >
+
+    <ng-container *ngTemplateOutlet="lastOptionTemplate"></ng-container>
+
+  </div>
+
+  <div *ngIf="optionsToShow.length === 0">
+    {{'not_found' | translate}}
+  </div>
+</div>

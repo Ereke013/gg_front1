@@ -1,0 +1,20 @@
+@import "helper-placeholders";
+@import "custom-input";
+
+.g-icon {
+  @extend %icon;
+}
+
+.g-delete-icon {
+  @extend %icon;
+  @extend %red-on-hover-icon;
+}
+
+.g-common-icon {
+  @extend %icon;
+  @extend %blue-on-hover-icon;
+}
+
+.g-mybpm-input {
+  @extend %mybpm-input;
+}

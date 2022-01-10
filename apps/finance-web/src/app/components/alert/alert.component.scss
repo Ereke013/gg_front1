@@ -1,0 +1,39 @@
+@import "variables";
+
+.alert-block {
+  position: fixed;
+  z-index: 9999;
+  min-width: 20vw;
+  right: 0.5rem;
+  margin-left: 0.5rem;
+  top: 0.5rem;
+}
+
+.alert {
+  padding: 20px;
+  margin-bottom: 15px;
+  color: white;
+  font-family: Ubuntu, serif;
+  border-radius: 12px;
+}
+
+.alert-success {
+  background: rgba(1, 156, 49, 0.6);
+}
+
+.alert-warning {
+  background: rgba(255, 255, 0, 0.6);
+}
+
+.alert-info {
+  background: rgba(51, 153, 255, 0.6);
+}
+
+.alert-danger {
+  background: rgba(255, 0, 0, 0.6);
+}
+
+mat-icon {
+  cursor: pointer;
+  float: right;
+}

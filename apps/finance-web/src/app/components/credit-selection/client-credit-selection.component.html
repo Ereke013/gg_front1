@@ -1,0 +1,87 @@
+<div class='client-credit-sel'>
+  <div class='credit-wrapper'
+       [class.display-change]="pageTabFilter === 'mortgageLoan' || pageTabFilter === 'carLoan'"
+  >
+    <div class='sum-block'>
+      <div class='sum-block_wrapper' *ngIf='isStatic'>
+        <label
+          *ngIf='isSumOfCreditTitleChanged && pageTabFilter === "mortgageLoan"'>{{'cost_of_property' | translate}}</label>
+        <label *ngIf='isSumOfCreditTitleChanged && pageTabFilter === "carLoan"'>{{'cost_of_auto' | translate}}</label>
+        <label *ngIf='!isSumOfCreditTitleChanged'>{{'sum_of_credit' | translate}}</label>
+
+        <div class='client-credit-sel_form'>
+          <input mask='separator'
+                 suffix=' ₸'
+                 thousandSeparator=" "
+                 separatorLimit="1000000000"
+                 id='sumCredit'
+                 placeholder="{{'select_sum' | translate }}"
+                 [(ngModel)]='sumCreditInt'
+                 (ngModelChange)='changeSum()'>
+          <button mat-icon-button (click)='onClearSumOfCredit()' [class.hidden]='isDeleteIconSumOfCredit'>
+            <mat-icon svgIcon='close'></mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class='sum-block' *ngIf="pageTabFilter === 'mortgageLoan' || pageTabFilter === 'carLoan'">
+      <div class='sum-block_wrapper' *ngIf='isStatic'>
+        <label
+          *ngIf='isSumOfCreditTitleChanged && (pageTabFilter === "mortgageLoan" || pageTabFilter === "carLoan")'>{{'initial_fee' | translate}}, %</label>
+
+        <div class='client-credit-sel_form'>
+          <input mask='separator.2'
+                 separatorLimit="100"
+                 placeholder="{{'initial_fee' | translate }}, %"
+                 [(ngModel)]='initialFee'
+                 (ngModelChange)='changeFee()'>
+          <button mat-icon-button (click)='onClearInitialFee()' [class.hidden]='isDeleteIconInitialFeeOfCredit'>
+            <mat-icon svgIcon='close'></mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class='block-term'>
+      <div class='block-term_wrap' *ngIf='isStatic'>
+        <label>{{'term_of_credit' | translate}}</label>
+        <div class='period-of-credit'>
+          <input mask="0000"
+                 placeholder="{{'select_term' | translate}}"
+                 [(ngModel)]='termCredit'
+                 (ngModelChange)='changeTerm()'
+                 min='1'
+          >
+          <button mat-icon-button (click)='onClearTermOfCredit()' [class.hidden]='isDeleteIconTermOfCredit'>
+            <mat-icon svgIcon='close'></mat-icon>
+          </button>
+
+          <mat-select placeholder="{{'select'|translate}}"
+                      class='credit-term-select'
+                      disableOptionCentering panelClass='mat-select-dropdown'
+                      [(ngModel)]='termSelect' (ngModelChange)='termSelectChange()'>
+            <mat-option *ngFor='let value of termSelectList' [value]='value'>
+              {{value | translate}}
+            </mat-option>
+          </mat-select>
+        </div>
+      </div>
+    </div>
+
+    <div class='client-credit-sel_all-filter-btn' id='allFiltersButton'>
+      <button [class.button-primary]='isFilterClicked'
+              [class.button-white-primary]='!isFilterClicked'
+              (click)='onClicked()'>
+        {{'all_filters' | translate}}
+      </button>
+    </div>
+  </div>
+  <app-all-filters id='appAllFilters'
+                   [pageTabFilter]='pageTabFilter'
+                   [filterList]='filterListChange'
+                   *ngIf='isFilterClicked'
+                   (filterListChange)='changeFilterList($event)'
+                   class='filters'></app-all-filters>
+</div>
+
+

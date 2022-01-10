@@ -1,0 +1,17 @@
+<div class='container' [class.overflow-y]='isMenuOpened'>
+
+  <div class='header' [class.header-mobile]="isMenuOpened">
+    <app-client-header *ngIf='!isMobile'></app-client-header>
+    <app-mobile-header *ngIf='isMobile' (isMenuOpened)='configureMenu($event)' id='mobile-header'></app-mobile-header>
+  </div>
+
+  <div class='main-block'>
+    <router-outlet></router-outlet>
+  </div>
+
+  <footer>
+    <app-client-footer></app-client-footer>
+  </footer>
+
+</div>
+

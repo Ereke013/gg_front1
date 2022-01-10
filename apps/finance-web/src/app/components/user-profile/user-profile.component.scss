@@ -1,0 +1,163 @@
+@import "variables";
+
+.info-container {
+  display: flex;
+}
+
+.info-container-mobile {
+  display: inherit;
+}
+
+.left-menu {
+
+  &_container {
+    border-right: 1px solid $border-switch-color;
+  }
+
+  &_container-mobile {
+  }
+
+  &_wrapper {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    height: 5vh;
+    padding: 16px;
+
+    p {
+      margin: 0;
+      color: $grey-text-color;
+    }
+  }
+
+  &_active {
+    background: $background-light-blue;
+    border-radius: 12px;
+
+    ::ng-deep #user-body {
+      fill: $primary-btn-color;
+    }
+
+    ::ng-deep #user-head {
+      fill: $primary-btn-color;
+    }
+
+    ::ng-deep #lock-inside {
+      fill: $primary-btn-color;
+    }
+
+    ::ng-deep #lock-outside {
+      fill: $primary-btn-color;
+    }
+
+    ::ng-deep #doc1 {
+      fill: $primary-btn-color;
+    }
+
+    ::ng-deep #doc2 {
+      fill: $primary-btn-color;
+    }
+
+    ::ng-deep #doc3 {
+      fill: $primary-btn-color;
+    }
+
+    p {
+      color: $primary-btn-color;
+    }
+  }
+
+  &_tabs {
+    width: 14vw;
+    margin-bottom: 3vh;
+    margin-right: 1vw;
+
+    mat-icon {
+      margin-right: 1.1vw;
+    }
+  }
+}
+
+.right-menu-margin {
+  margin: 0 1.1vw;
+  width: 100%
+}
+
+:host::ng-deep #user-body {
+  fill: $grey-text-color;
+}
+
+:host::ng-deep #user-head {
+  fill: $grey-text-color;
+}
+
+@media screen and (max-width: 960px) {
+  .icon-size {
+    width: 28px;
+    height: 28px;
+  }
+
+  .left-menu {
+    &_wrapper {
+      p {
+        margin: 0;
+        color: $grey-text-color;
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .icon-size {
+    width: 30px;
+    height: 30px;
+  }
+
+  .left-menu {
+    &_wrapper {
+      p {
+        margin: 0;
+        color: $grey-text-color;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $phone-screen-width) {
+  .left-menu {
+    &_container-mobile {
+      display: flex;
+      justify-content: space-between;
+      overflow-y: auto;
+    }
+
+    &_active {
+      padding: 16px;
+
+      p {
+        color: $primary-btn-color;
+      }
+
+      mat-icon {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    &_container-mobile::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+
+    &_tabs {
+      white-space: nowrap;
+      width: 100%;
+    }
+  }
+
+  .right-menu-margin {
+    margin: 0;
+  }
+}

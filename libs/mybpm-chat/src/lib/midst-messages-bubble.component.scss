@@ -1,0 +1,29 @@
+@import "libs/mybpm-styles/variables";
+@import "libs/mybpm-styles/helper-placeholders";
+
+:host {
+  &:focus {
+    outline: none;
+  }
+}
+
+.not-readed-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.day-splitter-text {
+  font-size: 14px;
+  line-height: 14px;
+  border: 1px transparent solid;
+  border-radius: 5px;
+  width: auto;
+  height: auto;
+  margin-top: .5rem;
+  padding: .5rem;
+  background-color: hsla(0, 0%, 100%, 0.77);
+  color: $main-text-color;
+}

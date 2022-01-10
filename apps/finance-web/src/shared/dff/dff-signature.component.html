@@ -1,0 +1,12 @@
+<app-single-tab
+  [fieldId]="f.fieldId"
+  [fieldLabel]="f.label"
+>
+  <app-overlay-signature
+    [signatureId]="f.fieldId"
+    [draftId]="data.draftId"
+    [boId]="data.ownerBoId"
+    [boiId]="data.ownerBoiId"
+    [boiForCreate]="boiForCreate"
+  ></app-overlay-signature>
+</app-single-tab>

@@ -1,0 +1,138 @@
+@import "libs/mybpm-styles/variables";
+@import "libs/mybpm-styles/helper-placeholders";
+
+mat-icon {
+  @extend %middle-icon;
+}
+
+.file-element-icon {
+  margin-right: 5px;
+}
+
+.file-element {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+
+  &:hover {
+    .file-delete-icon {
+      opacity: 1;
+    }
+  }
+}
+
+.file-element-name {
+  font-size: 12px;
+  line-height: 14px;
+  color: $main-user-color;
+  margin-right: 20px;
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  transition: color 150ms, border-bottom-color 150ms;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &:hover {
+    color: $main-blue;
+    border-bottom: 1px solid $main-blue;
+  }
+}
+
+.file-element-date {
+  font-family: $font-medium;
+  font-size: 12px;
+  line-height: 15px;
+  color: rgba($main-user-color, 0.3);
+  cursor: default;
+  white-space: nowrap;
+}
+
+.file-delete-icon {
+  opacity: 0;
+  margin-left: 20px;
+  color: $border-btn-color;
+  transition: opacity 150ms, color 150ms;
+
+  &:hover {
+    color: $main-red;
+  }
+}
+
+.tile-container {
+  display: flex;
+  flex-wrap: wrap
+}
+
+.tile-box {
+  width: 60px;
+  height: 85px;
+  border-radius: 5px;
+  margin-top: 5px;
+  position: relative;
+
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.tile-element {
+  border: 1px solid $border-btn-color;
+  transition: border 150ms, background-color 150ms;
+  margin-right: 9px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  > img, > mat-icon {
+    z-index: -1;
+  }
+
+  &:hover {
+    border: 1px solid $main-blue;
+    cursor: pointer;
+    background: rgba($secondary-gray, 0.7);
+
+    .tile-element-buttons {
+      opacity: 1;
+    }
+  }
+}
+
+.tile-element-buttons {
+  opacity: 0;
+  transition: opacity 250ms;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 5px;
+
+  mat-icon[svgIcon=no-color-delete] {
+    color: $main-red;
+  }
+
+  mat-icon[svgIcon=no-color-download] {
+    color: $main-blue;
+  }
+}
+
+.tile-element-icon {
+  @extend %large-x-icon;
+}
+
+.tile-add-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+}
+
+.tile-add-icon {
+  @extend %middle-x-icon;
+  color: $main-blue;
+  cursor: pointer;
+}

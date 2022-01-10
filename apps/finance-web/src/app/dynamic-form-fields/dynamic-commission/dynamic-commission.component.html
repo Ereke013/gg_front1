@@ -1,0 +1,22 @@
+<div class="commission-container">
+  <label>{{label | translate}}</label>
+  <div class="commission-container_inputs">
+    <input type="text"
+           mask='separator'
+           thousandSeparator=" "
+           placeholder="{{label | translate}}"
+           [(ngModel)]="commissionValue"
+           (ngModelChange)="onChangeCommissionValue()"
+           step="0.1"
+    >
+    <mat-select placeholder="{{'select'|translate}}"
+                disableOptionCentering panelClass="mat-select-dropdown"
+                [(ngModel)]="commissionType" (ngModelChange)="onChangeCommissionValue()">
+      <mat-option *ngFor='let value of typesForCommissions' [value]='value'>
+        {{value | translate}}
+      </mat-option>
+    </mat-select>
+  </div>
+</div>
+
+

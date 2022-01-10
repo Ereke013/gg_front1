@@ -1,0 +1,19 @@
+<ng-container *ngIf="c; else defaultTemplate">
+  <ng-template [ngComponentOutlet]="c"></ng-template>
+</ng-container>
+
+<ng-template #defaultTemplate>
+  <input
+    type="radio"
+    [id]="id"
+    [name]="id"
+    [disabled]="disabled"
+    [checked]="value"
+    (change)="inputChange($event)"
+    (click)="click()"
+  >
+  <label [for]="id">
+    <ng-content></ng-content>
+  </label>
+
+</ng-template>

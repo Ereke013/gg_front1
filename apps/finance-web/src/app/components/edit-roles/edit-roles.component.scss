@@ -1,0 +1,47 @@
+@import "variables";
+
+.card-content {
+  //width: 70vw;
+}
+
+.modal-action-btn {
+  background-color: #4285f4;
+  color: $main-white;
+}
+
+.modal-invalid-action-btn {
+  color: $title-gray;
+}
+
+.product-titles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-column-gap: 5vw;
+}
+
+.product-titles > mat-form-field {
+  margin: 0 12px 0 12px;
+  max-width: 280px;
+  width: 100%;
+}
+
+.param-block {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-column-gap: 5vw;
+  grid-row-gap: 1vw;
+
+  div {
+    max-width: 280px;
+    width: 100%;
+    margin: 0 12px 0 12px;
+  }
+
+  .param-block-input {
+    width: 100%;
+  }
+}
+
+.hide {
+  display: none;
+}

@@ -1,0 +1,12 @@
+<app-admin-item-page
+  [boiTable]='boiTable'
+  [boiFilter]='boiFilter'
+  [pageItemName]="'news'"
+  [isSettingsButtonNeeded]='true'
+  (editItemId)='openEditDialog($event)'
+  (deleteItemId)='deleteItemId($event)'
+  (searchTextResult)="handleSearchText($event)"
+  (bulkUpButtonClicked)='onBulkOpButtonClick($event)'
+>
+
+</app-admin-item-page>

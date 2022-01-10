@@ -1,0 +1,7 @@
+<app-news-header></app-news-header>
+<div class='news' [innerHTML]='fullText'></div>
+<div class="news back-container">
+  <div class="button-white-primary back-btn" (click)="backToNews()">
+    <label>{{'backNews' | translate}}</label>
+  </div>
+</div>

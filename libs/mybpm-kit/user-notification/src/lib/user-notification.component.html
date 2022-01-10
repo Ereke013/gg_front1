@@ -1,0 +1,36 @@
+<div class="un-head-block">
+
+  <div class="un-head-block-title">
+    <span>Чаты</span>
+
+    <mb-user-notification-button-set
+      *ngIf="count?.messages > 0"
+      (expandClick)="chatExpansion.toggle()"
+      (closeClick)="deleteAll()"
+    ></mb-user-notification-button-set>
+  </div>
+
+</div>
+
+<app-expansion-panel
+  #chatExpansion
+  defaultExpanded
+>
+  <ng-container *ngIf="messageNotifications$ | async as notifications">
+    <mb-user-notification-block-content
+      *ngFor="let notification of notifications"
+      header="Общее"
+      type="message"
+      [notification]="notification"
+    ></mb-user-notification-block-content>
+  </ng-container>
+
+  <ng-container *ngIf="mentionNotifications$ | async as notifications">
+    <mb-user-notification-block-content
+      *ngFor="let notification of notifications"
+      header="Вас упомянули"
+      type="mention"
+      [notification]="notification"
+    ></mb-user-notification-block-content>
+  </ng-container>
+</app-expansion-panel>

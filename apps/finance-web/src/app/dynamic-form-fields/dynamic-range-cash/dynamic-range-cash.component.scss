@@ -1,0 +1,35 @@
+.range-cash-container .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.range-cash-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &_inputs {
+    display: flex;
+    margin-top: 0.5vh;
+  }
+}
+
+.input-left {
+  width: 49%;
+}
+
+.input-right {
+  width: 49%;
+}
+
+.range-right-align {
+  text-align: right;
+}
+
+input.range-right-align::-webkit-outer-spin-button,
+input.range-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.range-right-align {
+  -moz-appearance: textfield;
+}

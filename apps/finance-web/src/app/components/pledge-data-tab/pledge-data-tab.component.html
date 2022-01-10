@@ -1,0 +1,210 @@
+<div mat-dialog-content *ngIf='tab === "product_data"' class='container'>
+
+  <div *ngIf='applicationRecord?.productDetail.displayTitleRu'>
+    <div class='show-input-wrapper'>
+      <div class='show-input'>
+        <mat-label>{{'product_title' | translate}}</mat-label>
+        <div class='input-form input'>{{applicationRecord.productDetail.displayTitleRu ? applicationRecord.productDetail.displayTitleRu : 'not_indicated' | translate}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf='applicationRecord?.productDetail.code'>
+    <div class='show-input-wrapper'>
+      <div class='show-input'>
+        <mat-label>{{'bank_title' | translate}}</mat-label>
+        <div class='input-form input'>{{applicationRecord.productDetail.code ? applicationRecord.productDetail.code : 'not_indicated' | translate}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngFor='let record of applicationRecord?.productDetail.parameters'
+       [class.hide]='record.paramValue === null ||
+       record.filterType?.includes("borrower") ||
+       record.displayTitle === "Дополнительные условия"'>
+    <div class='show-input-wrapper'>
+      <div class='show-input'>
+        <mat-label>{{record.displayTitle}}</mat-label>
+        <div class='input-form input'>{{record.paramValue ? record.paramValue : 'not_indicated' | translate}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div mat-dialog-content *ngIf='tab === "borrower_data"' class='container'>
+  <div class='show-input'>
+    <mat-label>{{'iin' | translate}}</mat-label>
+    <div class='input-form input'>{{clientRecord?.iin? clientRecord?.iin : 'not_indicated' | translate}}</div>
+  </div>
+
+  <div class='show-input'>
+    <mat-label>{{'fullName' | translate}}</mat-label>
+    <div class='input-form input'>{{clientRecord?.fullName? clientRecord?.fullName : 'not_indicated' | translate}}</div>
+  </div>
+
+  <div class='show-input'>
+    <mat-label>{{'birth_date' | translate}}</mat-label>
+    <div class='input-form input'>{{clientRecord?.dateOfBirth? clientRecord?.dateOfBirth : 'not_indicated' | translate}}</div>
+  </div>
+
+  <div class='show-input'>
+    <mat-label>{{'address' | translate}}</mat-label>
+    <div class='input-form input'>{{clientRecord?.address? clientRecord?.address : 'not_indicated' | translate}}</div>
+  </div>
+
+  <div class='show-input'>
+    <mat-label>{{'income_amount' | translate}}</mat-label>
+    <div class='input-form input'>{{clientRecord?.incomeAmount? clientRecord?.incomeAmount : 'not_indicated' | translate}}</div>
+  </div>
+
+  <div class='show-input'>
+    <mat-label>{{'phone' | translate}}</mat-label>
+    <div class='input-form input'>{{clientRecord?.phone ? '+' + clientRecord?.phone : 'not_indicated' | translate}}</div>
+  </div>
+
+  <div class='show-input'>
+    <mat-label>{{'workExperience' | translate}}</mat-label>
+    <div class='input-form input'>{{clientRecord?.workExperience? clientRecord?.workExperience : 'not_indicated' | translate}}</div>
+  </div>
+
+</div>
+
+<div mat-dialog-content *ngIf='tab === "additionally"' class='container addition-application'>
+  <div class='show-input'>
+    <mat-label>{{'additionally' | translate}}</mat-label>
+    <div class='input-form input'>{{additionalInfo?.additionalValue? additionalInfo?.additionalValue : 'not_indicated' | translate}}</div>
+  </div>
+
+<!--  <p *ngIf='additionalInfo?.creditHistory.fileName === null'>Нет файлов</p>-->
+<!--  <div class='show-input' *ngIf='additionalInfo?.creditHistory.fileName !== null'>-->
+<!--    <mat-label>{{'credit_history' | translate}}</mat-label>-->
+<!--    <p class='credit-history'-->
+<!--       (click)='downloadReport(additionalInfo?.creditHistory.id)'>{{additionalInfo?.creditHistory.fileName}}</p>-->
+<!--  </div>-->
+
+  <div class="docs">
+    <mat-label>{{'documents' | translate}}</mat-label>
+    <p *ngIf='additionalInfo?.documentIds.length === 0'>Нет файлов</p>
+    <div *ngFor='let img of additionalInfo?.documentIds' class="upload-files_chip files-img">
+<!--      <img appImageCache [appSetImage]='{id: img}'>-->
+      <p class="download-doc" (click)="downloadDoc(img.fileId)">{{img.fileName}}</p>
+    </div>
+  </div>
+</div>
+
+<div mat-dialog-content *ngIf='tab === "total_cost"' class='container'>
+  <div class='show-input'>
+    <mat-label>{{'amount_of_credit' | translate}}</mat-label>
+    <div class='input-form input'>{{applicationRecord?.amountOfCredit}}</div>
+  </div>
+
+  <div class='show-input'>
+    <mat-label>{{'credit_term' | translate}}</mat-label>
+    <div class='input-form input'>{{applicationRecord?.creditTerm}}</div>
+  </div>
+
+  <div class='show-input' *ngIf="applicationRecord?.initialFee">
+    <mat-label>{{'initial_fee' | translate}}</mat-label>
+    <div class='input-form input'>{{applicationRecord?.initialFee}}</div>
+  </div>
+
+  <div class='show-input'>
+    <mat-label>{{'overpayment' | translate}}</mat-label>
+    <div class='input-form input'>{{applicationRecord?.overpayment}}</div>
+  </div>
+
+  <div class='show-input'>
+    <mat-label>{{'organizationCommission' | translate}}</mat-label>
+    <div class='input-form input'>
+      {{applicationRecord?.commissionForConsideration !== null ? applicationRecord?.commissionForConsideration : 'Не указано'}}
+    </div>
+  </div>
+
+  <div class='show-input'>
+    <mat-label>{{'monthly_payment' | translate}}</mat-label>
+    <div class='input-form input'>{{applicationRecord?.monthlyPayment}}</div>
+  </div>
+
+  <div class='show-input'>
+    <mat-label>{{'issuanceCommission' | translate}}</mat-label>
+    <div class='input-form input'>{{applicationRecord?.issuanceCommission}}</div>
+  </div>
+
+  <div class='show-input'>
+    <mat-label>{{'costOfIssuance' | translate}}</mat-label>
+    <div class='input-form input'>{{applicationRecord?.issuanceCosts}}</div>
+  </div>
+
+  <div class='show-input'>
+    <mat-label>{{'total_cost' | translate}}</mat-label>
+    <div class='input-form input'>{{applicationRecord?.totalCosts}}</div>
+  </div>
+</div>
+
+<div mat-dialog-content
+     *ngIf='tab === "pledge_data"'
+     [class.dialog-size]="pledgeRecords?.length !== 0"
+  >
+  <div style="margin-top: 2vh;" *ngIf="!pledgeRecords || pledgeRecords.length === 0">{{'no_data' | translate}}</div>
+  <div *ngFor='let pledgeRecord of pledgeRecords; let i=index'>
+    <h2>{{'pledge' | translate}} {{i + 1}}</h2>
+    <div class='show-input-wrapper' *ngIf='pledgeRecord.typeOfPledge === pledgeType.PROPERTY'>
+      <div class='show-input'>
+        <mat-label>{{'type_of_pledge' | translate}}</mat-label>
+        <div class='input-form input'>{{pledgeRecord.typeOfPledge | translate}}</div>
+      </div>
+
+      <div class='show-input'>
+        <mat-label>{{'year_of_pledge' | translate}}</mat-label>
+        <div class='input-form input'>{{pledgeRecord.yearOfBuilt ? pledgeRecord.yearOfBuilt : 'not_indicated' | translate}}</div>
+      </div>
+
+      <div class='show-input'>
+        <mat-label>{{'address' | translate}}</mat-label>
+        <div class='input-form input'>{{pledgeRecord.location? pledgeRecord.location : 'not_indicated' | translate}}</div>
+      </div>
+
+      <div class='show-input'>
+        <mat-label>{{'type_of_built' | translate}}</mat-label>
+        <div class='input-form input'>{{pledgeRecord.typeOfBuilt? pledgeRecord.typeOfBuilt : 'not_indicated' | translate}}</div>
+      </div>
+
+      <div class='show-input'>
+        <mat-label>{{'wall_material' | translate}}</mat-label>
+        <div class='input-form input'>{{pledgeRecord.wallMaterial ? pledgeRecord.wallMaterial : 'not_indicated' | translate}}</div>
+      </div>
+
+      <div class='show-input'>
+        <mat-label>{{'age_of_pledger' | translate}}</mat-label>
+        <div class='input-form input'>{{pledgeRecord?.ageOfPledger.trim().length !== 0 ? pledgeRecord.ageOfPledger : 'not_indicated' | translate}}</div>
+      </div>
+    </div>
+
+    <div class='show-input-wrapper' *ngIf='pledgeRecord.typeOfPledge === pledgeType.VEHICLE'>
+      <div class='show-input'>
+        <mat-label>{{'type_of_pledge' | translate}}</mat-label>
+        <div class='input-form input'>{{pledgeRecord.typeOfPledge | translate}}</div>
+      </div>
+
+      <div class='show-input'>
+        <mat-label>{{'year_of_release' | translate}}</mat-label>
+        <div class='input-form input'>{{pledgeRecord.yearOfRelease? pledgeRecord.yearOfRelease : 'not_indicated' | translate}}</div>
+      </div>
+
+      <div class='show-input'>
+        <mat-label>{{'country_of_manufacture' | translate}}</mat-label>
+        <div class='input-form input'>{{pledgeRecord.countryOfManufacture? pledgeRecord.countryOfManufacture : 'not_indicated' | translate}}</div>
+      </div>
+
+      <div class='show-input'>
+        <mat-label>{{'type_of_vehicle' | translate}}</mat-label>
+        <div class='input-form input'>{{pledgeRecord.typeOfVehicle? pledgeRecord.typeOfVehicle : 'not_indicated' | translate}}</div>
+      </div>
+
+      <div class='show-input'>
+        <mat-label>{{'age_of_pledger' | translate}}</mat-label>
+        <div class='input-form input'>{{pledgeRecord?.ageOfPledger.trim().length !== 0 ? pledgeRecord.ageOfPledger : 'not_indicated' | translate}}</div>
+      </div>
+    </div>
+  </div>
+</div>

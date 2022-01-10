@@ -1,0 +1,16 @@
+<app-admin-item-page
+  [boiTable]="dictBoiTable"
+  [boiFilter]="filter"
+  [pageItemName]="'bank_contacts'"
+  [isPopOverNeeded]="false"
+  [isSettingsButtonNeeded]="false"
+  [isAccess]="isAccess"
+  (searchTextResult)="handleSearchText($event)"
+  (tableOrdering)="setProductOrdering($event)"
+  (editItemId)="openEditDialog($event)"
+  (deleteItemId)="deleteBankContact($event)"
+  (bulkUpButtonClicked)="onBulkOpButtonClick($event)"
+  (loadMoreItems)="loadNextContactInstanceRecords($event)"
+>
+
+</app-admin-item-page>

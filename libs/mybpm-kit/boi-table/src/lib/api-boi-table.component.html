@@ -1,0 +1,83 @@
+<div
+  class="bat-table-container"
+  infiniteScroll
+  [infiniteScrollDistance]=".5"
+  [scrollWindow]="false"
+  (scrolled)="loadNext()"
+>
+  <table
+    *loading="tableLoading"
+    class="bat-table"
+  >
+
+    <thead class="bat-thead">
+      <tr class="bat-tr">
+        <th
+          *ngFor="let head of table.heads"
+          [title]="head.name"
+        >
+          <div (click)="toggleSort(head)">
+            <span>{{head.name}}</span>
+
+            <div *ngIf="orderCode === head.code">
+
+              <ng-container [ngSwitch]="orderState">
+
+                <mat-icon
+                  *ngSwitchCase="OrderState.ASC"
+                  svgIcon="bat-table-head-asc"
+                ></mat-icon>
+
+                <mat-icon
+                  *ngSwitchCase="OrderState.DESC"
+                  svgIcon="bat-table-head-desc"
+                ></mat-icon>
+
+                <ng-container *ngSwitchDefault></ng-container>
+
+              </ng-container>
+
+            </div>
+          </div>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody class="bat-tbody">
+
+      <ng-container *ngIf="table.records.length > 0">
+        <tr
+          class="bat-tr"
+          *ngFor="let rec of table.records"
+          (click)="recordClicked(rec, $event)"
+        >
+          <td
+            class="bat-td"
+            *ngFor="let val of rec.values"
+            [title]="val.displayValue"
+          >{{val.displayValue}}
+          </td>
+        </tr>
+      </ng-container>
+
+    </tbody>
+
+  </table>
+
+  <div *loading="nextLoading"></div>
+
+  <ng-container *ngIf="table?.records.length === 0">
+
+    <div class="bat-no-data">
+      {{control.noData}}
+    </div>
+
+  </ng-container>
+
+  <button
+    *ngIf="table && table.hasNext"
+    (click)="loadNext()"
+  >
+    Загрузить еще
+  </button>
+</div>

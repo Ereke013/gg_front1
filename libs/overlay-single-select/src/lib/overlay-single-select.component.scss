@@ -1,0 +1,38 @@
+@import "libs/mybpm-styles/variables";
+@import "libs/mybpm-styles/helper-placeholders";
+@import "libs/mybpm-styles/custom-input";
+
+:host {
+  @extend %popover;
+  background: $main-white;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+}
+
+.option {
+  margin-bottom: .35rem;
+  padding-right: 15px;
+}
+
+.search-block {
+  padding: .5rem;
+  border-bottom: 1px solid $main-gray;
+
+  mat-icon {
+    @extend %middle-icon
+  }
+
+  input {
+    @extend %mybpm-input;
+  }
+}
+
+span {
+  cursor: pointer;
+}
+
+.options {
+  padding: .5rem .5rem 0 .5rem;
+  max-height: 200px;
+}

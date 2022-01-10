@@ -1,0 +1,85 @@
+@import "variables";
+@import "helper-placeholders";
+@import "scrollbar";
+
+%week-customization {
+
+  .cal-event-container.cal-drag-active {
+    z-index: 2;
+  }
+
+  .cal-week-view {
+    @extend %scroll-bar;
+    height: 100%;
+    border: none;
+  }
+
+  .cal-day-headers {
+    border-right: none;
+    border-left: none;
+    position: sticky;
+    top: 0;
+    background: $main-white;
+    z-index: 2;
+  }
+
+  .cal-all-day-events {
+    padding-top: 0;
+    border-right: none;
+    border-left: none;
+    position: sticky;
+    top: 31px; //ie height of mwl-calendar-week-view-header
+    background: $main-white;
+    z-index: 2;
+    box-sizing: border-box; // required for the enableGhostResize option to work
+    overflow: hidden;
+  }
+
+  .cal-time-events {
+    border: none;
+  }
+
+  .cal-week-view .cal-day-headers span {
+    color: $main-text-color;
+    font-size: 14px;
+    opacity: 1;
+  }
+
+  .cal-week-view .cal-hour:not(:last-child) .cal-hour-segment,
+  .cal-week-view .cal-hour:last-child :not(:last-child) .cal-hour-segment {
+    border-bottom-style: solid;
+  }
+
+  .cal-week-view .cal-time {
+    font-size: 13px;
+    color: #A0A0A0;
+  }
+
+  .cal-week-view .cal-time-events .cal-event {
+    color: $main-white;
+    font-weight: bold;
+    font-size: 12px;
+    outline: none;
+  }
+
+  .cal-week-view .cal-event, .cal-week-view .cal-header {
+    white-space: pre-wrap;
+  }
+
+  .cal-week-view .cal-all-day-events .cal-event {
+    margin: 0;
+    height: 100%;
+    border-radius: 0;
+    border-top: 0;
+    border-right: 0;
+    line-height: 30px;
+    color: $main-text-color;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .cal-week-view .cal-current-time-marker {
+    z-index: 1;
+  }
+
+}

@@ -1,0 +1,109 @@
+<div
+  *ngIf="members"
+  class="chat-head"
+  (click)="openAddRecordPopover()"
+>
+
+  <span class="chat-count">
+    {{members?.length}} собеседников
+  </span>
+
+  <div
+    #addPersonIcon
+    class="icon-group"
+  >
+    <mat-icon svgIcon="add"></mat-icon>
+  </div>
+
+</div>
+
+<ng-template #orgUnitSelect>
+  <app-org-unit-select-search
+    type="person"
+    [chosenOrgUnitIds]="members"
+    (orgUnitAdded)="addMemberToList($event)"
+    (orgUnitDeleted)="delMemberToList($event)"
+    (escapeClicked)="closePopover()"
+    (shiftEnterClicked)="closePopover()"
+  ></app-org-unit-select-search>
+</ng-template>
+
+<div
+  class="chat-body"
+  *ngIf="messages"
+>
+  <div class="chat-scroll-overlay">
+    <div
+      #scroller
+      tabindex="1"
+      class="chat-scroll scroll-bar"
+      cdkScrollable
+    >
+
+      <ng-container *ngFor="let message of messages; let index = index; let last = last; trackBy: getId">
+
+        <app-tab-chat-message
+          [userId]="userId"
+          [message]="message"
+          (reply)="replyMessage = message"
+          class="no-focus-outline"
+          [ngStyle]="{ 'color': colorPaletteByUserId(message) }"
+          (focusOnMessageByMessageId)="focusOnMessageByMessageId($event)"
+        ></app-tab-chat-message>
+
+        <app-midst-messages-bubble
+          *ngIf="lastReadMessageId && lastReadMessageId === message.id"
+          [appFocusOnInit]="true"
+          tabindex="1"
+          text="{{unreadCount}} {{'unread_messages' | translate}}"
+        ></app-midst-messages-bubble>
+
+        <app-chat-time-splitter
+          [message]="message"
+          [messages]="messages"
+        ></app-chat-time-splitter>
+
+        <app-midst-messages-bubble
+          *ngIf="last"
+          [text]="message.createdAt | date : 'dd/MM/yyyy'"
+        ></app-midst-messages-bubble>
+
+      </ng-container>
+
+      <app-midst-messages-bubble
+        *ngIf="!nextPageId"
+        text="end_of_messages"
+      ></app-midst-messages-bubble>
+
+    </div>
+
+  </div>
+
+  <div class="chat-input-overlay">
+
+    <app-tab-chat-writing-users
+      [writingUsers]="writingUsers"
+    ></app-tab-chat-writing-users>
+
+    <div class="input-wrapper">
+
+      <app-tab-chat-input-reply
+        [(message)]="replyMessage"
+        [userId]="userId"
+        (focusOnInputSpan)="focusOnInputSpan()"
+      ></app-tab-chat-input-reply>
+
+      <app-tab-chat-input
+        [value]="inputValue"
+        [atSignEnabled]="!!members"
+        (addMember)="addAppealMember($event)"
+        (deleteMember)="delAppealMember($event)"
+        (valueChanged)="inputValueChanged.next($event); valueChanged.emit($event);"
+        (fileAttached)="attachment = $event"
+        (sendMessageClicked)="sendMessageToChat($event)"
+      ></app-tab-chat-input>
+
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,91 @@
+@import "variables";
+
+.modal-action-btn {
+  background-color: #4285f4;
+  color: $main-white;
+  margin-top: 1vh;
+}
+
+.card-content {
+  width: 70vw;
+}
+
+.product-titles {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 5vw;
+  margin-top: 10px;
+}
+
+.product-titles > mat-form-field {
+  margin: 0 12px 0 12px;
+  max-width: 280px;
+  width: 100%;
+}
+
+.modal-invalid-action-btn {
+  color: $title-gray;
+  margin-top: 1vh;
+}
+
+.param-block {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-column-gap: 5vw;
+  grid-row-gap: 1vw;
+
+  div {
+    max-width: 280px;
+    width: 100%;
+    margin: 0 12px 0 12px;
+  }
+
+  .param-block-input {
+    width: 100%;
+  }
+}
+
+.contacts-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.delete-contact {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.add-contact {
+  display: flex;
+  margin-top: 10px;
+
+  mat-label {
+    margin: auto 0;
+  }
+}
+
+.container {
+  margin-left: 12px;
+  margin-bottom: 12px;
+}
+
+.bank-icon-wrapper {
+  display: flex;
+  align-items: center;
+  margin-left: 1vw;
+  margin-bottom: 2vh;
+
+  .delete-bank-icon {
+    margin-left: 1vw;
+    color: $main-red;
+    transition: color 0.5s ease-in;
+    cursor: pointer;
+  }
+}
+
+.checkbox-section-cooperation {
+  margin-bottom: 12px;
+  align-items: center;
+  display: flex;
+}

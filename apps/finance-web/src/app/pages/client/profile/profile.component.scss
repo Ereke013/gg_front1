@@ -1,0 +1,161 @@
+@import "variables";
+
+.profile {
+
+  &_main {
+    box-shadow: inset 0 8px 7px -10px $task-header-text-color;
+    display: inline-block;
+    background: $sky-color;
+    width: 100%;
+
+    &_wrapper {
+      margin: 3vh 40vw 3vh $main-block-margin-left;
+      display: flex;
+      flex-direction: column;
+
+      &_in-city {
+        margin-bottom: 1.8vh;
+      }
+
+      &_in-city > p {
+        margin: 0;
+        font-size: 40px;
+        font-family: Ubuntu-Bold, serif;
+      }
+
+      &_in-city > p > span {
+        color: $primary-btn-color;
+        border-bottom: 2px dashed $primary-btn-color;
+      }
+
+      &_definition {
+        margin-top: 2vh;
+      }
+
+      &_definition > p {
+        font-size: 14px;
+      }
+
+      &_button {
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 1vh 1vw;
+        margin-right: 0.8vw;
+        font-size: 16px;
+      }
+
+      &_button:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04), 0 2px 2px rgba(0, 0, 0, 0.06), 0 0 1px rgba(0, 0, 0, 0.04);
+        border-radius: 4px;
+        background: none;
+        cursor: pointer;
+        padding: 1vh 1vw;
+        font-size: 16px;
+      }
+
+      &_active {
+        border-radius: 4px;
+        background: white;
+        cursor: pointer;
+        padding: 1vh 1vw;
+        color: $primary-btn-color;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.profile-tab {
+  margin: 3vh $main-block-margin-left;
+}
+
+
+@media screen and (max-width: $phone-screen-width) {
+  .profile {
+    &_main {
+      &_wrapper {
+        margin: $main-block-margin-mobile-top $main-block-margin-mobile-left;
+
+        &_active {
+          padding: 1vh 1vw;
+        }
+
+        &_in-city > p {
+          font-size: 24px;
+        }
+
+        &_type-credit {
+          white-space: nowrap;
+          overflow-x: auto;
+        }
+
+        &_type-credit::-webkit-scrollbar {
+          width: 0;
+          height: 0;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $phone-screen-width) {
+  .profile-tab {
+    margin: $main-block-margin-mobile-top $main-block-margin-mobile-left;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .profile {
+    &_main {
+      &_wrapper {
+        margin: 3vh 33vw 3vh 15vw;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 915px) {
+  .profile {
+    &_main {
+      &_wrapper {
+        margin: 3vh 23vw 3vh 15vw;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $phone-screen-width) {
+  .profile {
+    &_main {
+      &_wrapper {
+        margin: $main-block-margin-mobile-top $main-block-margin-mobile-left;
+
+        &_in-city > p {
+          font-size: 24px;
+        }
+
+        &_type-credit {
+          white-space: nowrap;
+          overflow-x: auto;
+        }
+
+        &_type-credit::-webkit-scrollbar {
+          width: 0;
+          height: 0;
+        }
+
+        &_button:hover {
+          box-shadow: none;
+          background: $main-white;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $phone-screen-width) {
+  .profile-tab {
+    margin: $main-block-margin-mobile-top $main-block-margin-mobile-left;
+  }
+}

@@ -1,0 +1,19 @@
+<div class='loans-header_main' id='loans-header'>
+  <div class='loans-header_main_wrapper'>
+    <div class='loans-header_main_wrapper_in-city'>
+      <p>{{'cons_cred' | translate}} <span (click)='changeLocation()'>{{cityByLang(cityLocation)}}</span></p>
+    </div>
+    <div class='loans-header_main_wrapper_definition' *ngIf='!isMobile'>
+      <p>{{'cons_cred_def' | translate}}</p>
+    </div>
+
+    <div class='loans-header_main_wrapper_type-credit'>
+      <button *ngFor='let tab of tabs'
+              class='loans-header_main_wrapper_button'
+              [class.loans-header_main_wrapper_active]='selectedTab === tab'
+              (click)='clickTab(tab)'>
+        {{tab.displayTitle}}
+      </button>
+    </div>
+  </div>
+</div>

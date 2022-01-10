@@ -1,0 +1,44 @@
+@import "variables";
+
+.modal-action-btn {
+  background-color: #4285f4;
+  color: $main-white;
+}
+
+.card-content {
+  width: 100%;
+}
+
+.visibility-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 720px;
+}
+
+.visibility-block-row > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 48px 8px 48px;
+
+  .visibility-block-row-item {
+    width: 80px;
+  }
+}
+
+.visibility-block-title {
+
+}
+
+.visibility-block-fields {
+  overflow: auto;
+  max-height: 60vh;
+}
+
+.dialog-content {
+  overflow: unset !important;
+}
+
+::ng-deep mat-dialog-container {
+  overflow: unset !important;
+}

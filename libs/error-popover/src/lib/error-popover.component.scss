@@ -1,0 +1,36 @@
+@import "libs/mybpm-styles/variables";
+@import "libs/mybpm-styles/helper-placeholders";
+
+%has-padding {
+  padding: 0.5rem;
+}
+
+.warning {
+  font-size: 13px;
+  overflow: hidden;
+  min-height: 5rem;
+  width: 10rem;
+  border-radius: 5px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  background: $main-white;
+}
+
+.warning-header {
+  @extend %has-padding;
+  height: 2.5rem;
+  color: $main-white;
+  background-color: $main-orange;
+  font-weight: bold;
+
+  mat-icon {
+    @extend %middle-icon;
+  }
+}
+
+.war-white {
+  color: $main-white;
+}
+
+.warning-text {
+  @extend %has-padding;
+}

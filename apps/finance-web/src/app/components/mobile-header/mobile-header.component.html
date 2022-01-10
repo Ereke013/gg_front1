@@ -1,0 +1,58 @@
+<div class='logo' (click)='changeCurrentPath("main")'><p>{{'your_finance' | translate}}</p></div>
+
+<div class='menu-wrap'>
+  <input type='checkbox' class='toggler' (click)='manageMenu()'>
+  <div class='hamburger'>
+    <div [class.lines-cross]='isHamClicked'
+         [class.lines]='!isHamClicked'>
+    </div>
+  </div>
+  <div class='menu' *ngIf='isHamClicked'>
+    <div class='menu-items'>
+      <div>
+        <div [class.active-tab]='selectedTab === "credit-selection"' (click)="changeCurrentPath('credit-selection')">
+          <p class='menu-item-text'>{{'loan_selection' | translate}}</p>
+        </div>
+        <div [class.active-tab]='selectedTab === "news"' (click)='changeCurrentPath("news")'>
+          <p class='menu-item-text'>{{'news' | translate}}</p>
+        </div>
+        <div [class.active-tab]='selectedTab === "profile"' (click)="changeCurrentPath('profile')">
+          <p class='menu-item-text'>{{'my_profile' | translate}}</p>
+        </div>
+        <div [class.active-tab]='selectedTab === "favorites"' (click)="changeCurrentPath('favorites')">
+          <p class='menu-item-text'>{{'favorites' | translate}}</p>
+        </div>
+        <div [class.active-tab]='selectedTab === "credit_history"' (click)="changeCurrentPath('credit_history')">
+          <p class='menu-item-text'>{{'credit_history' | translate}}</p>
+        </div>
+        <div [class.active-tab]='selectedTab === "applications"' (click)="changeCurrentPath('applications')">
+          <p class='menu-item-text'>{{'applications' | translate}}</p>
+        </div>
+      </div>
+    </div>
+    <div class='bottom-icons'>
+      <div class='header_language_sel' [matMenuTriggerFor]='popoverLang'>
+        <mat-icon svgIcon='language'></mat-icon>
+        <p>{{currentLanguage}}</p>
+      </div>
+
+      <mat-menu #popoverLang='matMenu' class='popover-menu'>
+        <p *ngFor='let lang of languages' class='menu-text' (click)='changeLanguage(lang.id)'>
+          {{lang.title}}
+        </p>
+      </mat-menu>
+
+      <p class='header_p' (click)='changeLocation()'>
+        <mat-icon svgIcon='location'></mat-icon>
+        <label>{{cityLocation}}</label>
+      </p>
+
+      <div class='log'>
+        <mat-icon svgIcon='log-out' class="{{isLogIn? 'login-svg' : 'logout-svg'}} "></mat-icon>
+        <p class='menu-text logout-text' *ngIf='!isLogIn'
+           (click)='changeCurrentPath("log_out")'>{{'log_out' | translate}}</p>
+        <p class='menu-text login-text' *ngIf='isLogIn' (click)='changeCurrentPath("log_in")'>{{'log_in' | translate}}</p>
+      </div>
+    </div>
+  </div>
+</div>

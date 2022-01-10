@@ -1,0 +1,19 @@
+@import "variables";
+
+.navigation-block {
+  display: flex;
+}
+
+.admin-block {
+  display: flex;
+  background-color: $main-background;
+  height: calc(100vh - 64px);
+}
+
+.admin-block > div {
+  margin: 0 10px 0 0;
+}
+
+.changing-block {
+  width: 100%;
+}

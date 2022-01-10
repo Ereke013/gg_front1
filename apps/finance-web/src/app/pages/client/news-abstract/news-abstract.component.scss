@@ -1,0 +1,45 @@
+@import "variables";
+
+.news {
+
+  &_container {
+    margin: $main-block-margin-top $main-block-margin-left;
+  }
+
+  &_wrapper {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-column-gap: 1vw;
+  }
+
+  &_card {
+    margin-right: 1.6vh;
+  }
+
+}
+
+.load-more {
+  margin: 0 auto 1vh auto;
+  display: flex;
+  padding: 1vh;
+  cursor: pointer;
+}
+
+@media screen and (max-width: $phone-screen-width) {
+  .news {
+
+    &_container {
+      margin: $main-block-margin-top 5vw;
+    }
+
+    &_wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &_card {
+      margin-right: 1.6vh;
+    }
+
+  }
+}

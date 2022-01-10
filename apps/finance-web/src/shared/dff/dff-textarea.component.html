@@ -1,0 +1,58 @@
+<app-dff-label
+  [field]="f"
+  [value]="val"
+  [errors]="errors"
+  [oneLineMode]="oneLineMode"
+  [touched]="touched"
+></app-dff-label>
+
+<div class="quill-container">
+
+  <quill-view
+    *ngIf="f.isReadonly; else editor"
+    class="dff-quill"
+    [content]="val.value"
+  ></quill-view>
+
+  <ng-template #editor>
+    <quill-editor
+      (onSelectionChanged)="selectionChanged($event)"
+      [modules]="quillConfig"
+      [(ngModel)]="val.value"
+      (ngModelChange)="changeValue()"
+      [class.invalid]="invalid"
+      [styles]="{height: 'calc(100% - 40px)'}"
+      [bounds]="elementRef.nativeElement"
+      placeholder="{{'type_text' | translate}}"
+    ></quill-editor>
+  </ng-template>
+
+  <div
+    *ngIf="!touched && f.isRequired && !val.value"
+    class="star"
+  >
+    *
+  </div>
+
+  <div
+    #errorIcon
+    *ngIf="invalid"
+    class="error-icon"
+    fxLayoutAlign="center center"
+    (mouseenter)="showErrorOverlay(errorIcon, errorOverlay, 'white')"
+    (mouseleave)="closeErrorOverlay()"
+  >
+
+    <mat-icon svgIcon="no-color-war"></mat-icon>
+
+    <!--  Error popover  -->
+    <ng-template #errorOverlay>
+
+      <app-error-popover>
+        <span *ngFor="let error of errors">{{error | translate}}</span>
+      </app-error-popover>
+
+    </ng-template>
+
+  </div>
+</div>

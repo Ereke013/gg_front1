@@ -1,0 +1,271 @@
+@import "libs/mybpm-styles/variables";
+@import "libs/mybpm-styles/helper-placeholders";
+
+:host {
+  display: flex;
+  max-height: 100%;
+}
+
+table {
+  font-size: 14px;
+  border-spacing: 0;
+  width: 100%;
+  height: calc(100% - 2px);
+  background-color: $main-white;
+  border-radius: 8px;
+  border-collapse: collapse;
+
+  //table-layout: fixed;
+
+  td, th {
+    max-width: 205px;
+    cursor: pointer;
+    font-weight: lighter;
+  }
+
+  td {
+    color: $main-user-color;
+    height: 37px;
+  }
+
+  .first-header-cell {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .next-header-cells {
+    text-align: start;
+    border-left: 1px solid $main-background;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  th {
+    position: sticky;
+    top: -2px;
+    left: 0;
+    background-color: $main-white;
+    border-bottom: 1px solid $main-background;
+    box-shadow: 0 1px 2px 0 $main-background;
+    height: 44px;
+    color: $table-text-color;
+    z-index: 2;
+  }
+
+  .first-cell-td {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .next-cells-td {
+    border-left: 1px solid $main-background;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  td.check {
+    overflow: hidden;
+  }
+
+  td:not(.check):not(.buttons-overlay) {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  td:not(.buttons-overlay) {
+    border-top: 1px solid $main-background;
+  }
+
+}
+
+.check {
+  border-top-left-radius: 5px;
+  width: 34px;
+  overflow: auto;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.check-overlay {
+  width: 34px;
+  height: inherit;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.header-name {
+  max-width: calc(100% - 24px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 20px;
+  text-align: start;
+  float: left;
+}
+
+.table-tr {
+
+  &:hover {
+    background-color: $table-gray;
+
+    .buttons-overlay {
+      right: 0;
+      opacity: 1;
+
+      .buttons-wrapper {
+        right: 0;
+        opacity: 1;
+      }
+
+    }
+
+    .buttons-container {
+
+      right: 1.5rem;
+      transition: right 300ms;
+
+      .pencil {
+        color: $main-blue;
+        transition: color 0.5s ease-in;
+        margin-right: .7rem;
+      }
+
+      .delete {
+        color: $main-red;
+        transition: color 0.5s ease-in;
+      }
+
+      .add {
+        color: $main-blue;
+        transition: color 0.5s ease-in;
+      }
+
+      .settings {
+        color: $main-user-color;
+        transition: color 0.5s ease-in;
+      }
+
+    }
+
+  }
+
+}
+
+.buttons-wrapper {
+  transition: right 150ms;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  opacity: 1;
+  padding-top: 4px;
+  background: linear-gradient(270deg, #F2F2F2 32.03%, rgba(242, 242, 242, 0) 91.79%);
+  width: 15rem;
+  height: 37px;
+}
+
+.buttons-container {
+  position: absolute;
+  bottom: .3rem;
+  right: 0;
+
+  mat-icon {
+    @extend %middle-x-icon;
+    color: $main-gray;
+    margin: 0 4px 0 4px;
+  }
+
+}
+
+.buttons-overlay {
+  position: sticky;
+  opacity: 0;
+  width: 0;
+  padding: 0;
+}
+
+.export-button {
+  cursor: pointer;
+  position: fixed;
+  background: $main-white;
+  border-radius: 50%;
+  box-shadow: 0 6px 12px rgba(9, 13, 57, 0.2);
+  bottom: 30px;
+  right: 125px;
+  width: 40px;
+  height: 40px;
+
+  mat-icon {
+    @extend %middle-icon;
+    color: $main-blue;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.header-icon {
+  margin-left: .5rem;
+  color: $secondary-gray;
+  @extend %middle-icon;
+}
+
+.header-icon:not(.visible-item) {
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: 0;
+}
+
+.half-visible-item {
+  animation: fadeout 0.3s ease-in;
+}
+
+.visible-item {
+  animation: fadein 0.3s ease-in;
+}
+
+.ordering-overlay:not(.visible-overlay) {
+  opacity: 0;
+}
+
+.ordering-overlay {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: min-content;
+  position: relative;
+  float: right;
+  min-width: 24px;
+}
+
+.table-overlay {
+  width: 100%;
+  background-color: white;
+
+  border-radius: 8px;
+  max-height: 100%;
+}
+
+#table-tbody-scroll-container {
+  will-change: transform;
+}

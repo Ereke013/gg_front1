@@ -1,0 +1,14 @@
+<div class="wrapper-dialog">
+  <h2 class = "dialog-title">{{'select_your_location'|translate}}</h2>
+  <mat-dialog-actions class="dialog-action">
+    <div *ngFor="let region of cities; let i = index" style="grid-row-end: span {{region.cityName.length + 2}};"  class="region-block">
+      <label>{{region.region}}</label>
+      <div>
+        <div *ngFor="let city of region.cityName">
+          <button (click)="setCity(city)" [class.selected-location]="selectedCity === city.cityCode"
+                   [class.unselected-location]="selectedCity !== city.cityCode" mat-button mat-dialog-close>{{city.cityName}}</button>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-actions>
+</div>

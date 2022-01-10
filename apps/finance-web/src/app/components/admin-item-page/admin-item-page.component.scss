@@ -1,0 +1,86 @@
+@import "variables";
+@import "libs/mybpm-styles/helper-placeholders";
+@import "../../../assets/custom-elements/filter-fields";
+
+.product-block {
+  padding: 32px;
+}
+
+.product-block > div {
+  margin: 8px 0 8px 0;
+  border-radius: 8px;
+}
+
+.add_btn_block {
+  display: flex;
+  width: 30%;
+  align-items: center;
+}
+
+.icon-color-change{
+
+}
+
+.object-name {
+  font-size: 19px;
+  line-height: 25px;
+  color: $main-user-color;
+  text-align: start;
+  outline: none;
+}
+
+.filter-block {
+  background-color: $main-white;
+  padding: 8px 0 8px 0;
+}
+
+.buttons {
+  margin-left: 1rem;
+  outline: none;
+
+  mat-icon {
+    @extend %middle-icon;
+  }
+}
+
+.product-page-header-block {
+  display: flex;
+  justify-content: space-between;
+  height: 48px;
+}
+
+.change-viewing-mode-container {
+  cursor: pointer;
+  background-color: $main-white;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+  height: 100%;
+  padding: 0 10px;
+  width: 200px;
+  justify-content: space-between;
+}
+
+.change-viewing-mode {
+  display: flex;
+}
+
+.view-mode-eye {
+  @extend %middle-icon;
+  color: $main-blue;
+  margin-right: 7px;
+}
+
+.selected-view-mode {
+  font-size: 13px;
+  color: $main-user-color;
+  cursor: pointer;
+  max-width: 100px;
+  white-space: nowrap;
+}
+
+.table-block {
+  height: 70vh;
+  overflow: auto;
+}

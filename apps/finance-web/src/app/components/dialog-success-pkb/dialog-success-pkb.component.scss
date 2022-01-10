@@ -1,0 +1,38 @@
+.pkb {
+  &_container {
+
+    align-items: flex-end;
+    justify-content: center;
+    display: flex;
+
+    button {
+      float: right;
+      padding: 16px;
+    }
+
+    h2 {
+      margin: 7vh;
+      text-align: center;
+      font-family: Ubuntu-Bold, Ubuntu, serif;
+    }
+  }
+}
+
+.close {
+  float: right;
+}
+
+button {
+  padding: 16px;
+}
+
+.wrapper{
+  height: 100%;
+  display: grid;
+
+  &_button {
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+  }
+}

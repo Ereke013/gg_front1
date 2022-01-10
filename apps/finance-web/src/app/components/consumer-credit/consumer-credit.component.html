@@ -1,0 +1,126 @@
+<div class='block-container'>
+
+  <div class='consumer-credit-container' [class.container-margin]='!isFavorite'>
+    <div class='filter-block'>
+      <div class="block-wrapper"
+            [class.full-width]="!isFavorite">
+        <p class='filter-block_sort'>{{'sort' | translate}}</p>
+        <div *ngFor='let sort of sortByList; let index = index'
+             class='filter-block_overpayment'
+             [class.sort]="sortedParam === sort.name"
+             (click)='setOrdering(sort, sort.name)'
+             [matTooltip]="sort.ordering | translate">
+          <p>{{sort.name}}</p>
+          <mat-icon svgIcon='sort-asc' *ngIf='sort.ordering === "UNSET" || sort.ordering === "ASC"'></mat-icon>
+          <mat-icon svgIcon='sort-desc' *ngIf='sort.ordering === "DESC"'></mat-icon>
+        </div>
+        <p *ngIf='!isFavorite'
+           style='margin-left: auto'>{{(!isMobile ? 'found' : '') | translate}} {{amountOfResults}} {{(!isMobile ? resultString : '') | translate}}</p>
+      </div>
+
+      <div *ngIf='isFavorite' class="filter-found">
+        <div class='filter-block_found'>
+          <div class="found-type">
+            <mat-select [(ngModel)]='tabFavorite' (valueChange)='setTabForFavorite($event)'>
+              <mat-option *ngFor='let tab of tabs' value='{{tab}}'>{{tab | translate}}</mat-option>
+            </mat-select>
+          </div>
+          <div>
+            <p>{{'found' | translate}} {{amountOfResults}} {{(!isMobile ? resultString : '') | translate}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class='info-block' *ngIf='productCards.length > 0'>
+      <div class='loading-dots' *ngIf='isLoading'>
+        <label>{{'load' | translate}}</label>
+        <div class='loading-dots--dot'></div>
+        <div class='loading-dots--dot'></div>
+        <div class='loading-dots--dot'></div>
+      </div>
+      <div class='info-container'
+           *ngFor='let r of productCards; let index = index'
+           [class.blur]='isLoading'
+           (click)='sendApplication(r.values, index, r.title, r.bankCode)'>
+        <div class='info-wrapper'>
+          <div class='info-values'>
+            <div class='favorite-wrapper'>
+              <p class='bank_header'>
+                {{r.title}}
+              </p>
+              <div *ngIf='isMobile'>
+                <button *ngIf='r.isFavorite'
+                        title="{{'remove_from_favorites' | translate}}"
+                        class='button-primary buttons_star star_active'
+                        (click)='deleteFromFavorites(r, index)'>
+                  <mat-icon>star</mat-icon>
+                </button>
+                <button *ngIf='!r.isFavorite'
+                        title="{{'add_to_favorites' | translate}}"
+                        class='button-primary buttons_star star_inactive'
+                        (click)='saveToFavorites(r, index)'
+                >
+                  <mat-icon>star_border</mat-icon>
+                </button>
+              </div>
+            </div>
+            <p class='bank_logo'>
+              <img appImageCache [appSetImage]='{id: r.logo}' alt=''>
+            </p>
+
+          </div>
+
+          <div class='info-wrapper-card'>
+            <div *ngFor='let record of r.values'
+                 [class.info-values]='record.type === "consumer_credit"'
+                 [class.display-hidden]='!record.isDisplayable'
+                 class="info-wrapper-card_values">
+              <div *ngIf='record.isDisplayable'
+                   class='info-value text'>
+                <p class='text_header'>
+                  {{record.title | translate}}
+                </p>
+                <p class='text_value' *ngIf='record.value && record.value.trim().length > 0'>{{numberDivide(record.value)}}</p>
+                <p class='text_value' *ngIf='!record.value || record.value.trim().length === 0'>-</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='buttons_container' *ngIf='!isMobile'>
+          <button *ngIf='r.isFavorite'
+                  title="{{'remove_from_favorites' | translate}}"
+                  class='button-primary buttons_star star_active'
+                  (click)='deleteFromFavorites(r, index)'>
+            <mat-icon>star</mat-icon>
+          </button>
+          <button *ngIf='!r.isFavorite'
+                  title="{{'add_to_favorites' | translate}}"
+                  class='button-primary buttons_star star_inactive'
+                  (click)='saveToFavorites(r, index)'>
+            <mat-icon>star_border</mat-icon>
+          </button>
+          <!--          <button class='button-primary buttons_submit' #requestButton>{{'send_request' | translate}}</button>-->
+<!--          <button class='button-primary buttons_submit' *ngIf='true'-->
+<!--                  (click)='openBankContacts(index)'>{{'bank_contacts' | translate}}</button>-->
+          <button class='button-primary buttons_submit' *ngIf='true'>{{'more_details' | translate}}</button>
+        </div>
+        <button *ngIf='isMobile' class='button-primary buttons_submit'>{{'more_details' | translate}}</button>
+      </div>
+    </div>
+    <div class='empty-info' *ngIf='productCards.length === 0'>
+      <p>Ничего не найдено</p>
+    </div>
+
+  </div>
+  <button class='scroll-top' *ngIf='isScrolled' (click)='scrollTop()'>
+    <mat-icon svgIcon='arrow-up'></mat-icon>
+  </button>
+</div>
+
+<button class='button-white-primary load-more' *ngIf='isLoadMoreBtn && !isFavorite' (click)='loadMoreProducts()'>
+  {{'load_more' | translate}}
+</button>
+
+
+

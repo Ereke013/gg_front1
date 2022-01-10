@@ -1,0 +1,100 @@
+<div class='product-block'>
+
+  <div class='product-page-header-block'>
+    <div class='add_btn_block'>
+
+      <div>
+      <span
+        class='object-name'
+        tabindex='0'
+      >{{pageItemName | translate}}</span>
+      </div>
+
+      <div
+        *ngIf="isAccess"
+        class='buttons'
+        fxFlex
+        fxLayout='row'
+        fxLayoutAlign='start center'
+        fxLayoutGap='0.5rem'>
+        <app-mybpm-add-button
+          (click)='openEditDialog(null)'
+          [text]="'add' | translate"
+        ></app-mybpm-add-button>
+
+        <ng-container *ngIf='isBulkUpButton'>
+          <mat-icon
+            svgIcon='no-color-delete'
+            class='g-delete-icon'
+            (click)="onBulkOpButtonClick('delete')"
+          ></mat-icon>
+        </ng-container>
+      </div>
+
+    </div>
+
+    <div *ngIf='isPopOverNeeded'>
+      <div
+        class='change-viewing-mode-container'
+        [mdePopoverTriggerFor]='parameterViewPopover'
+        mdePopoverTriggerOn='click'
+        mdePopoverPositionY='below'
+        (click)='setClosePopOverStatus()'
+      >
+        <div class='change-viewing-mode'>
+          <mat-icon
+            class='view-mode-eye'
+            svgIcon='settings'
+          ></mat-icon>
+
+          <div class='selected-view-mode'>
+            {{'display_params' | translate}}
+          </div>
+          <mde-popover #parameterViewPopover='mdePopover'
+                       [mdePopoverOverlapTrigger]='false'
+                       [mdePopoverCloseOnClick]='isPopOverClosed'
+          >
+            <app-list-popover
+              [setInputElements]='popOverCheckBoxElements'
+              (closePopOver)='closePopOver($event)'
+              (checkedElements)='addNewParameterColumns($event)'
+            ></app-list-popover>
+          </mde-popover>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class='filter-block'>
+    <app-filter
+      [setInputElements]="popoverFilter"
+      [isFilterColumn]="isFilterColumn"
+      (searchText)='handleSearchText($event)'
+      (searchFilter)="searchFilterChange($event)"
+    >
+    </app-filter>
+  </div>
+
+  <div class='table-block'>
+    <app-instance-table
+      *ngIf='boiTable?.heads?.length > 0'
+      [onlyRemoved]='boiFilter?.onlyRemoved'
+      [ordering]='boiFilter?.ordering'
+      [instanceTable]='boiTable'
+      [boiTableHasNext]='boiTable?.hasNext'
+      (deleteBoi)='deleteProduct($event)'
+      (copyBoi)='copyProduct($event)'
+      (editBO)='openEditDialog($event)'
+      (loadNext)='loadNextBoInstanceRecords()'
+      [isSettingButtonNeeded]='isSettingsButtonNeeded'
+      [isCopyButtonNeeded]='isCopyButtonNeeded'
+      [isCustomButtonNeeded]='isCustomButtonNeeded'
+      (settingsButtonResponse)='setProductParamSettings($event)'
+      (showBulkUpDeleteIcon)='setBulkUpButtonStatus($event)'
+      (orderingChanged)='getOrderingFromTable($event)'
+    >
+    </app-instance-table>
+
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<h1 mat-dialog-title>{{titleName}}</h1>
+<div mat-dialog-content>
+  <form [formGroup]='form'>
+    <mat-card-content class='card-content'>
+      <div class='product-titles'>
+
+        <mat-form-field appearance='outline'>
+          <mat-label>{{'last_name' | translate}}</mat-label>
+          <input matInput placeholder="{{'last_name' | translate}}" formControlName='surname' required>
+        </mat-form-field>
+
+        <mat-form-field appearance='outline'>
+          <mat-label>{{'first_name' | translate}}</mat-label>
+          <input matInput placeholder="{{'first_name' | translate}}" formControlName='name' required>
+        </mat-form-field>
+
+        <mat-form-field appearance='outline'>
+          <mat-label>{{'patronymic' | translate}}</mat-label>
+          <input matInput placeholder="{{'patronymic' | translate}}" formControlName='patronymic'>
+        </mat-form-field>
+
+        <mat-form-field appearance='outline'>
+          <mat-label>{{'phone' | translate}}</mat-label>
+          <input matInput placeholder='+7(_ _ _)_ _ _  _ _  _ _' mask='+0(000)000-00-00'
+                 formControlName='phoneNumber' required>
+        </mat-form-field>
+
+        <mat-form-field appearance='outline'>
+          <mat-label>{{'roles' | translate}}</mat-label>
+          <mat-select multiple
+                      formControlName='roles'
+                      required
+                      placeholder='{{"roles" | translate}}'>
+            <mat-option *ngFor='let r of roles'
+                        [value]='r.dict'
+                        matTooltip='{{r.displayTitle}}'
+                        matTooltipClass='tooltip'>
+              {{r.displayTitle}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance='outline'>
+          <mat-label>{{'financial_organization' | translate}}</mat-label>
+          <mat-select formControlName='foName'
+                      placeholder='{{"financial_organization" | translate}}'>
+            <mat-option *ngFor='let f of foNames'
+                        [value]='f'
+                        matTooltip='{{f.displayTitle}}'
+                        matTooltipClass='tooltip'>
+              {{f.displayTitle}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+    </mat-card-content>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button
+    mat-button
+    [disabled]='form.invalid'
+    (click)='submit()'
+    [class.modal-action-btn]='!form.invalid'
+    [class.modal-invalid-action-btn]='form.invalid'>
+    {{buttonName}}
+  </button>
+  <button mat-button (click)='closeHandler()'>{{'close' | translate}}</button>
+</div>

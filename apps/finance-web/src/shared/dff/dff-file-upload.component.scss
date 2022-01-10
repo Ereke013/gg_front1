@@ -1,0 +1,39 @@
+@import "libs/mybpm-styles/variables";
+@import "libs/mybpm-styles/helper-placeholders";
+
+:host {
+  font-size: 13px;
+}
+
+%dashed-text {
+  color: $main-blue;
+  border-bottom: 1px $main-blue dashed;
+}
+
+.upload-button {
+  @extend %button-no-style;
+  @extend %dashed-text;
+  cursor: pointer;
+}
+
+.delete-icon {
+
+  mat-icon {
+    @extend %middle-icon;
+    color: $secondary-gray;
+    transition: 150ms color;
+
+    &:hover {
+      color: red;
+    }
+  }
+
+}
+
+.add-file-section {
+  margin-bottom: .5rem;
+}
+
+.is-readonly {
+  cursor: not-allowed;
+}

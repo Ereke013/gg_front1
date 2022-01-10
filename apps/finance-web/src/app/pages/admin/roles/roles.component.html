@@ -1,0 +1,12 @@
+<app-admin-item-page
+  [boiTable]='boiTable'
+  [boiFilter]='boiFilter'
+  [pageItemName]="'roles'"
+  (bulkUpButtonClicked)='onBulkOpButtonClick($event)'
+  (checkedElements)='addNewParameterColumns($event)'
+  (editItemId)='openEditRole($event)'
+  (deleteItemId)='deleteItem($event)'
+  (searchTextResult)="handleSearch($event)"
+>
+
+</app-admin-item-page>

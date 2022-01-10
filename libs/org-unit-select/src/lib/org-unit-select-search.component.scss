@@ -1,0 +1,73 @@
+@import "./libs/mybpm-styles/variables";
+@import "./libs/mybpm-styles/helper-placeholders";
+
+%has-padding {
+  padding: .5rem;
+}
+
+:host {
+  @extend %popover;
+  font-size: 13px;
+  background: $main-white;
+  display: flex;
+  flex-direction: column;
+  max-width: 15rem;
+  max-height: 20rem;
+}
+
+.search-block {
+  @extend %has-padding;
+  border-bottom: 1px $border-gray solid;
+
+  mat-icon {
+    @extend %middle-icon;
+  }
+
+  input {
+    @extend %input-no-style;
+    width: 100%;
+    border-radius: 5px;
+    text-indent: 5px;
+    min-height: 1.5rem;
+    border: 1px transparent solid;
+    transition: border-color 150ms;
+
+    &:focus {
+      outline: none;
+      border-color: $main-blue;
+    }
+  }
+}
+
+.choose-all {
+  @extend %has-padding;
+  border-bottom: 1px $border-gray solid;
+}
+
+.records {
+  @extend %has-padding;
+
+  mat-icon {
+    @extend %small-xx-icon;
+    font-size: 0;
+  }
+}
+
+.radio-button-content {
+  mat-icon {
+    margin-right: 5px;
+  }
+}
+
+.selected-org-unit {
+  font-weight: bold;
+}
+
+ui-radio {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.pointer-span {
+  cursor: pointer;
+}

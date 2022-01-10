@@ -1,0 +1,130 @@
+@import "variables";
+
+::ng-deep.bank-contacts-dialog {
+  mat-dialog-container {
+    border-radius: 12px;
+  }
+}
+
+.credit {
+  &_container {
+    display: flex;
+    flex-direction: column;
+
+    mat-icon {
+      margin-left: auto;
+      cursor: pointer;
+    }
+
+    &_inputs {
+      display: flex;
+      width: 100%;
+      border: 1px solid $border-grey-color;
+      border-radius: 4px;
+      align-items: center;
+      height: 5vh;
+      margin-top: 1vh;
+
+      input {
+        border-bottom-left-radius: 4px;
+        border-top-left-radius: 4px;
+        border: 1px $border-grey-color;
+        padding: 1.6vh 0.75vw;
+        min-width: 5vw;
+        width: 60%;
+        outline: none;
+        font-size: 16px;
+        height: 100%;
+      }
+
+      mat-select {
+        border: 0 none;
+        border-left: 1px solid $border-grey-color;
+        padding: 1.6vh 0.75vw;
+        width: 40%;
+        font-size: 16px;
+        height: 100%;
+        background-color: $border-grey-color;
+      }
+
+      ::ng-deep .mat-select-disabled .mat-select-value {
+        color: black;
+      }
+    }
+  }
+
+  &_product-info {
+    margin-right: 2vw;
+
+    img {
+      width: 150px;
+    }
+
+  }
+
+  &_product-title {
+    background: $background-light-blue;
+    border-radius: 8px;
+    color: $primary-btn-color;
+    word-break: break-word;
+    padding: 0.5vh 0.5vw;
+  }
+
+  &_info {
+    display: flex;
+  }
+
+  &_info-container {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+  }
+
+  &_info-wrapper {
+    margin-right: 2vw;
+    width: 50%;
+  }
+}
+
+.button-back {
+  height: 4.8vh;
+  margin-left: 1vw;
+}
+
+.buttons-block{
+  float: right;
+}
+
+.contact-wrapper {
+   display: flex;
+}
+
+.block-credit{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2vw;
+  margin: 2vh 0;
+}
+
+@media screen and (max-width: $phone-screen-width){
+  .branch {
+    &_container {
+      flex-direction: column;
+    }
+    &_info {
+      display: flex;
+      flex-direction: column;
+    }
+    &_info-wrapper {
+      width: 100%;
+    }
+  }
+
+  .contact-wrapper {
+    flex-direction: column;
+  }
+
+  .button-back {
+    width: 100%;
+  }
+}

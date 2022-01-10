@@ -1,0 +1,103 @@
+<div class='login-block'>
+  <div class='wrapper-step' *ngIf='step === 1 || isStep2'>
+
+    <div class='wrapper-step_step-left'>
+      <mat-icon svgIcon='check' class='check-icon'></mat-icon>
+      <label>{{'step' | translate}} 1</label>
+    </div>
+
+    <div class='wrapper-step_step-center'>
+      <mat-icon svgIcon='rectangle'></mat-icon>
+    </div>
+
+    <div class='wrapper-step_step-right'>
+      <mat-icon svgIcon='ellipse' *ngIf='!isStep2' class='ellipse-icon'></mat-icon>
+      <mat-icon svgIcon='check' *ngIf='isStep2' class='check-icon'></mat-icon>
+      <label>{{'step' | translate}} 2</label>
+    </div>
+
+  </div>
+
+  <div [formGroup]='signForm' class='login-form'>
+    <h1>{{formTitle | translate}}</h1>
+
+    <label>{{inputFirstModel.title | translate}}</label>
+    <div class='firstInput' [class.disable-visible]='(isRegister || isRecovery) && (isSmsSend || remainingTime$)'
+         [class.pick-pass]="code === 'pick a password'">
+      <input class='phone-number'
+             formControlName='inputFirst'
+             (ngModelChange)='modelChange($event)'
+             [class.phone-style]='(isRegister || isLogin || isRecovery)'
+             [type]='inputFirstModel.typeInput'
+             [placeholder]='inputFirstModel.placeholder | translate'
+             [mask]="(isRegister || isLogin || isRecovery)? '+0(000)000-00-00' : ''"
+      >
+      <p *ngIf='(isRegister || isRecovery) && isSmsSend' [class.display-hidden]='!isSmsSend'
+         (click)='sendSms()'>Отправить SMS код</p>
+      <p *ngIf='remainingTime$ | async as remainingTime;' class="sms-timer">
+        {{remainingTime | timeFormat}}
+      </p>
+      <mat-icon *ngIf="isShowPasswordFirst && code === 'pick a password'" (click)="showPasswordFirst()" svgIcon="no-color-eye"></mat-icon>
+      <mat-icon *ngIf="!isShowPasswordFirst && code === 'pick a password'" (click)="showPasswordFirst()" svgIcon="no-color-eye-close"></mat-icon>
+    </div>
+
+    <label>{{ inputSecondModel.title | translate}}</label>
+
+    <div class='forgot-password'>
+      <input class='phone-number' id='last-name'
+             formControlName='inputSecond'
+             placeholder='{{ inputSecondModel.placeholder | translate}}'
+             (ngModelChange)='modelChangeSecond()'
+             (keyup.enter)="onSubmit()"
+             [type]='inputSecondModel.typeInput'
+             [mask]="(isRegister || isRecovery) ? '000000':''">
+      <mat-icon *ngIf="isShowPasswordSecond && (isLogin || code === 'pick a password')" (click)="showPasswordSecond()" svgIcon="no-color-eye"></mat-icon>
+      <mat-icon *ngIf="!isShowPasswordSecond && (isLogin || code === 'pick a password')" (click)="showPasswordSecond()" svgIcon="no-color-eye-close"></mat-icon>
+    </div>
+    <p class="recover-pass" *ngIf='isLogin' (click)='passwordRecovery()'>Забыли пароль?</p>
+
+    <div class='error-message' *ngIf='errorMsg.trim().length>0'>
+      <mat-icon svgIcon='no-color-close-x' class='error-message_icon'></mat-icon>
+      <span>{{errorMsg}}</span>
+    </div>
+    <div *ngIf="code === 'pick a password'">
+      <div class='error-wrapper'>
+        <span>Пароль должен состоять: </span>
+      </div>
+      <div class='error-wrapper'>
+        <mat-icon svgIcon='ellipse' *ngIf='isMinEightCharacter'></mat-icon>
+        <mat-icon svgIcon='no-color-check-mark' class='check-icon' *ngIf='!isMinEightCharacter'></mat-icon>
+        <span class="{{isMinEightCharacter? 'error-msg' : 'success-msg'}}">Минимум 8 символов</span>
+      </div>
+      <div class='error-wrapper'>
+        <mat-icon svgIcon='ellipse' *ngIf='isMinOneNumber'></mat-icon>
+        <mat-icon svgIcon='no-color-check-mark' class='check-icon' *ngIf='!isMinOneNumber'></mat-icon>
+        <span class="{{isMinOneNumber? 'error-msg' : 'success-msg'}}">Минимум одну цифру</span>
+      </div>
+      <div class='error-wrapper'>
+        <mat-icon svgIcon='ellipse' *ngIf='isMinOneLowCharacter'></mat-icon>
+        <mat-icon svgIcon='no-color-check-mark' class='check-icon' *ngIf='!isMinOneLowCharacter'></mat-icon>
+        <span class="{{isMinOneLowCharacter? 'error-msg' : 'success-msg'}}">Одну латинскую букву нижнего регистра</span>
+      </div>
+      <div class='error-wrapper'>
+        <mat-icon svgIcon='ellipse' *ngIf='isMinOneUpperCharacter'></mat-icon>
+        <mat-icon svgIcon='no-color-check-mark' class='check-icon' *ngIf='!isMinOneUpperCharacter'></mat-icon>
+        <span class="{{isMinOneUpperCharacter? 'error-msg' : 'success-msg'}}">Одну латинскую букву верхнего регистра</span>
+      </div>
+      <div class='error-wrapper'>
+        <mat-icon svgIcon='ellipse' *ngIf='isMinOneSpecialCharacter'></mat-icon>
+        <mat-icon svgIcon='no-color-check-mark' class='check-icon' *ngIf='!isMinOneSpecialCharacter'></mat-icon>
+        <span class="{{isMinOneSpecialCharacter? 'error-msg' : 'success-msg'}}">Один специальный символ(!, @, ., /, (, ), _, #, $, %, ^, &, +, =, -)</span>
+      </div>
+    </div>
+
+    <button class=" {{disable()? 'login-btn disable-btn' : 'login-btn btn-clicker'}}"
+            type='submit'
+            [disabled]='disable()'
+            (click)='onSubmit()'>
+      {{buttonText | translate}}
+    </button>
+
+    <p (click)='pageChanger()'>{{navigateText | translate}}</p>
+  </div>
+</div>

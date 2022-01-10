@@ -1,0 +1,23 @@
+<div class="image-viewer-container">
+  <div class="icon-block">
+    <mat-icon
+      class="download-icon"
+      svgIcon="no-color-download"
+      [appDownloadOnClick]="imageId"
+    ></mat-icon>
+    <mat-icon
+      class="close-btn"
+      svgIcon="no-color-cancel"
+      (click)="closeClicked()"
+    ></mat-icon>
+  </div>
+
+  <img
+    [src]="imageId | imageUrl"
+    alt="image"
+  />
+  <div
+    class="download-image-text"
+    [appDownloadOnClick]="imageId"
+  >{{'download_photo' | translate}}</div>
+</div>

@@ -1,0 +1,84 @@
+@import "variables";
+
+$margin-bottom: 3.4vh;
+
+.combobox {
+  margin: auto;
+  margin-top: 1vh;
+}
+
+.wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3.9fr 0.1fr;
+  border-radius: 8px;
+  border: 1px solid $border-grey-color;
+  padding: 1.5vh 0.75vw;
+  align-items: center;
+}
+
+.clear-input-icon {
+  cursor: pointer;
+  width: 18px;
+  height: 20px;
+}
+
+.combobox-input {
+  width: 100%;
+  border: none;
+}
+
+.combobox-input:focus {
+  outline-style: none;
+}
+
+.combobox-options {
+  border-radius: 8px;
+  position: absolute;
+  background-color: white;
+  width: 22vw;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 2px 2px 2px 2px #ccc;
+  z-index: 2;
+}
+
+.selected {
+  color: $main-white;
+  background-color: $primary-btn-color;
+}
+
+list-item {
+  display: block;
+  font-size: 16px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+list-item:hover {
+  background-color: $placeholder-color;
+  color: $main-white;
+}
+
+input {
+  font-size: 16px;
+}
+
+input::-webkit-input-placeholder {
+  font-size: 16px;
+  color: $placeholder-color
+}
+
+.arrow-down {
+  cursor: pointer;
+}
+
+@media screen and (max-width: $phone-screen-width){
+  .wrapper {
+    padding: 1.5vh 3.5vw 1.5vh 2.5vw;
+  }
+
+  .combobox-options{
+    width: 90vw;
+  }
+}

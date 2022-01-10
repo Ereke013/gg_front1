@@ -1,0 +1,15 @@
+<mat-form-field appearance='outline' class='multi-select-field'>
+  <mat-label>{{label}}</mat-label>
+  <mat-select multiple
+              (selectionChange)='selectChanged()'
+              [formControl]='dicts'
+              [placeholder]='placeholder'>
+    <mat-option (onSelectionChange)="selectionChange($event)">{{'select_all'|translate}}</mat-option>
+    <mat-optgroup *ngFor="let region of regions" [label]="region.region">
+      <mat-option *ngFor='let d of region.cityName'
+                  [value]='d.cityCode'>
+        {{d.cityName}}
+      </mat-option>
+    </mat-optgroup>
+  </mat-select>
+</mat-form-field>

@@ -1,0 +1,25 @@
+<div class='profile_main'>
+  <div class='profile_main_wrapper'>
+    <div class='profile_main_wrapper_in-city'>
+      <p>{{selectedTab | translate}}</p>
+    </div>
+    <div class='profile_main_wrapper_type-credit'>
+      <button *ngFor='let tab of tabs'
+              class='profile_main_wrapper_button'
+              [class.profile_main_wrapper_active]='selectedTab === tab'
+              (click)='clickTab(tab)'>
+        {{tab | translate}}
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class='profile-tab'>
+  <app-user-profile *ngIf='selectedTab === "profile"'></app-user-profile>
+
+  <app-credit-history *ngIf='selectedTab === "credit_history"'></app-credit-history>
+
+  <app-favorites *ngIf='selectedTab === "favorites"'></app-favorites>
+
+  <app-profile-applications *ngIf='selectedTab === "applications"'></app-profile-applications>
+</div>

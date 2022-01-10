@@ -1,0 +1,58 @@
+<div class="notification-container">
+
+  <div
+    class="title-container"
+    [ngClass]="{
+      'warning-header': data.type == 'warning',
+      'info-header': data.type == 'info',
+      'error-header': data.type == 'error_outline',
+      'custom-header': data.type == 'custom',
+      'blue-header': data.type == 'warning_blue'
+    }"
+  >
+
+    <div
+      class="title-text"
+      [ngSwitch]="data.type"
+    >
+      <mat-icon
+        *ngSwitchCase="'custom'"
+        svgIcon="no-color-email"
+      ></mat-icon>
+      <mat-icon
+        *ngSwitchCase="'info'"
+        svgIcon="no-color-info"
+      ></mat-icon>
+      <mat-icon
+        *ngSwitchCase="'warning'"
+        svgIcon="no-color-warning"
+      ></mat-icon>
+      <mat-icon
+        *ngSwitchCase="'error_outline'"
+        svgIcon="no-color-war"
+      ></mat-icon>
+      <mat-icon
+        *ngSwitchCase="'warning_blue'"
+        svgIcon="no-color-warning"
+      ></mat-icon>
+      <span>
+          {{data.title | translate}}
+      </span>
+    </div>
+
+    <div
+      class="cancel-div"
+      (click)="close()"
+    >
+      <mat-icon svgIcon="no-color-cancel"></mat-icon>
+    </div>
+
+  </div>
+
+  <div class="body-container">
+    <span>
+      {{data.message | translate}}
+    </span>
+  </div>
+
+</div>

@@ -1,0 +1,62 @@
+@import 'variables';
+@import '_theme';
+
+
+.param-block-input {
+  width: 100%;
+
+  ::ng-deep.mat-form-field-flex {
+    align-items: center;
+  }
+
+  input {
+    text-align: center;
+  }
+}
+
+.before-prefix {
+  margin-right: 1vw;
+}
+
+.after-suffix {
+  margin-left: 1vw;
+}
+
+.commission-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &_inputs {
+    display: flex;
+    width: 100%;
+    border: 1px solid $border-grey-color;
+    border-radius: 4px;
+    align-items: center;
+    height: 5vh;
+    margin-top: 1vh;
+
+    input {
+      border: 1px $border-grey-color;
+      padding: 1.6vh 0.75vw;
+      min-width: 5vw;
+      width: 40%;
+      outline: none;
+      font-size: 16px;
+      height: 100%;
+      border-left: 1px solid $border-grey-color;
+    }
+
+    mat-select {
+      border: 0 none;
+      border-left: 1px solid $border-grey-color;
+      padding: 1.6vh 0.75vw;
+      width: 35%;
+      font-size: 16px;
+      height: 100%;
+    }
+    .selector-prefix {
+      width: 25% !important;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+<div class='repayment-card-container' *ngIf='repaymentCard'>
+  <div class="scroll-dialog-header">
+    <mat-icon svgIcon='close' (click)='close()'></mat-icon>
+    <div class='repayment-card_header'>
+      <img class='repayment-card_header_logo' appImageCache [appSetImage]='{id: repaymentCard?.logo}' alt=''>
+      <p class='repayment-card_header_title'>{{repaymentCard?.title}}</p>
+    </div>
+  </div>
+
+  <div class="repayment-wrapper-table">
+    <label>График погашения</label>
+    <table class="repayment-table">
+      <thead>
+        <tr>
+          <th>Платеж</th>
+          <th>Погашение основного долга</th>
+          <th>Начисленные проценты</th>
+          <th>Ежемесячный платеж</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cardRow of repaymentTableCard; let i = index">
+          <td>{{cardRow.payment}}</td>
+          <td>{{withSpace(cardRow.repaymentOfThePrincipalDebt)}} ₸</td>
+          <td>{{withSpace(cardRow.interestCharges)}} ₸</td>
+          <td>{{withSpace(cardRow.monthlyPayment)}} ₸</td>
+        </tr>
+        <tr class="repayment-table_sum">
+          <td>Всего по кредиту</td>
+          <td>{{withSpace(sumCreditInt)}} ₸</td>
+          <td>{{withSpace(allInterestSum)}} ₸</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class='repayment-buttons_container'>
+    <button class='repayment-buttons_height button-primary' (click)="downloadPdf()">Скачать PDF</button>
+    <button class='button-white-primary repayment-buttons_height' (click)="closeRepaymentDialog()">Вернуться назад</button>
+  </div>
+</div>

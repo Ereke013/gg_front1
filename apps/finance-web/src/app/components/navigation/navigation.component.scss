@@ -1,0 +1,45 @@
+@import "variables";
+
+.toolbar {
+  background-color: $main-white;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: $main-white;
+  width: 100%;
+}
+
+li {
+  float: left;
+}
+
+.logo-li {
+  border-right: 1px solid $main-background;
+  width: 251px;
+}
+
+.logo-li > a {
+  color: $main-text-color;
+  text-align: start;
+}
+
+li a {
+  display: block;
+  color: $main-text-color;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  color: $main-text-color;
+}
+
+.active {
+  color: $main-text-color !important;
+  border-left: 1px solid $main-background;
+}
